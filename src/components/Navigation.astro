@@ -8,8 +8,16 @@ import ThemeToggle from './ThemeToggle.jsx';
       <!-- Логотип -->
       <div>
         <a href="/contacts" class="flex items-center space-x-3 group">
-          <div class="w-8 h-8 bg-gradient-to-br from-nord-8 to-nord-10 rounded-lg flex items-center justify-center">
-            <span class="text-nord-6 font-bold text-sm">S</span>
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-nord-4">
+            <img 
+              src="/img/logo.gif" 
+              alt="sccl.cc" 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              onerror="this.nextElementSibling.style.display='flex'; this.style.display='none';"
+            />
+            <div class="w-full h-full bg-gradient-to-br from-nord-8 to-nord-10 hidden items-center justify-center">
+              <span class="text-nord-6 font-bold text-sm">S</span>
+            </div>
           </div>
           <span class="text-lg font-semibold bg-gradient-to-r from-nord-10 to-nord-8 bg-clip-text text-transparent">
             sccl.cc

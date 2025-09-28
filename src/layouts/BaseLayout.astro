@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Personal site" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Theme detection script -->
+    <script is:inline>
+      const theme = localStorage.getItem('theme') || 
+                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    </script>
+  </head>
+  <body class="bg-nord-6 dark:bg-nord-0 text-nord-0 dark:text-nord-6 min-h-screen">
+    <!-- Минималистичный фон -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-nord-8/5 to-nord-9/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-nord-10/5 to-nord-7/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="relative z-10">
+      <slot />
+    </div>
+  </body>
+</html>

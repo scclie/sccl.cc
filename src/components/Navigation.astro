@@ -1,0 +1,24 @@
+---
+import ThemeToggle from './ThemeToggle.jsx';
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-nord-6/90 dark:bg-nord-0/90 backdrop-blur-xl border-b border-nord-4 dark:border-nord-2">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Логотип -->
+      <div>
+        <a href="/contacts" class="flex items-center space-x-3 group">
+          <div class="w-8 h-8 bg-gradient-to-br from-nord-8 to-nord-10 rounded-lg flex items-center justify-center">
+            <span class="text-nord-6 font-bold text-sm">S</span>
+          </div>
+          <span class="text-lg font-semibold bg-gradient-to-r from-nord-10 to-nord-8 bg-clip-text text-transparent">
+            sccl.cc
+          </span>
+        </a>
+      </div>
+
+      <!-- Только переключение темы -->
+      <ThemeToggle client:load />
+    </div>
+  </div>
+</nav>

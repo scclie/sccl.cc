@@ -1,0 +1,13 @@
+---
+export interface Props {
+  title: string;
+  value: string;
+}
+
+const { title, value } = Astro.props;
+---
+
+<div class="flex justify-between items-center py-2 border-b border-nord-4 dark:border-nord-2 last:border-b-0">
+  <span class="text-nord-2 dark:text-nord-4 font-medium">{title}</span>
+  <span class="text-nord-1 dark:text-nord-6 text-right text-sm">{value}</span>
+</div>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+
+const tabs = ['contacts', 'products', 'peripherals'];
+const currentTab = Astro.url.pathname.split('/')[1] || 'contacts';
+---
+
+<BaseLayout title="sccl.cc">
+  <Navigation />
+  
+  <main class="min-h-screen pt-16 flex items-center justify-center p-4">
+    <ProfileCard currentTab={currentTab} />
+  </main>
+</BaseLayout>

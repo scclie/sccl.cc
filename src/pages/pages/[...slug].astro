@@ -1,0 +1,27 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { slug: undefined } },
+    { params: { slug: ['contacts'] } },
+    { params: { slug: ['products'] } },
+    { params: { slug: ['peripherals'] } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Редирект на контакты по умолчанию
+if (!slug || slug.length === 0) {
+  return Astro.redirect('/contacts', 302);
+}
+---
+
+<!-- Резервная страница -->
+<html>
+  <head>
+    <meta http-equiv="refresh" content={`0;url=/contacts`}>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>

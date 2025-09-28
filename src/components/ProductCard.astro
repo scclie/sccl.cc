@@ -1,0 +1,20 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  url: string;
+  icon: string;
+}
+
+const { title, description, url, icon } = Astro.props;
+---
+
+<a href={url} target="_blank" class="block p-4 bg-nord-5 dark:bg-nord-1 rounded-lg hover:bg-nord-4 dark:hover:bg-nord-2 transition-all duration-300 group border border-nord-4 dark:border-nord-2">
+  <div class="flex items-center space-x-3">
+    <span class="text-2xl">{icon}</span>
+    <div>
+      <h3 class="font-semibold text-nord-1 dark:text-nord-6 group-hover:text-nord-8">{title}</h3>
+      <p class="text-sm text-nord-3 dark:text-nord-4">{description}</p>
+    </div>
+  </div>
+</a>

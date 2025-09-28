@@ -1,0 +1,56 @@
+---
+// Компонент для отображения периферии
+export interface PeripheralProps {
+  title: string;
+  value: string;
+}
+
+const { title, value } = Astro.props;
+---
+
+<div class="flex justify-between items-center py-2 border-b border-nord-4 dark:border-nord-2 last:border-b-0">
+  <span class="text-nord-2 dark:text-nord-4 font-medium">{title}</span>
+  <span class="text-nord-1 dark:text-nord-6 text-right text-sm">{value}</span>
+</div>
+
+---
+// Компонент для продуктов
+export interface ProductProps {
+  title: string;
+  description: string;
+  url: string;
+  icon: string;
+}
+
+const { title, description, url, icon } = Astro.props;
+---
+
+<a href={url} target="_blank" class="block p-4 bg-nord-5 dark:bg-nord-1 rounded-lg hover:bg-nord-4 dark:hover:bg-nord-2 transition-all duration-300 group border border-nord-4 dark:border-nord-2">
+  <div class="flex items-center space-x-3">
+    <span class="text-2xl">{icon}</span>
+    <div>
+      <h3 class="font-semibold text-nord-1 dark:text-nord-6 group-hover:text-nord-8">{title}</h3>
+      <p class="text-sm text-nord-3 dark:text-nord-4">{description}</p>
+    </div>
+  </div>
+</a>
+
+---
+// Компонент для контактов
+export interface ContactProps {
+  platform: string;
+  username: string;
+  url: string;
+  icon: string;
+}
+
+const { platform, username, url, icon } = Astro.props;
+---
+
+<a href={url} target="_blank" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-nord-4 dark:hover:bg-nord-2 transition-all duration-300 group">
+  <span class="text-xl">{icon}</span>
+  <div>
+    <p class="font-medium text-nord-1 dark:text-nord-6">{platform}</p>
+    <p class="text-sm text-nord-3 dark:text-nord-4 group-hover:text-nord-8">{username}</p>
+  </div>
+</a>

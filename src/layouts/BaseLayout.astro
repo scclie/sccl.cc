@@ -6,7 +6,7 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = "Персональный сайт-визитка" } = Astro.props;
+const { title, description = "Personal site" } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ const { title, description = "Персональный сайт-визитка" 
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/gif" href="/img/logo.gif" />
     <title>{title}</title>
     
     <!-- Preload fonts -->
@@ -34,95 +34,33 @@ const { title, description = "Персональный сайт-визитка" 
     <!-- Amim waves-->
     <div class="wave-container">
       <svg class="wave-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+      
         <!-- Wave 1  -->
-        <path class="wave-path wave-1" d="M-200,150 C100,100 400,200 800,150 C1100,100 1300,200 1400,150 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; 50,15; -30,8; 0,0"
-            dur="15s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-1" d="M-200,150 C100,100 400,200 800,150 C1100,100 1300,200 1400,150 L1400,600 L-200,800 Z" />
 
         <!-- Wave 2  -->
-        <path class="wave-path wave-2" d="M-200,200 C50,180 350,220 600,200 C850,180 1150,220 1400,200 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; -40,12; 60,18; 0,0"
-            dur="18s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-2" d="M-200,200 C50,180 350,220 600,200 C850,180 1150,220 1400,200 L1400,600 L-200,800 Z" />
 
         <!-- Wave 3  -->
-        <path class="wave-path wave-3" d="M-200,250 C0,230 300,270 600,250 C900,230 1200,270 1400,250 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; 30,20; -50,8; 0,0"
-            dur="12s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-3" d="M-200,250 C0,230 300,270 600,250 C900,230 1200,270 1400,250 L1400,600 L-200,800 Z" />
 
         <!-- Wave 4  -->
-        <path class="wave-path wave-4" d="M-200,300 C150,280 350,320 600,300 C850,280 1050,320 1400,300 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; -25,14; 45,25; 0,0"
-            dur="20s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-4" d="M-200,300 C150,280 350,320 600,300 C850,280 1050,320 1400,300 L1400,600 L-200,800 Z" />
 
         <!-- Wave 5  -->
-        <path class="wave-path wave-5" d="M-200,350 C100,330 350,370 600,350 C850,330 1100,370 1400,350 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; 35,18; -20,30; 0,0"
-            dur="14s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-5" d="M-200,350 C100,330 350,370 600,350 C850,330 1100,370 1400,350 L1400,600 L-200,800 Z" />
 
         <!-- Wave 6  -->
-        <path class="wave-path wave-6" d="M-200,400 C50,380 350,420 600,400 C850,380 1150,420 1400,400 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; -30,22; 40,16; 0,0"
-            dur="16s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-6" d="M-200,400 C50,380 350,420 600,400 C850,380 1150,420 1400,400 L1400,600 L-200,800 Z" />
 
         <!-- Wave 7  -->
-        <path class="wave-path wave-7" d="M-200,450 C200,430 300,470 600,450 C900,430 1000,470 1400,450 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; 25,28; -35,12; 0,0"
-            dur="22s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-7" d="M-200,450 C200,430 300,470 600,450 C900,430 1000,470 1400,450 L1400,600 L-200,800 Z" />
 
         <!-- Wave 8  -->
-        <path class="wave-path wave-8" d="M-200,500 C0,480 350,520 600,500 C850,480 1200,520 1400,500 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; -45,20; 55,35; 0,0"
-            dur="19s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-8" d="M-200,500 C0,480 350,520 600,500 C850,480 1200,520 1400,500 L1400,600 L-200,800 Z" />
 
         <!-- Wave 9  -->
-        <path class="wave-path wave-9" d="M-200,550 C100,530 350,570 600,550 C850,530 1100,570 1400,550 L1400,600 L-200,600 Z">
-          <animateTransform
-            attributeName="transform"
-            type="translate"
-            values="0,0; 40,24; -25,16; 0,0"
-            dur="17s"
-            repeatCount="indefinite"/>
-        </path>
+        <path class="wave-path wave-9" d="M-200,550 C100,530 350,570 600,550 C850,530 1100,570 1400,550 L1400,600 L-200,800 Z" />
       </svg>
     </div>
 
@@ -131,29 +69,27 @@ const { title, description = "Персональный сайт-визитка" 
       <slot />
     </div>
 
-    <script>
-      // js for waves anim
-      const waves = document.querySelectorAll('.wave-path');
-      
-      function animateWaves() {
-        waves.forEach((wave, index) => {
-          const time = Date.now() * 0.001;
-          const offset = index * 0.5;
-          const amplitude = 8 + index * 3;
-          const frequency = 0.3 + index * 0.1;
-          
-          const translateY = Math.sin(time * frequency + offset) * amplitude;
-          const scaleY = 0.95 + Math.sin(time * frequency * 0.7 + offset) * 0.05;
-          
-          wave.style.transform += ` translateY(${translateY}px) scaleY(${scaleY})`;
-        });
+      <script>
+        const waves = document.querySelectorAll('.wave-path');
         
-        requestAnimationFrame(animateWaves);
-      }
-      
-      // start anim
-      document.addEventListener('DOMContentLoaded', animateWaves);
-    </script>
+        function animateWaves() {
+          const time = Date.now() * 0.001;
+
+          waves.forEach((wave, index) => {
+            const offset = index * 0.5;
+            const amplitude = 8 + index * 3;
+            const frequency = 0.3 + index * 0.1;
+
+            const translateY = Math.sin(time * frequency + offset) * amplitude;
+            const scaleY = 0.95 + Math.sin(time * frequency * 0.7 + offset) * 0.05;
+            wave.style.transform = `translateY(${translateY}px) scaleY(${scaleY})`;
+          });
+
+          requestAnimationFrame(animateWaves);
+        }
+
+        document.addEventListener('DOMContentLoaded', animateWaves);
+      </script>
   </body>
 </html>
 
@@ -172,7 +108,7 @@ const { title, description = "Персональный сайт-визитка" 
   .wave-svg {
     position: absolute;
     width: 120%; 
-    height: 100%;
+    height: 100vh;
     min-height: 100vh;
     left: -10%; 
   }
@@ -262,7 +198,6 @@ const { title, description = "Персональный сайт-визитка" 
     }
   }
 
-  /* Улучшенная поддержка высоты */
   html, body {
     height: 100%;
     margin: 0;

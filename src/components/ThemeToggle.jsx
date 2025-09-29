@@ -5,7 +5,6 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState('dark');
   const [mounted, setMounted] = useState(false);
 
-  // Проверяем тему при монтировании компонента
   useEffect(() => {
     const savedTheme = typeof window !== 'undefined' 
       ? (localStorage.getItem('theme') || 
@@ -28,7 +27,6 @@ export default function ThemeToggle() {
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
-  // Не показываем кнопку до полной загрузки
   if (!mounted) {
     return (
       <div className="w-10 h-10 rounded-lg bg-nord-4 dark:bg-nord-1 animate-pulse"></div>

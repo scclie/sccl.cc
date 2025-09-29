@@ -7,7 +7,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Упрощенные анимации */
 @keyframes slideUp {
   from {
     transform: translateY(20px);

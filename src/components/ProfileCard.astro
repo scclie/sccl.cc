@@ -20,7 +20,7 @@ const contacts = [
 ];
 
 const products = [
-  { title: 'Wiki', description: 'Personal knowleage with my articles', url: 'https://wiki.sccl.cc', icon: 'https://cdn.simpleicons.org/bookstack/88c0d0'},
+  { title: 'Wiki', description: 'Personal knowleage base with my articles', url: 'https://wiki.sccl.cc', icon: 'https://cdn.simpleicons.org/bookstack/88c0d0'},
   { title: 'HeatKeys', description: 'Keyboard layout heatmap', url: 'https://heatkeys.sccl.cc', icon: 'https://cdn.simpleicons.org/hotjar/88c0d0' }
 ];
 
@@ -28,9 +28,10 @@ const peripherals = [
   { category: 'CPU', items: ['AMD Ryzen 5 5600X @ 4.7GHz'] },
   { category: 'GPU', items: ['AMD Radeon RX 6750 XT (12GiB)'] },
   { category: 'RAM', items: ['32GiB DDR4-3333 CL16'] },
-  { category: 'Monitor', items: ['MSI 26.5" MAG 272QP X50 (1440p, 500Hz)'] },
-  { category: 'Mouses', items: ['Ninjutso Sora V2 (Artisan P8 dots)', 'Lamzu Thorn (x-raypad obsidian)'] },
-  { category: 'Pads', items: ['Artisan Raiden Mid', 'Artisan Key-83 Soft', 'MeowGamingGear UltraNeon', 'X-RayPad Aqua-Control 2', 'Razer Gigantus v2'] },
+  { category: 'Monitor', items: ['MSI 26.5" MAG 272QP X50 (QD-OLED, 1440p, 500Hz)'] },
+  { category: 'Mouses', items: ['Ninjutso Sora V2 (Artisan P8 dots)', 'Lamzu Thorn (X-Raypad Obsidian)'] },
+  { category: 'Pads', items: ['Artisan Raiden Mid DaiDai', 'Artisan Key-83 Soft Ninja Black', 'MeowGamingGear UltraNeon XSoft Blue', 'X-Raypad Aqua-Control 2 Sakura blue', 'Razer Gigantus v2 Black'] },
+  { category: 'Arm Sleeve', items: ['CisA v2 navy'] },
   { category: 'Keyboard', items: ['M1W Custom (Boba U4T)'] },
   { category: 'Audio', items: ['Arturia MiniFuse 2', 'Philips shp9500', 'Maono PD100 XLR'] }
 ];
@@ -43,27 +44,27 @@ const peripherals = [
       <div class="md:col-span-1 bg-gradient-to-br from-nord-8/10 to-nord-10/10 dark:from-nord-1 dark:to-nord-2 p-8 flex flex-col overflow-hidden">
         <div class="text-center md:text-left flex flex-col h-full">
           <!-- Аватар -->
-<div class="flex-shrink-0">
-  <div class="relative w-24 h-24 mx-auto md:mx-0 mb-6">
-    <!-- Асимметричное свечение -->
-    <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-pink-500/60 via-purple-500/40 to-pink-500/20 blur-xl animate-glow-asymmetric"></div>
-    <div class="absolute -inset-2 rounded-full bg-gradient-to-br from-purple-400/50 via-pink-500/30 to-purple-600/40 blur-lg animate-glow-rotate"></div>
-    <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-pink-300/30 via-purple-400/20 to-pink-600/10 blur-md animate-glow-pulse"></div>
-    
-    <!-- Аватарка с прозрачной рамкой -->
-    <div class="relative w-24 h-24 rounded-full flex items-center justify-center border-2 border-white/20 shadow-2xl overflow-hidden bg-transparent group backdrop-blur-sm">
-      <img 
-        src="/img/pfp.jpg" 
-        alt="sccl" 
-        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-      />
-      <div class="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 hidden items-center justify-center">
-        <span class="text-2xl text-white font-bold">SC</span>
-      </div>
-    </div>
-  </div>
-</div>
+          <div class="flex-shrink-0">
+            <div class="relative w-24 h-24 mx-auto md:mx-0 mb-6">
+              <!-- Асимметричное свечение -->
+              <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-pink-500/60 via-purple-500/40 to-pink-500/20 blur-xl animate-glow-asymmetric"></div>
+              <div class="absolute -inset-2 rounded-full bg-gradient-to-br from-purple-400/50 via-pink-500/30 to-purple-600/40 blur-lg animate-glow-rotate"></div>
+              <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-pink-300/30 via-purple-400/20 to-pink-600/10 blur-md animate-glow-pulse"></div>
+              
+              <!-- Аватарка  -->
+              <div class="relative w-24 h-24 rounded-full flex items-center justify-center border-2 border-white/20 shadow-2xl overflow-hidden bg-transparent group backdrop-blur-sm">
+                <img 
+                  src="/img/pfp.jpg" 
+                  alt="sccl" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 hidden items-center justify-center">
+                  <span class="text-2xl text-white font-bold">SC</span>
+                </div>
+              </div>
+            </div>
+          </div>
           
           <!-- Имя -->
           <div class="flex-shrink-0">
@@ -123,7 +124,7 @@ const peripherals = [
           ))}
         </div>
         
-        <!-- Контент вкладок с кастомным скроллбаром -->
+        <!-- Контент вкладок -->
         <div class="flex-1 min-h-0 overflow-hidden relative">
           <div class="h-full overflow-y-auto scrollbar-custom pr-4">
             <!-- Контакты -->
@@ -241,7 +242,7 @@ const peripherals = [
     max-width: none;
   }
   
-  /* Кастомный красивый скроллбар */
+  /* custom scrollbar */
   .scrollbar-custom {
     scrollbar-width: thin;
     scrollbar-color: #88c0d0 transparent;
@@ -287,12 +288,12 @@ const peripherals = [
     background: linear-gradient(135deg, #3b4252, #2e3440);
   }
   
-  /* Плавная прокрутка */
+  /* smooooooooth scroll*/
   .scrollbar-custom {
     scroll-behavior: smooth;
   }
   
-  /* Анимация появления скроллбара */
+  /* scrollbar start anim*/
   .scrollbar-custom::-webkit-scrollbar-thumb {
     opacity: 0.7;
   }
@@ -301,7 +302,7 @@ const peripherals = [
     opacity: 1;
   }
   
-  /* Градиентные эффекты для скроллбара */
+  /* scrollbar gradient */
   .scrollbar-custom::-webkit-scrollbar-thumb {
     position: relative;
   }
@@ -323,7 +324,7 @@ const peripherals = [
     opacity: 1;
   }
 
-  /* Анимации свечения авы */
+  /* pfp anim */
   @keyframes flame1 {
     0%, 100% {
       transform: translateY(0) scale(1) rotate(0deg);
@@ -368,11 +369,11 @@ const peripherals = [
       opacity: 0.8;
     }
     40% {
-      transform: translateY(-4px) scale(1.25) rotate(0deg);
+      transform: translateY(-6px) scale(1.25) rotate(0deg);
       opacity: 1;
     }
     60% {
-      transform: translateY(-3px) scale(1.15) rotate(2deg);
+      transform: translateY(-2px) scale(1.15) rotate(2deg);
       opacity: 0.7;
     }
     80% {
@@ -448,36 +449,12 @@ const peripherals = [
     animation: pulseSlow 4s ease-in-out infinite;
   }
 
-  /* Эффекты при наведении */
-  .group:hover .animate-flame-1 {
-    animation-duration: 1.5s;
-  }
 
-  .group:hover .animate-flame-2 {
-    animation-duration: 2s;
-  }
-
-  .group:hover .animate-flame-3 {
-    animation-duration: 2.5s;
-  }
-
-  .group:hover .animate-flame-4 {
-    animation-duration: 1.8s;
-  }
-
-  .group:hover .animate-flame-5 {
-    animation-duration: 2.2s;
-  }
-
-  .group:hover .animate-pulse-slow {
-    animation-duration: 3s;
-  }
-
-/* анимация с ника */
+/* nick anim */
 @keyframes glowSimple {
   0%, 100% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.3));
+    filter: drop-shadow(0 0 7px rgba(236, 72, 153, 0.3));
   }
   50% {
     background-position: 100% 50%;
@@ -490,7 +467,7 @@ const peripherals = [
   animation: glowSimple 3s ease-in-out infinite;
 }
 
-/* Обводка для текста */
+/* outline*/
 .text-stroke {
   text-shadow: 
     /* Тонкая темная обводка для контраста */
@@ -501,7 +478,7 @@ const peripherals = [
     
 }
 
-/* Для темной темы */
+/* Dark theme */
 .dark .text-stroke {
   text-shadow: 
     -1px -1px 0 rgba(236, 239, 244, 0.2),
@@ -512,12 +489,12 @@ const peripherals = [
 </style>
 
 <script>
-  // Добавляем интерактивность для скроллбара
+  // scrollbar
   document.addEventListener('DOMContentLoaded', function() {
     const scrollContainers = document.querySelectorAll('.scrollbar-custom');
     
     scrollContainers.forEach(container => {
-      // Добавляем плавную прокрутку при использовании колесика
+      // smooooooooth
       container.addEventListener('wheel', function(e) {
         e.preventDefault();
         this.scrollBy({

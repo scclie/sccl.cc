@@ -31,10 +31,10 @@ const { title, description = "Персональный сайт-визитка" 
     </script>
   </head>
   <body class="bg-nord-6 dark:bg-nord-0 text-nord-0 dark:text-nord-6 min-h-screen overflow-x-hidden">
-    <!-- Анимированный SVG фон с волнами -->
+    <!-- Amim waves-->
     <div class="wave-container">
       <svg class="wave-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
-        <!-- Волна 1 - расширена за экран -->
+        <!-- Wave 1  -->
         <path class="wave-path wave-1" d="M-200,150 C100,100 400,200 800,150 C1100,100 1300,200 1400,150 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -44,7 +44,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 2 - расширена за экран -->
+        <!-- Wave 2  -->
         <path class="wave-path wave-2" d="M-200,200 C50,180 350,220 600,200 C850,180 1150,220 1400,200 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -54,7 +54,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 3 - расширена за экран -->
+        <!-- Wave 3  -->
         <path class="wave-path wave-3" d="M-200,250 C0,230 300,270 600,250 C900,230 1200,270 1400,250 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -64,7 +64,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 4 - расширена за экран -->
+        <!-- Wave 4  -->
         <path class="wave-path wave-4" d="M-200,300 C150,280 350,320 600,300 C850,280 1050,320 1400,300 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -74,7 +74,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 5 - расширена за экран -->
+        <!-- Wave 5  -->
         <path class="wave-path wave-5" d="M-200,350 C100,330 350,370 600,350 C850,330 1100,370 1400,350 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -84,7 +84,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 6 - расширена за экран -->
+        <!-- Wave 6  -->
         <path class="wave-path wave-6" d="M-200,400 C50,380 350,420 600,400 C850,380 1150,420 1400,400 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -94,7 +94,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 7 - расширена за экран -->
+        <!-- Wave 7  -->
         <path class="wave-path wave-7" d="M-200,450 C200,430 300,470 600,450 C900,430 1000,470 1400,450 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -104,7 +104,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 8 - расширена за экран -->
+        <!-- Wave 8  -->
         <path class="wave-path wave-8" d="M-200,500 C0,480 350,520 600,500 C850,480 1200,520 1400,500 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -114,7 +114,7 @@ const { title, description = "Персональный сайт-визитка" 
             repeatCount="indefinite"/>
         </path>
 
-        <!-- Волна 9 - расширена за экран -->
+        <!-- Wave 9  -->
         <path class="wave-path wave-9" d="M-200,550 C100,530 350,570 600,550 C850,530 1100,570 1400,550 L1400,600 L-200,600 Z">
           <animateTransform
             attributeName="transform"
@@ -132,7 +132,7 @@ const { title, description = "Персональный сайт-визитка" 
     </div>
 
     <script>
-      // Дополнительная JavaScript анимация для волн
+      // js for waves anim
       const waves = document.querySelectorAll('.wave-path');
       
       function animateWaves() {
@@ -151,7 +151,7 @@ const { title, description = "Персональный сайт-визитка" 
         requestAnimationFrame(animateWaves);
       }
       
-      // Запускаем анимацию после загрузки страницы
+      // start anim
       document.addEventListener('DOMContentLoaded', animateWaves);
     </script>
   </body>
@@ -171,10 +171,10 @@ const { title, description = "Персональный сайт-визитка" 
 
   .wave-svg {
     position: absolute;
-    width: 120%; /* Увеличиваем ширину SVG */
+    width: 120%; 
     height: 100%;
     min-height: 100vh;
-    left: -10%; /* Сдвигаем влево чтобы компенсировать увеличение ширины */
+    left: -10%; 
   }
 
   .wave-path {
@@ -239,15 +239,15 @@ const { title, description = "Персональный сайт-визитка" 
 }
 
 .dark .wave-6 {
-  fill: #2e3440;
-}
-
-.dark .wave-7 {
   fill: #3b4252;
 }
 
-.dark .wave-8 {
+.dark .wave-7 {
   fill: #434c5e;
+}
+
+.dark .wave-8 {
+  fill: #4c566a;
 }
 
 .dark .wave-9 {
@@ -257,7 +257,7 @@ const { title, description = "Персональный сайт-визитка" 
   /* Адаптивность */
   @media (max-width: 768px) {
     .wave-svg {
-      width: 140%; /* Еще больше на мобильных */
+      width: 140%; 
       left: -20%;
     }
   }

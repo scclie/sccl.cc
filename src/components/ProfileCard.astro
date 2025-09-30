@@ -43,15 +43,16 @@ const peripherals = [
       <!-- Левая колонка - Профиль -->
       <div class="md:col-span-1 bg-gradient-to-br from-nord-8/10 to-nord-10/10 dark:from-nord-1 dark:to-nord-2 p-8 flex flex-col overflow-hidden">
         <div class="text-center md:text-left flex flex-col h-full">
-          <!-- Аватар -->
-          <div class="flex-shrink-0">
-            <div class="relative w-24 h-24 mx-auto md:mx-0 mb-6">
-              <!-- свечение-->
+
+
+          <!-- PFP -->
+          <div class="flex-shrink-0 relative z-20">
+            <div class="relative w-32 h-32 mx-auto md:mx-0 mb-6">
+              <!-- glow -->
               <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-pink-500/40 to-purple-500/40 blur-xl animate-pulse"></div>
               <div class="absolute -inset-2 rounded-full bg-gradient-to-br from-purple-400/30 to-pink-500/30 blur-lg"></div>
               
-              <!-- Аватарка  -->
-              <div class="relative w-24 h-24 rounded-full flex items-center justify-center border-2 border-white/20 shadow-2xl overflow-hidden bg-transparent group backdrop-blur-sm">
+              <div class="relative w-32 h-32 rounded-full flex items-center justify-center border-4 border-white/20 shadow-2xl overflow-hidden bg-transparent group backdrop-blur-sm">
                 <img 
                   src="/img/pfp.jpg" 
                   alt="sccl" 
@@ -228,7 +229,7 @@ const peripherals = [
     max-width: none;
   }
   
-  /* Chrome-совместимый градиентный текст */
+  /* градиентный текст */
   .text-gradient-chrome {
     background: linear-gradient(135deg, #ec4899, #a855f7);
     -webkit-background-clip: text;
@@ -238,7 +239,7 @@ const peripherals = [
     -webkit-text-fill-color: transparent;
   }
   
-  /* Fallback цвет для темной темы */
+  /* Fallback */
   .dark .text-gradient-chrome {
     background: linear-gradient(135deg, #f472b6, #c084fc);
     -webkit-background-clip: text;
@@ -249,16 +250,33 @@ const peripherals = [
   /* Glow Chrome */
   @keyframes glowChrome {
     0%, 100% {
-      filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.4));
+      filter: drop-shadow(0 0 8px rgba(236, 72, 153, .8));
     }
     50% {
-      filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.6));
+      filter: drop-shadow(0 0 16px rgba(168, 85, 247, .8));
     }
   }
   
   .animate-glow-chrome {
     animation: glowChrome 3s ease-in-out infinite;
   }
+
+  /* Анимация градиента для fallback баннера */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-gradient-x {
+    background: linear-gradient(-45deg, #ec4899, #a855f7, #3b82f6, #10b981);
+    background-size: 400% 400%;
+    animation: gradient-x 15s ease infinite;
+  }
+
   
   /* скроллбар */
   .scrollbar-custom {

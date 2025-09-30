@@ -73,3 +73,9 @@ html {
 .dark ::-webkit-scrollbar-thumb {
   background: #4c566a;
 }
+
+/* выделения текста */
+::selection {
+  background-color: #ffb4ff;
+  color: black;
+}

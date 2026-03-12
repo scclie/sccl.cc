@@ -13,10 +13,10 @@ const tabs = [
 
 const contacts = [
   { platform: 'Discord', username: '@sccl', url: 'https://discord.com/users/sccl', icon: 'https://cdn.simpleicons.org/discord/88c0d0' },
-  { platform: 'Telegram', username: '@papersaccul', url: 'https://t.me/papersaccul', icon: 'https://cdn.simpleicons.org/telegram/88c0d0' },
-  { platform: 'Github', username: 'papersaccul', url: 'https://github.com/papersaccul', icon: 'https://cdn.simpleicons.org/github/88c0d0'},
-  { platform: 'Steam', username: 'papersacculos', url: 'https://steamcommunity.com/id/papersacculos/', icon: 'https://cdn.simpleicons.org/steam/88c0d0' },
-  { platform: 'YouTube', username: '@papersaccul', url: 'https://www.youtube.com/@papersaccul', icon: 'https://cdn.simpleicons.org/youtube/88c0d0' }
+  { platform: 'Telegram', username: '@scclie', url: 'https://t.me/scclie', icon: 'https://cdn.simpleicons.org/telegram/88c0d0' },
+  { platform: 'Github', username: 'scclie', url: 'https://github.com/scclie', icon: 'https://cdn.simpleicons.org/github/88c0d0'},
+  { platform: 'Steam', username: 'scclie', url: 'https://steamcommunity.com/id/scclie/', icon: 'https://cdn.simpleicons.org/steam/88c0d0' },
+  { platform: 'YouTube', username: '@scclie', url: 'https://www.youtube.com/@scclie', icon: 'https://cdn.simpleicons.org/youtube/88c0d0' }
 ];
 
 const projects = [
@@ -29,10 +29,10 @@ const peripherals = [
   { category: 'GPU', items: ['AMD Radeon RX 6750 XT (12GiB)'] },
   { category: 'RAM', items: ['32GiB DDR4-3333 CL16'] },
   { category: 'Monitor', items: ['MSI 26.5" MAG 272QP X50 (QD-OLED, 1440p, 500Hz)'] },
-  { category: 'Mouses', items: ['WLmouse Beast X Mini Pro Solid Pink Rabbit (Milky white dots)', 'Ninjutso Sora V2 (Artisan P8 dots)', 'Lamzu Thorn (X-Raypad Obsidian)'] },
-  { category: 'Pads', items: ['Artisan Raiden Mid DaiDai', 'Artisan Key-83 Soft Ninja Black', 'MeowGamingGear UltraNeon XSoft Blue', 'X-Raypad Aqua-Control 2 Sakura blue', 'Razer Gigantus v2 Black'] },
+  { category: 'Mouses', items: ['WLmouse Beast X Mini Pro Solid Pink Rabbit (Milky white dots)', 'Lamzu Thorn (X-Raypad Obsidian)'] },
+  { category: 'Pads', items: ['Artisan Raiden Mid DaiDai', 'MeowGamingGear UltraNeon XSoft Blue', 'X-Raypad Aqua-Control 2 Sakura blue', 'Razer Gigantus v2 Black'] },
   { category: 'Arm Sleeve', items: ['CisA v2 navy'] },
-  { category: 'Keyboard', items: ['M1W Custom (Boba U4T)'] },
+  { category: 'Keyboard', items: ['YMDK Soffle 64 key (kailh deep sea tactile)'] },
   { category: 'Audio', items: ['Arturia MiniFuse 2', 'Philips shp9500', 'Maono PD100 XLR'] }
 ];
 ---
@@ -51,11 +51,11 @@ const peripherals = [
               <!-- glow -->
               <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-pink-500/40 to-purple-500/40 blur-xl animate-pulse"></div>
               <div class="absolute -inset-2 rounded-full bg-gradient-to-br from-purple-400/30 to-pink-500/30 blur-lg"></div>
-              
+
               <div class="relative w-32 h-32 rounded-full flex items-center justify-center border-4 border-white/20 shadow-2xl overflow-hidden bg-transparent group backdrop-blur-sm">
-                <img 
-                  src="/img/pfp.jpg" 
-                  alt="sccl" 
+                <img
+                  src="/img/pfp.jpg"
+                  alt="sccl"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                 />
@@ -65,14 +65,14 @@ const peripherals = [
               </div>
             </div>
           </div>
-          
+
           <!-- Ник -->
           <div class="flex-shrink-0">
             <h1 class="text-3xl font-bold text-gradient-chrome animate-glow-chrome mb-2 relative">
-              paper_sacculos
+              pipre_scclie
             </h1>
           </div>
-          
+
           <!-- Теги -->
           <div class="flex-shrink-0 mb-6">
             <div class="flex flex-wrap gap-2 justify-center md:justify-start">
@@ -80,18 +80,18 @@ const peripherals = [
               <span class="px-3 py-1 bg-nord-9/20 text-nord-10 dark:text-nord-9 text-sm rounded-full border border-nord-9/30">Aimer</span>
             </div>
           </div>
-          
+
           <!-- Обо мне -->
           <div class="flex-1 min-h-0 mb-6">
             <div class="prose prose-sm dark:prose-invert h-full">
               <p class="text-nord-2 dark:text-nord-4 leading-relaxed">
-                
+
               </p>
             </div>
           </div>
         </div>
-      </div> 
-      
+      </div>
+
       <!-- Правая колонка - Вкладки -->
       <div class="md:col-span-2 p-8 flex flex-col overflow-hidden">
         <!-- Переключатель вкладок -->
@@ -110,7 +110,7 @@ const peripherals = [
             </a>
           ))}
         </div>
-        
+
         <!-- Контент вкладок -->
         <div class="flex-1 min-h-0 overflow-hidden relative">
           <div class="h-full overflow-y-auto scrollbar-custom pr-4">
@@ -118,14 +118,14 @@ const peripherals = [
             {currentTab === 'contacts' && (
               <div class="space-y-4 animate-fade-in">
                 {contacts.map((contact) => (
-                  <a 
-                    href={contact.url} 
+                  <a
+                    href={contact.url}
                     target="_blank"
                     class="flex items-center space-x-4 p-4 rounded-lg hover:bg-nord-5 dark:hover:bg-nord-1 transition-all duration-300 group border border-nord-4/50 dark:border-nord-2/50"
                   >
                     <div class="w-8 h-8 flex items-center justify-center">
-                      <img 
-                        src={contact.icon} 
+                      <img
+                        src={contact.icon}
                         alt={contact.platform}
                         class="w-6 h-6 transition-all duration-300 group-hover:scale-110 group-hover:brightness-125"
                         loading="lazy"
@@ -144,20 +144,20 @@ const peripherals = [
                 ))}
               </div>
             )}
-            
+
             <!-- Продукты -->
             {currentTab === 'projects' && (
               <div class="grid gap-4 animate-fade-in">
                 {projects.map((product) => (
-                  <a 
-                    href={product.url} 
+                  <a
+                    href={product.url}
                     target="_blank"
                     class="block p-4 rounded-lg hover:bg-nord-5 dark:hover:bg-nord-1 transition-all duration-300 group border border-nord-4/50 dark:border-nord-2/50"
                   >
                     <div class="flex items-center space-x-4">
                       <div class="w-8 h-8 flex items-center justify-center">
-                        <img 
-                          src={product.icon} 
+                        <img
+                          src={product.icon}
                           alt={product.title}
                           class="w-6 h-6 transition-all duration-300 group-hover:scale-110 group-hover:brightness-125"
                           loading="lazy"
@@ -181,7 +181,7 @@ const peripherals = [
                 ))}
               </div>
             )}
-            
+
             <!-- Периферия -->
             {currentTab === 'peripherals' && (
               <div class="space-y-6 animate-fade-in pb-4">
@@ -213,7 +213,7 @@ const peripherals = [
   .animate-fade-in {
     animation: fadeIn 0.3s ease-in-out;
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -224,11 +224,11 @@ const peripherals = [
       transform: translateY(0);
     }
   }
-  
+
   .prose {
     max-width: none;
   }
-  
+
   /* градиентный текст */
   .text-gradient-chrome {
     background: linear-gradient(135deg, #ec4899, #a855f7);
@@ -238,7 +238,7 @@ const peripherals = [
     /* Fallback для случаев когда background-clip не работает */
     -webkit-text-fill-color: transparent;
   }
-  
+
   /* Fallback */
   .dark .text-gradient-chrome {
     background: linear-gradient(135deg, #f472b6, #c084fc);
@@ -246,7 +246,7 @@ const peripherals = [
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
   /* Glow Chrome */
   @keyframes glowChrome {
     0%, 100% {
@@ -256,7 +256,7 @@ const peripherals = [
       filter: drop-shadow(0 0 16px rgba(168, 85, 247, .8));
     }
   }
-  
+
   .animate-glow-chrome {
     animation: glowChrome 3s ease-in-out infinite;
   }
@@ -270,30 +270,30 @@ const peripherals = [
       background-position: 100% 50%;
     }
   }
-  
+
   .animate-gradient-x {
     background: linear-gradient(-45deg, #ec4899, #a855f7, #3b82f6, #10b981);
     background-size: 400% 400%;
     animation: gradient-x 15s ease infinite;
   }
 
-  
+
   /* скроллбар */
   .scrollbar-custom {
     scrollbar-width: thin;
     scrollbar-color: #88c0d0 transparent;
   }
-  
+
   .scrollbar-custom::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   .scrollbar-custom::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 4px;
     margin: 4px 0;
   }
-  
+
   .scrollbar-custom::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #88c0d0, #81a1c1);
     border-radius: 4px;
@@ -301,39 +301,39 @@ const peripherals = [
     background-clip: padding-box;
     transition: all 0.3s ease;
   }
-  
+
   .scrollbar-custom::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #81a1c1, #5e81ac);
     border: 1px solid transparent;
     background-clip: padding-box;
   }
-  
+
   .scrollbar-custom::-webkit-scrollbar-thumb:active {
     background: linear-gradient(135deg, #5e81ac, #4c566a);
   }
-  
+
   .dark .scrollbar-custom::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #4c566a, #434c5e);
   }
-  
+
   .dark .scrollbar-custom::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #434c5e, #3b4252);
   }
-  
+
   .dark .scrollbar-custom::-webkit-scrollbar-thumb:active {
     background: linear-gradient(135deg, #3b4252, #2e3440);
   }
-  
+
   /* Плавная прокрутка */
   .scrollbar-custom {
     scroll-behavior: smooth;
   }
-  
+
   /* Прозрачность скроллбара */
   .scrollbar-custom::-webkit-scrollbar-thumb {
     opacity: 0.7;
   }
-  
+
   .scrollbar-custom:hover::-webkit-scrollbar-thumb {
     opacity: 1;
   }
@@ -343,7 +343,7 @@ const peripherals = [
   // scrollbar
   document.addEventListener('DOMContentLoaded', function() {
     const scrollContainers = document.querySelectorAll('.scrollbar-custom');
-    
+
     scrollContainers.forEach(container => {
       // smoooooooooooooooth
       container.addEventListener('wheel', function(e) {

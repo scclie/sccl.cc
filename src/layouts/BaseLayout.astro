@@ -121,8 +121,8 @@ const { title, description = "Personal site" } = Astro.props;
         }
         
         generateText() {
-          const lines = Math.ceil(window.innerHeight / 16);
-          const charsPerLine = Math.ceil(window.innerWidth / 8);
+          const lines = Math.ceil(window.innerHeight / 32);
+          const charsPerLine = Math.ceil(window.innerWidth / 48);
           
           // Создаём сетку символов
           this.textGrid = [];

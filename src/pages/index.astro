@@ -3,7 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProfileCard from '../components/ProfileCard.astro';
 
 const tabs = ['contacts', 'projects', 'peripherals'];
-const currentTab = Astro.url.pathname.split('/')[1] || 'contacts';
+const path = Astro.url.pathname;
+const currentTab = path.split('/')[1] || 'contacts';
+
+// Редирект с корневого пути на /contacts
+if (path === '/' || path === '') {
+  return Astro.redirect('/contacts');
+}
 ---
 
 <BaseLayout title="sccl.cc">

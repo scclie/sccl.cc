@@ -39,7 +39,7 @@ import ProfileCard from '../components/ProfileCard.astro';
 <script>
   function initCopyButtons() {
     document.querySelectorAll('.contact-value').forEach(element => {
-      // Удаляем старые обработчики, чтобы не было дубликатов
+
       element.removeEventListener('click', handleCopy);
       element.addEventListener('click', handleCopy);
     });
@@ -57,7 +57,7 @@ import ProfileCard from '../components/ProfileCard.astro';
       
       const tooltip = document.createElement('span');
       tooltip.className = 'copy-tooltip';
-      tooltip.textContent = '✓ Copied!';
+      tooltip.textContent = '   Copied!';
       element.appendChild(tooltip);
       
       setTimeout(() => tooltip.classList.add('show'), 10);
@@ -76,7 +76,6 @@ import ProfileCard from '../components/ProfileCard.astro';
     }
   }
 
-  // Инициализация при загрузке и после ViewTransitions
   document.addEventListener('DOMContentLoaded', initCopyButtons);
   document.addEventListener('astro:page-load', initCopyButtons);
 </script>
@@ -85,15 +84,15 @@ import ProfileCard from '../components/ProfileCard.astro';
   .contacts-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
   }
 
   .contact-item {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     position: relative;
-    padding: 5px;
+    padding: 3px;
     border-radius: 8px;
     transition: background-color 0.2s ease;
   }
@@ -129,7 +128,6 @@ import ProfileCard from '../components/ProfileCard.astro';
     transform: translateX(2px);
   }
 
-  /* Анимация успешного копирования */
   .contact-value.copy-success {
     animation: copyPulse 0.3s ease;
     color: #4caf50;
@@ -160,7 +158,6 @@ import ProfileCard from '../components/ProfileCard.astro';
     75% { transform: translateX(5px); }
   }
 
-  /* Всплывающая подсказка */
   .copy-tooltip {
     position: absolute;
     bottom: 100%;
@@ -193,7 +190,6 @@ import ProfileCard from '../components/ProfileCard.astro';
     border-color: var(--contacts-accent) transparent transparent transparent;
   }
 
-  /* Псевдоэлемент для кликабельной области label */
   .contact-label::before {
     content: '';
     position: absolute;

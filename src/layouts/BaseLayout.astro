@@ -32,7 +32,6 @@ const { title, description = "Personal site" } = Astro.props;
     
     <!-- Encoding errors script -->
     <script is:inline>
-      // Генерация ошибок кодировки на фоне - ТОЛЬКО БЕЛЫЙ ТЕКСТ
       class EncodingErrors {
         constructor() {
           this.container = document.getElementById('encoding-errors');
@@ -102,7 +101,6 @@ const { title, description = "Personal site" } = Astro.props;
           const lines = Math.ceil(window.innerHeight / 32);
           const charsPerLine = Math.ceil(window.innerWidth / 48);
           
-          // Создаём сетку символов
           this.textGrid = [];
           for (let i = 0; i < lines; i++) {
             const line = [];
@@ -116,7 +114,6 @@ const { title, description = "Personal site" } = Astro.props;
         }
         
         render() {
-          // Рендерим всю сетку как текст
           const text = this.textGrid.map(line => line.join(' ')).join('\n');
           this.container.textContent = text;
         }
@@ -124,7 +121,6 @@ const { title, description = "Personal site" } = Astro.props;
         updateRandomChars() {
           if (this.textGrid.length === 0) return;
           
-          // Обновляем МНОГО символов одновременно (30-60)
           const updateCount = Math.floor(Math.random() * 30) + 30;
           
           for (let i = 0; i < updateCount; i++) {
@@ -138,16 +134,13 @@ const { title, description = "Personal site" } = Astro.props;
         }
         
         startAnimation() {
-          // Очищаем старые интервалы если есть
           if (this.updateInterval) clearInterval(this.updateInterval);
           if (this.regenerateInterval) clearInterval(this.regenerateInterval);
-          
-          // ОЧЕНЬ быстрое обновление символов (30-80ms)
+
           this.updateInterval = setInterval(() => {
             this.updateRandomChars();
           }, Math.random() * 50 + 30);
-          
-          // Пересоздаём весь текст каждые 10 секунд
+
           this.regenerateInterval = setInterval(() => {
             this.generateText();
           }, (Math.random() * 100) + 3000);
@@ -159,18 +152,16 @@ const { title, description = "Personal site" } = Astro.props;
         }
       }
       
-      // Глобальная переменная для хранения экземпляра
       let encodingErrorsInstance = null;
       
       function initEncodingErrors() {
-        // Останавливаем старый экземпляр если есть
+
         if (encodingErrorsInstance) {
           encodingErrorsInstance.stop();
         }
         encodingErrorsInstance = new EncodingErrors();
       }
-      
-      // Инициализация при загрузке и после ViewTransitions
+
       document.addEventListener('DOMContentLoaded', initEncodingErrors);
       document.addEventListener('astro:page-load', initEncodingErrors);
     </script>
@@ -197,7 +188,6 @@ const { title, description = "Personal site" } = Astro.props;
           this.canvas.height = window.innerHeight;
         }
         
-        // Генерация случайного шума - INTENSE
         generateNoise() {
           const imageData = this.ctx.createImageData(this.canvas.width, this.canvas.height);
           const data = imageData.data;
@@ -214,8 +204,7 @@ const { title, description = "Personal site" } = Astro.props;
           
           this.ctx.putImageData(imageData, 0, 0);
         }
-        
-        // Pixel Shift артефакты - INTENSE
+
         generatePixelShift() {
           const blockCount = Math.floor(Math.random() * 10) + 5;
           
@@ -232,8 +221,7 @@ const { title, description = "Personal site" } = Astro.props;
             this.ctx.putImageData(imageData, x + shiftX, y + shiftY);
           }
         }
-        
-        // Color Channel Shift - INTENSE
+
         generateChannelShift() {
           const blockCount = Math.floor(Math.random() * 3) + 2;
           
@@ -252,7 +240,7 @@ const { title, description = "Personal site" } = Astro.props;
           }
         }
         
-        // Block Corruption - INTENSE
+
         generateBlockCorruption() {
           const blockSize = 8;
           const blocksX = Math.floor(this.canvas.width / blockSize);
@@ -270,7 +258,6 @@ const { title, description = "Personal site" } = Astro.props;
           }
         }
         
-        // Scanlines - INTENSE
         generateScanlines() {
           const lineCount = Math.floor(Math.random() * 10) + 5;
           
@@ -284,38 +271,35 @@ const { title, description = "Personal site" } = Astro.props;
           }
         }
         
-        // Получить случайный яркий цвет
         getRandomColor() {
           const colors = [
-            { r: 255, g: 0, b: 255 },   // Маджента
-            { r: 0, g: 255, b: 255 },   // Циан
-            { r: 204, g: 255, b: 0 },   // Салатовый
-            { r: 255, g: 0, b: 136 },   // Розовый
-            { r: 136, g: 0, b: 255 },   // Фиолетовый
-            { r: 0, g: 255, b: 0 },     // Зеленый
+            { r: 255, g: 0, b: 255 }, 
+            { r: 0, g: 255, b: 255 },   
+            { r: 204, g: 255, b: 0 },  
+            { r: 255, g: 0, b: 136 },   
+            { r: 136, g: 0, b: 255 },   
+            { r: 0, g: 255, b: 0 },    
           ];
           
           return colors[Math.floor(Math.random() * colors.length)];
         }
-        
-        // Очистка с fade эффектом
+
         fade() {
           this.ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
           this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         }
-        
-        // Анимационный цикл - ЭКСТРЕМАЛЬНАЯ ИНТЕНСИВНОСТЬ
+
         animate() {
           if (!this.isAnimating) return;
           
           this.fade();
           
-          // Применяем эффекты ПОСТОЯННО (почти каждый кадр)
-          if (Math.random() > 0.05) this.generateNoise();      // 95% шанс
-          if (Math.random() > 0.1) this.generatePixelShift();  // 90% шанс
-          if (Math.random() > 0.15) this.generateChannelShift(); // 85% шанс
-          if (Math.random() > 0.2) this.generateBlockCorruption(); // 80% шанс
-          if (Math.random() > 0.25) this.generateScanlines(); // 75% шанс
+
+          if (Math.random() > 0.05) this.generateNoise();      // 95% 
+          if (Math.random() > 0.1) this.generatePixelShift();  // 90%
+          if (Math.random() > 0.15) this.generateChannelShift(); // 85% 
+          if (Math.random() > 0.2) this.generateBlockCorruption(); // 80% 
+          if (Math.random() > 0.25) this.generateScanlines(); // 75% 
           this.animationFrame = requestAnimationFrame(() => this.animate());
         }
         
@@ -327,11 +311,10 @@ const { title, description = "Personal site" } = Astro.props;
         }
       }
 
-      // Глобальная переменная для хранения экземпляра
       let vramArtifactsInstance = null;
       
       function initVRAMArtifacts() {
-        // Останавливаем старый экземпляр если есть
+
         if (vramArtifactsInstance) {
           vramArtifactsInstance.stop();
         }
@@ -339,7 +322,6 @@ const { title, description = "Personal site" } = Astro.props;
         vramArtifactsInstance.isAnimating = true;
       }
       
-      // Инициализация при загрузке и после ViewTransitions
       document.addEventListener('DOMContentLoaded', initVRAMArtifacts);
       document.addEventListener('astro:page-load', initVRAMArtifacts);
     </script>
@@ -347,7 +329,6 @@ const { title, description = "Personal site" } = Astro.props;
     <!-- Glitch trigger script -->
 <script is:inline>
   // glitch-trigger.js
-  // Периодически применяет глитч-эффекты к фону
 
   const glitchClasses = ['channel-shift', 'pixel-shift', 'block-corrupt', 'text-corrupt'];
 
@@ -356,18 +337,14 @@ const { title, description = "Personal site" } = Astro.props;
     
     if (!bgElement) return;
     
-    // Выбираем случайный класс глитча
     const randomClass = glitchClasses[Math.floor(Math.random() * glitchClasses.length)];
     
-    // Добавить data-text для channel-shift
     if (randomClass === 'channel-shift' && bgElement.textContent) {
       bgElement.setAttribute('data-text', bgElement.textContent.substring(0, 500));
     }
     
-    // Применяем глитч
     bgElement.classList.add(randomClass);
-    
-    // Убираем через 150-300ms
+
     const duration = Math.random() * 150 + 150;
     setTimeout(() => {
       bgElement.classList.remove(randomClass);
@@ -377,13 +354,13 @@ const { title, description = "Personal site" } = Astro.props;
     }, duration);
   }
 
-  // Запускать каждые 100-300ms (ОЧЕНЬ ЧАСТО для фона)
+
   let glitchTimeout = null;
   
   function scheduleNextGlitch() {
     if (glitchTimeout) clearTimeout(glitchTimeout);
     
-    const delay = Math.random() * 100 + 3000; // 100-300ms
+    const delay = Math.random() * 100 + 3000; // 100-3000ms
     glitchTimeout = setTimeout(() => {
       triggerBackgroundGlitch();
       scheduleNextGlitch();
@@ -397,7 +374,6 @@ const { title, description = "Personal site" } = Astro.props;
     }
   }
 
-  // Инициализация при загрузке и после ViewTransitions
   document.addEventListener('DOMContentLoaded', scheduleNextGlitch);
   document.addEventListener('astro:page-load', scheduleNextGlitch);
   document.addEventListener('astro:before-swap', stopGlitches);

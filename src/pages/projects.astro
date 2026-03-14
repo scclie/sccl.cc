@@ -36,15 +36,14 @@ import ProfileCard from '../components/ProfileCard.astro';
 
   .project-item {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     position: relative;
-    padding: 10px; /* Внутренний отступ для зоны наведения */
+    padding: 10px; 
     border-radius: 8px;
     transition: background-color 0.2s ease;
-    cursor: pointer; /* Показываем, что элемент кликабельный */
+    cursor: pointer; 
   }
 
-  /* При наведении на project-item меняем фон всего элемента */
   .project-item:hover {
     background-color: rgba(136, 192, 208, 0.1);
   }
@@ -55,11 +54,11 @@ import ProfileCard from '../components/ProfileCard.astro';
     gap: 5px;
     width: 100%;
     position: relative;
-    z-index: 1; /* Текст выше фона, но ниже псевдоэлемента */
+    z-index: 1; 
   }
 
   .project-title {
-    color: var(--projects-accent); /* Меняем с var(--fg) на цвет акцента */
+    color: var(--projects-accent); 
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
@@ -72,7 +71,7 @@ import ProfileCard from '../components/ProfileCard.astro';
     color: var(--fg-dim);
     font-size: 20px;
     transition: color 0.2s ease;
-    pointer-events: none; /* Чтобы клик проходил сквозь описание к псевдоэлементу */
+    pointer-events: none; 
     position: relative;
     z-index: 2;
   }
@@ -81,18 +80,16 @@ import ProfileCard from '../components/ProfileCard.astro';
     color: var(--fg-dim);
     font-size: 20px;
     transition: color 0.2s ease;
-    pointer-events: none; /* Чтобы клик проходил сквозь URL к псевдоэлементу */
+    pointer-events: none;
     position: relative;
     z-index: 2;
   }
 
-  /* При наведении делаем описание и URL ярче */
   .project-item:hover .project-desc,
   .project-item:hover .project-url {
     color: var(--fg);
   }
-  
-  /* Псевдоэлемент для кликабельной области ВСЕГО project-item */
+
   .project-item a::before {
     content: '';
     position: absolute;
@@ -100,12 +97,12 @@ import ProfileCard from '../components/ProfileCard.astro';
     left: -10px;
     right: -10px;
     bottom: -10px;
-    z-index: 2; /* Выше фона, но ниже заголовка */
+    z-index: 2; 
   }
   
   /* Убираем стандартный hover с ссылки */
   .project-title:hover {
-    color: var(--projects-accent); /* Оставляем только изменение цвета */
+    color: var(--projects-accent);
   }
   
   /* Responsive design - Mobile */

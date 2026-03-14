@@ -67,9 +67,9 @@ if (currentTab === 'contacts') {
     }
   }
 
-  // Пасхалка для Vim-команды :qa!
+  // Пасхалка
   (function initVimEasterEgg() {
-    // Полностью очищаем предыдущее состояние
+
     const oldOverlay = document.getElementById('black-overlay');
     if (oldOverlay) oldOverlay.remove();
     const oldReboot = document.getElementById('reboot-sequence');
@@ -115,21 +115,17 @@ if (currentTab === 'contacts') {
     }
     
     function init() {
-      // Получаем свежие ссылки
       getElements();
-      
-      // Сбрасываем состояние
       resetEasterEgg();
       
-      // Устанавливаем правильные цвета
+
       if (inputDisplay && easterEggElement) {
         const cardStyle = getComputedStyle(document.querySelector('.card'));
         const accentColor = cardStyle.getPropertyValue('--card-accent').trim();
         
-        // Применяем цвет акцента к полю ввода
+
         inputDisplay.style.color = accentColor;
-        
-        // Убираем все лишние стили
+
         inputDisplay.style.opacity = '0';
         inputDisplay.style.transition = 'none';
       }
@@ -389,26 +385,25 @@ if (currentTab === 'contacts') {
       }, 60);
     }
     
-    // Запускаем при загрузке
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
       init();
     }
     
-    // Для ViewTransitions - полная перезагрузка
+
     document.addEventListener('astro:page-load', () => {
-      // Удаляем все старые элементы
+
       const oldOverlay = document.getElementById('black-overlay');
       if (oldOverlay) oldOverlay.remove();
       const oldReboot = document.getElementById('reboot-sequence');
       if (oldReboot) oldReboot.remove();
       
-      // Запускаем инициализацию с задержкой
+
       setTimeout(init, 50);
     });
     
-    // Очищаем при уходе
+
     document.addEventListener('astro:before-swap', () => {
       document.removeEventListener('keypress', handleKeyPress);
       const overlay = document.getElementById('black-overlay');
@@ -417,7 +412,7 @@ if (currentTab === 'contacts') {
       if (reboot) reboot.remove();
     });
     
-    // Добавляем стили
+
     const style = document.createElement('style');
     style.textContent = `
       .easter-egg-container {
@@ -519,13 +514,6 @@ if (currentTab === 'contacts') {
     font-size: 20px;
     margin-top: 8px;
     line-height: 1.6;
-  }
-  
-  .card-content {
-    min-height: 300px;
-    color: var(--fg);
-    font-size: 20px;
-    line-height: 2;
   }
   
   .card-footer {

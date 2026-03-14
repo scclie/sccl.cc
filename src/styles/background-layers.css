@@ -19,7 +19,7 @@
   padding: 10px;
 }
 
-/* Layer 2: VRAM artifacts canvas (top) - БОЛЬШЕ ИНТЕНСИВНОСТЬ */
+/* Layer 2: VRAM artifacts canvas (top) */
 #vram-canvas {
   position: fixed;
   top: 0;

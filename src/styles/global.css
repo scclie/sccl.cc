@@ -1,81 +1,357 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Minimalist Text-Only Base - Breakcore Edition */
+
+/* Import pixel font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 html {
-  font-family: 'Inter', system-ui, sans-serif;
-  scroll-behavior: smooth;
+  font-family: 'VT323', 'Courier New', monospace;
+  background: #000;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.8;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  
+  /* Bright burned colors - Breakcore palette */
+  --magenta: #ff00ff;
+  --cyan: #00ffff;
+  --lime: #ccff00;
+  --pink: #ff0088;
+  --purple: #8800ff;
+  --green: #00ff00;
+  
+  /* Page-specific accent colors */
+  --contacts-accent: #ff00ff;    /* Magenta */
+  --projects-accent: #00ffff;    /* Cyan */
+  --peripherals-accent: #ccff00; /* Lime */
+  
+  /* Base colors */
+  --bg: #000000;
+  --fg: #ffffff;
+  --fg-dim: #cccccc;
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
+body {
+  background: #000;
+  position: relative;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Canvas for procedural VRAM artifacts - INTENSE */
+#vram-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+/* Disable canvas on reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #vram-canvas {
+    display: none;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
 
-@keyframes slideRight {
-  from {
-    transform: translateX(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+/* Background encoding errors container */
+#encoding-errors {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  font-size: 20px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  font-family: 'VT323', monospace;
+  padding: 10px;
 }
 
-@keyframes slideLeft {
-  from {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+#encoding-errors span {
+  display: inline-block;
 }
 
-.animate-slide-up {
-  animation: slideUp 0.6s ease-out forwards;
+/* Text selection */
+::selection {
+  background: var(--magenta);
+  color: var(--bg);
 }
 
-.animate-slide-right {
-  animation: slideRight 0.6s ease-out forwards;
+::-moz-selection {
+  background: var(--magenta);
+  color: var(--bg);
 }
 
-.animate-slide-left {
-  animation: slideLeft 0.6s ease-out forwards;
-}
-
-/* Кастомный скроллбар */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #e5e9f0;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #3b4252;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #88c0d0;
-  border-radius: 3px;
+  background: var(--fg);
+  border-radius: 0;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #4c566a;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-dim);
 }
 
-/* выделения текста */
-::selection {
-  background-color: #ffb4ff;
-  color: black;
+/* Light theme */
+html.light {
+  background: #fff;
+  color: #000;
+  
+  /* Inverted base colors for light theme */
+  --bg: #ffffff;
+  --fg: #000000;
+  --fg-dim: #333333;
+  
+  /* Bright colors remain the same in light theme */
+}
+
+html.light body {
+  background: #fff;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+
+/* ============================================
+   CSS GLITCH EFFECTS
+   ============================================ */
+
+/* 5.1 Channel Shift Effect - RGB separation with magenta/cyan */
+@keyframes channel-shift {
+  0%, 100% { 
+    transform: translate(0, 0);
+  }
+  25% { 
+    transform: translate(3px, 0);
+  }
+  50% { 
+    transform: translate(-3px, 1px);
+  }
+  75% { 
+    transform: translate(2px, -1px);
+  }
+}
+
+.channel-shift {
+  animation: channel-shift 0.2s steps(4, end);
+  position: relative;
+}
+
+.channel-shift::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--magenta);
+  mix-blend-mode: screen;
+  transform: translate(-2px, 0);
+  pointer-events: none;
+}
+
+.channel-shift::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--cyan);
+  mix-blend-mode: screen;
+  transform: translate(2px, 0);
+  pointer-events: none;
+}
+
+/* 5.2 Pixel Shift Effect - Block displacement */
+@keyframes pixel-shift {
+  0%, 100% { 
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+  20% { 
+    clip-path: inset(20% 0 70% 0);
+    transform: translateX(5px);
+  }
+  40% { 
+    clip-path: inset(60% 0 30% 0);
+    transform: translateX(-5px);
+  }
+  60% { 
+    clip-path: inset(40% 0 50% 0);
+    transform: translateX(3px);
+  }
+  80% { 
+    clip-path: inset(10% 0 80% 0);
+    transform: translateX(-3px);
+  }
+}
+
+.pixel-shift {
+  animation: pixel-shift 0.15s steps(5, end);
+}
+
+/* 5.3 Block Corruption Effect - Blocky artifacts */
+@keyframes block-corrupt {
+  0%, 100% {
+    clip-path: inset(0 0 0 0);
+  }
+  10% {
+    clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+  }
+  20% {
+    clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+  }
+  30% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 90%, 0 90%);
+  }
+}
+
+.block-corrupt {
+  animation: block-corrupt 0.2s steps(3, end);
+  position: relative;
+}
+
+.block-corrupt::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 8px,
+    var(--magenta) 8px,
+    var(--magenta) 10px
+  );
+  opacity: 0.3;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* 5.4 Scanlines Effect - Static horizontal lines */
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 3px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* 5.5 Text Corruption Effect - Skew and flicker */
+@keyframes text-corrupt {
+  0%, 100% { 
+    opacity: 1;
+    transform: skewX(0deg);
+  }
+  20% { 
+    opacity: 0.3;
+    transform: skewX(20deg);
+  }
+  40% { 
+    opacity: 0.7;
+    transform: skewX(-15deg);
+  }
+  60% { 
+    opacity: 0.5;
+    transform: skewX(10deg);
+  }
+  80% { 
+    opacity: 0.9;
+    transform: skewX(-5deg);
+  }
+}
+
+.text-corrupt {
+  animation: text-corrupt 0.2s steps(5, end);
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  html {
+    font-size: 12px;
+  }
 }

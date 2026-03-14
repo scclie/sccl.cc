@@ -1,32 +1,62 @@
 ---
-import ThemeToggle from './ThemeToggle.jsx';
+// Minimalist Navigation Component - Inside Card
+const currentPath = Astro.url.pathname;
+
+// Determine accent color based on current page
+let accentColor = 'var(--fg)'; // default white
+if (currentPath.includes('/contacts')) {
+  accentColor = 'var(--contacts-accent)';
+} else if (currentPath.includes('/projects')) {
+  accentColor = 'var(--projects-accent)';
+} else if (currentPath.includes('/peripherals')) {
+  accentColor = 'var(--peripherals-accent)';
+}
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-nord-6/90 dark:bg-nord-0/90 backdrop-blur-xl border-b border-nord-4 dark:border-nord-2">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Логотип -->
-      <div>
-        <a href="/contacts" class="flex items-center space-x-3 group">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-nord-4 dark:bg-nord-2">
-            <img 
-              src="/img/logo.gif" 
-              alt="sccl.cc" 
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              onerror="this.nextElementSibling.style.display='flex'; this.style.display='none';"
-            />
-            <div class="w-full h-full bg-gradient-to-br from-nord-8 to-nord-10 hidden items-center justify-center">
-              <span class="text-nord-6 font-bold text-sm">S</span>
-            </div>
-          </div>
-          <span class="text-lg font-semibold bg-gradient-to-r from-nord-10 to-nord-8 bg-clip-text text-transparent">
-            sccl.cc
-          </span>
-        </a>
-      </div>
-
-      <!-- Только переключение темы -->
-      <ThemeToggle client:load />
-    </div>
+<nav class="nav" style={`--page-accent: ${accentColor}`}>
+  <div class="nav-links">
+    <a href="/contacts" class:list={[{active: currentPath.includes('/contacts')}]}>contacts</a>
+    <a href="/projects" class:list={[{active: currentPath.includes('/projects')}]}>projects</a>
+    <a href="/peripherals" class:list={[{active: currentPath.includes('/peripherals')}]}>peripherals</a>
   </div>
 </nav>
+
+<style>
+  .nav {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--page-accent);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+  }
+  
+  .nav-links a {
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.1s;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--page-accent);
+  }
+  
+  /* Focus states for accessibility */
+  .nav-links a:focus {
+    outline: 2px solid var(--page-accent);
+    outline-offset: 2px;
+  }
+  
+  /* Responsive design - Mobile */
+  @media (max-width: 767px) {
+    .nav-links {
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+  }
+</style>

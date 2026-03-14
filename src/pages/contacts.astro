@@ -1,13 +1,232 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Navigation from '../components/Navigation.astro';
 import ProfileCard from '../components/ProfileCard.astro';
 ---
 
 <BaseLayout title="Contacts - sccl.cc">
-  <Navigation />
-  
-  <main class="min-h-screen pt-16 flex items-center justify-center p-4">
-    <ProfileCard currentTab="contacts" />
+  <main>
+    <ProfileCard currentTab="contacts">
+      <div class="contacts-content">
+        <div class="contact-item">
+          <a href="https://discord.com/users/sccl" class="contact-label">> Discord</a>
+          <span class="contact-value" data-copy="sccl">@sccl</span>
+        </div>
+
+        <div class="contact-item">
+          <a href="https://t.me/scclie" class="contact-label">> Telegram</a>
+          <span class="contact-value" data-copy="scclie">@scclie</span>
+        </div>
+
+        <div class="contact-item">
+          <a href="https://github.com/scclie" class="contact-label">> Github</a>
+          <span class="contact-value" data-copy="scclie">scclie</span>
+        </div>
+
+        <div class="contact-item">
+          <a href="https://steamcommunity.com/id/scclie/" class="contact-label">> Steam</a>
+          <span class="contact-value" data-copy="scclie">scclie</span>
+        </div>
+
+        <div class="contact-item">
+          <a href="https://www.youtube.com/@scclie" class="contact-label">> YouTube</a>
+          <span class="contact-value" data-copy="scclie">@scclie</span>
+        </div>
+      </div>
+    </ProfileCard>
   </main>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll('.contact-value').forEach(element => {
+    element.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const textToCopy = element.getAttribute('data-copy');
+      
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        
+        // Добавляем класс анимации
+        element.classList.add('copy-success');
+        
+        // Показываем всплывающую подсказку
+        const tooltip = document.createElement('span');
+        tooltip.className = 'copy-tooltip';
+        tooltip.textContent = '✓ Copied!';
+        element.appendChild(tooltip);
+        
+        // Запускаем анимацию появления
+        setTimeout(() => tooltip.classList.add('show'), 10);
+        
+        // Удаляем анимацию и подсказку через 1.5 секунды
+        setTimeout(() => {
+          element.classList.remove('copy-success');
+          tooltip.classList.remove('show');
+          setTimeout(() => tooltip.remove(), 200);
+        }, 1500);
+        
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        
+        // Показываем ошибку
+        element.classList.add('copy-error');
+        setTimeout(() => element.classList.remove('copy-error'), 500);
+      }
+    });
+  });
+</script>
+
+<style>
+  .contacts-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    padding: 5px; /* Добавляем внутренний отступ для зоны наведения */
+    border-radius: 8px; /* Скругляем углы */
+    transition: background-color 0.2s ease; /* Плавное изменение фона */
+  }
+
+  /* При наведении на contact-item меняем фон всего элемента */
+  .contact-item:hover {
+    background-color: rgba(136, 192, 208, 0.1); /* Полупрозрачный фон с цветом акцента */
+  }
+
+  .contact-label {
+    color: var(--contacts-accent); /* Меняем с var(--fg) на цвет акцента */
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.2s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  .contact-value {
+    color: var(--fg);
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: all 0.2s ease;
+    padding: 2px 0;
+    display: inline-block;
+    border-radius: 4px;
+  }
+
+  /* Анимация при наведении на значение */
+  .contact-value:hover {
+    color: var(--contacts-accent, #88c0d0);
+    transform: translateX(2px);
+  }
+
+
+  /* Анимация успешного копирования */
+  .contact-value.copy-success {
+    animation: copyPulse 0.3s ease;
+    color: #4caf50;
+  }
+
+  @keyframes copyPulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+      color: #4caf50;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Анимация ошибки */
+  .contact-value.copy-error {
+    animation: errorShake 0.3s ease;
+    color: #f44336;
+  }
+
+  @keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  /* Всплывающая подсказка */
+  .copy-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: var(--contacts-accent, #88c0d0);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 10;
+  }
+
+  .copy-tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Добавляем стрелочку к подсказке */
+  .copy-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--contacts-accent, #88c0d0) transparent transparent transparent;
+  }
+
+  /* Псевдоэлемент для кликабельной области label (весь contact-item) */
+  .contact-label::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Увеличиваем область, чтобы покрыть padding contact-item */
+    left: -10px;
+    right: -10px;
+    bottom: -40px; /* Растягиваем, чтобы покрыть contact-value */
+    z-index: 0;
+  }
+  
+  /* Responsive design - Mobile */
+  @media (max-width: 767px) {
+    .contact-item {
+      padding: 5px;
+    }
+    
+    .contact-label {
+      font-size: 20px;
+    }
+    
+    .contact-value {
+      font-size: 20px;
+      word-break: break-word;
+    }
+    
+    .contact-label::before {
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -40px;
+    }
+    
+    .copy-tooltip {
+      font-size: 12px;
+      padding: 3px 6px;
+    }
+  }
+</style>

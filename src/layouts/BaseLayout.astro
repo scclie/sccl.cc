@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import '../styles/background-layers.css';
+import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
   title: string;
@@ -10,197 +12,417 @@ const { title, description = "Personal site" } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/gif" href="/img/logo.gif" />
     <title>{title}</title>
-    
-    <!-- Preload fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Theme detection script -->
-    <script is:inline>
-      const theme = localStorage.getItem('theme') || 
-                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-    </script>
+    <ViewTransitions />
   </head>
-  <body class="bg-nord-6 dark:bg-nord-0 text-nord-0 dark:text-nord-6 min-h-screen overflow-x-hidden">
-    <!-- Amim waves-->
-    <div class="wave-container">
-      <svg class="wave-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
-      
-        <!-- Wave 1  -->
-        <path class="wave-path wave-1" d="M-200,150 C100,100 400,200 800,150 C1100,100 1300,200 1400,150 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 2  -->
-        <path class="wave-path wave-2" d="M-200,200 C50,180 350,220 600,200 C850,180 1150,220 1400,200 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 3  -->
-        <path class="wave-path wave-3" d="M-200,250 C0,230 300,270 600,250 C900,230 1200,270 1400,250 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 4  -->
-        <path class="wave-path wave-4" d="M-200,300 C150,280 350,320 600,300 C850,280 1050,320 1400,300 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 5  -->
-        <path class="wave-path wave-5" d="M-200,350 C100,330 350,370 600,350 C850,330 1100,370 1400,350 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 6  -->
-        <path class="wave-path wave-6" d="M-200,400 C50,380 350,420 600,400 C850,380 1150,420 1400,400 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 7  -->
-        <path class="wave-path wave-7" d="M-200,450 C200,430 300,470 600,450 C900,430 1000,470 1400,450 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 8  -->
-        <path class="wave-path wave-8" d="M-200,500 C0,480 350,520 600,500 C850,480 1200,520 1400,500 L1400,600 L-200,800 Z" />
-
-        <!-- Wave 9  -->
-        <path class="wave-path wave-9" d="M-200,550 C100,530 350,570 600,550 C850,530 1100,570 1400,550 L1400,600 L-200,800 Z" />
-      </svg>
-    </div>
-
-    <!-- Основной контент -->
-    <div class="relative z-10">
-      <slot />
-    </div>
-
-      <script>
-        const waves = document.querySelectorAll('.wave-path');
-        
-        function animateWaves() {
-          const time = Date.now() * 0.001;
-
-          waves.forEach((wave, index) => {
-            const offset = index * 0.5;
-            const amplitude = 8 + index * 3;
-            const frequency = 0.3 + index * 0.1;
-
-            const translateY = Math.sin(time * frequency + offset) * amplitude;
-            const scaleY = 0.95 + Math.sin(time * frequency * 0.7 + offset) * 0.05;
-            wave.style.transform = `translateY(${translateY}px) scaleY(${scaleY})`;
-          });
-
-          requestAnimationFrame(animateWaves);
+  <body>
+    <!-- Encoding errors background -->
+    <div id="encoding-errors"></div>
+    
+    <!-- VRAM artifacts canvas -->
+    <canvas id="vram-canvas"></canvas>
+    
+    <slot />
+    
+    <!-- Encoding errors script -->
+    <script is:inline>
+      // Генерация ошибок кодировки на фоне - ТОЛЬКО БЕЛЫЙ ТЕКСТ
+      class EncodingErrors {
+        constructor() {
+          this.container = document.getElementById('encoding-errors');
+          if (!this.container) return;
+          
+          this.errorChars = [
+  'KERNEL PANIC', 'KERNEL OOPS', 'SYSTEM HALTED', 'WATCHDOG TIMEOUT',
+  'RCU STALL', 'LOCKUP DETECTED', 'SOFT LOCKUP', 'HARD LOCKUP',
+  'IRQ CONFLICT', 'IOMMU ERROR', 'DMA MAPPING ERROR', 'PCI BIOS BUG',
+  'ACPI ERROR', 'APIC ERROR', 'SMP ERROR', 'EFI FAULT',
+  'VFS: BUSY INODES', 'EXT4 FILESYSTEM ERROR', 'XFS CORRUPTION',
+  'BTRFS: DEVICE ERROR', 'ZFS POOL CORRUPTED', 'F2FS BUG',
+  'SWAP: BAD PAGE', 'ZRAM: COMPRESSION ERROR',
+  'SEGMENTATION FAULT', 'BUS ERROR (BAD MEMORY ACCESS)',
+  'ILLEGAL INSTRUCTION (SIGILL)', 'FLOATING POINT EXCEPTION',
+  'STACK OVERFLOW (SIGSEGV)', 'ABORT (SIGABRT)', 'TRAP (SIGTRAP)',
+  'TEXT FILE BUSY (ETXTBSY)', 'CROSS-DEVICE LINK (EXDEV)',
+  'INVALID REQUEST (EINVAL)', 'IOCTL ERROR (ENOTTY)',
+  'NETWORK UNREACHABLE (ENETUNREACH)', 'HOST UNREACHABLE (EHOSTUNREACH)',
+  'thread panicked at', 'index out of bounds', 'slice index out of range',
+  'cargo: error: failed to parse manifest',
+  'cargo: error: no matching version found',
+  'cargo: error: dependency resolution failed',
+  '0xDEADBEEF', '0xCAFEBABE',
+  '0x8BADF00D', '0xFEEDFACE',
+  '0xDEADC0DE', '0xBAADF00D',
+  '0xABADBAB', '0xDEADDEAD',
+  '0x0', '0x1', '0xDEAD', '0xBEEF', '0xCODE', '0xFFFF',
+  '0x7FFF', '0x8000', '0xFFFFFFFF', '0xDEADBEEF',
+  '0xFF00FF', '0x4F3A', '0xBADC0DE', '0xC0DEBABE',
+  '����', '����������������������������������������',
+  '�', '�', '�', '�', '�', '�', '�', '�',
+  '▐', '▐', '▄', '▐', '▒', '▒▒▒', '▐▄', '█', '▓', '░',
+  '␀', '␁', '␂', '␃', '␄', '␅', '␆', '␇', '␈', '␉',
+  '␊', '␋', '␌', '␍', '␎', '␏', '␐', '␑', '␒', '␓',
+  '␔', '␕', '␖', '␗', '␘', '␙', '␚', '␛', '␜', '␝',
+  'ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ',
+  'サ', 'シ', 'ス', 'セ', 'ソ', 'タ', 'チ', 'ツ', 'テ', 'ト',
+  'ナ', 'ニ', 'ヌ', 'ネ', 'ノ', 'ハ', 'ヒ', 'フ', 'ヘ', 'ホ',
+  'マ', 'ミ', 'ム', 'メ', 'モ', 'ヤ', 'ユ', 'ヨ', 'ラ', 'リ',
+  'ル', 'レ', 'ロ', 'ワ', 'ヲ', 'ン', 'ガ', 'ギ', 'グ', 'ゲ',
+  'ゴ', 'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ', 'ダ', 'ヂ', 'ヅ', 'デ',
+  'ド', 'バ', 'ビ', 'ブ', 'ベ', 'ボ', 'パ', 'ピ', 'プ', 'ペ',
+  'ポ', 'ヴ', 'ッ', 'ャ', 'ュ', 'ョ', 'ァ', 'ィ', 'ゥ', 'ェ',
+  'ォ', 'ー', '〜', '・', '、', '。', '「', '」', '『', '』',
+  '가', '나', '다', '라', '마', '바', '사', '아', '자', '차',
+  '카', '타', '파', '하', '거', '너', '더', '러', '머', '버',
+  '서', '어', '저', '처', '커', '터', '퍼', '허', '고', '노',
+  '도', '로', '모', '보', '소', '오', '조', '초', '코', '토',
+  '포', '호', '구', '누', '두', '루', '무', '부', '수', '우',
+  '주', '추', '쿠', '투', '푸', '후', '으', '의', '이', '애',
+  '的', '是', '不', '了', '人', '我', '在', '有', '他', '这',
+  '中', '大', '来', '上', '国', '为', '以', '生', '到', '会',
+  '家', '可', '下', '而', '过', '天', '去', '能', '对', '小',
+  '多', '然', '于', '心', '学', '么', '之', '都', '好', '看',
+  '起', '发', '当', '没', '成', '只', '如', '事', '把', '用',
+  '第', '想', '作', '者', '开', '法', '实', '出', '理', '经',
+  'segmentation fault', 'bus error', 'floating point exception',
+  'illegal instruction', 'bad system call', 'trace trap',
+  'memory not mapped', 'access violation', 'general protection fault',
+  'double fault', 'page fault', 'stack fault', 'alignment check',
+  '/usr/bin', '/etc', '/home', '/var', '/tmp', '/opt',
+  '~/.config', '~/.local', '~/.cache', '~/.bashrc',
+  'PATH=$PATH', 'export', 'alias', 'source', '. ./',
+  'borrow of moved value', 'cannot borrow as mutable',
+  'lifetime mismatch', 'type mismatch', 'expected struct',
+  'unused variable', 'dead code', 'unconditional recursion',
+  'unreachable pattern', 'non-exhaustive patterns',
+  'mov', 'push', 'pop', 'call', 'ret', 'jmp', 'je', 'jne',
+  'cmp', 'add', 'sub', 'mul', 'div', 'and', 'or', 'xor',
+  'nop', 'int', 'syscall', 'iret', 'sti', 'cli', 'hlt',
+  '>>>', '<<<', '===', '!==', '<=>', '||', '&&', '??',
+  '::', '=>', '->', '<-', '-->', '<--', '~~', '^^',
+  'PID 1', 'init', 'systemd', 'kernel thread', 'kworker',
+  'rcu_sched', 'migration', 'watchdog', 'ksoftirqd',
+  'Out of memory', 'Killed process', 'Cannot allocate memory',
+  'Resource temporarily unavailable', 'Operation not permitted',
+  'No such file or directory', 'Permission denied',
+  'Connection refused', 'Network is unreachable',
+  'Broken pipe', 'Connection reset by peer'
+];
+          
+          this.textGrid = [];
+          this.generateText();
+          this.startAnimation();
         }
+        
+        generateText() {
+          const lines = Math.ceil(window.innerHeight / 16);
+          const charsPerLine = Math.ceil(window.innerWidth / 8);
+          
+          // Создаём сетку символов
+          this.textGrid = [];
+          for (let i = 0; i < lines; i++) {
+            const line = [];
+            for (let j = 0; j < charsPerLine; j++) {
+              line.push(this.errorChars[Math.floor(Math.random() * this.errorChars.length)]);
+            }
+            this.textGrid.push(line);
+          }
+          
+          this.render();
+        }
+        
+        render() {
+          // Рендерим всю сетку как текст
+          const text = this.textGrid.map(line => line.join(' ')).join('\n');
+          this.container.textContent = text;
+        }
+        
+        updateRandomChars() {
+          if (this.textGrid.length === 0) return;
+          
+          // Обновляем МНОГО символов одновременно (30-60)
+          const updateCount = Math.floor(Math.random() * 30) + 30;
+          
+          for (let i = 0; i < updateCount; i++) {
+            const row = Math.floor(Math.random() * this.textGrid.length);
+            const col = Math.floor(Math.random() * this.textGrid[row].length);
+            
+            this.textGrid[row][col] = this.errorChars[Math.floor(Math.random() * this.errorChars.length)];
+          }
+          
+          this.render();
+        }
+        
+        startAnimation() {
+          // Очищаем старые интервалы если есть
+          if (this.updateInterval) clearInterval(this.updateInterval);
+          if (this.regenerateInterval) clearInterval(this.regenerateInterval);
+          
+          // ОЧЕНЬ быстрое обновление символов (30-80ms)
+          this.updateInterval = setInterval(() => {
+            this.updateRandomChars();
+          }, Math.random() * 50 + 30);
+          
+          // Пересоздаём весь текст каждые 10 секунд
+          this.regenerateInterval = setInterval(() => {
+            this.generateText();
+          }, 10000);
+        }
+        
+        stop() {
+          if (this.updateInterval) clearInterval(this.updateInterval);
+          if (this.regenerateInterval) clearInterval(this.regenerateInterval);
+        }
+      }
+      
+      // Глобальная переменная для хранения экземпляра
+      let encodingErrorsInstance = null;
+      
+      function initEncodingErrors() {
+        // Останавливаем старый экземпляр если есть
+        if (encodingErrorsInstance) {
+          encodingErrorsInstance.stop();
+        }
+        encodingErrorsInstance = new EncodingErrors();
+      }
+      
+      // Инициализация при загрузке и после ViewTransitions
+      document.addEventListener('DOMContentLoaded', initEncodingErrors);
+      document.addEventListener('astro:page-load', initEncodingErrors);
+    </script>
+    
+    <!-- VRAM Artifacts script -->
+    <script is:inline>
+      // vram-artifacts.js
+      // Процедурная генерация артефактов отвала видеопамяти
 
-        document.addEventListener('DOMContentLoaded', animateWaves);
-      </script>
-  </body>
-</html>
+      class VRAMArtifacts {
+        constructor(canvasId) {
+          this.canvas = document.getElementById(canvasId);
+          if (!this.canvas) return;
+          
+          this.ctx = this.canvas.getContext('2d');
+          this.resize();
+          
+          window.addEventListener('resize', () => this.resize());
+          this.animate();
+        }
+        
+        resize() {
+          this.canvas.width = window.innerWidth;
+          this.canvas.height = window.innerHeight;
+        }
+        
+        // Генерация случайного шума - INTENSE
+        generateNoise() {
+          const imageData = this.ctx.createImageData(this.canvas.width, this.canvas.height);
+          const data = imageData.data;
+          
+          for (let i = 0; i < data.length; i += 4) {
+            if (Math.random() > 0.95) {
+              const color = this.getRandomColor();
+              data[i] = color.r;
+              data[i + 1] = color.g;
+              data[i + 2] = color.b;
+              data[i + 3] = 255;
+            }
+          }
+          
+          this.ctx.putImageData(imageData, 0, 0);
+        }
+        
+        // Pixel Shift артефакты - INTENSE
+        generatePixelShift() {
+          const blockCount = Math.floor(Math.random() * 10) + 5;
+          
+          for (let i = 0; i < blockCount; i++) {
+            const x = Math.random() * this.canvas.width;
+            const y = Math.random() * this.canvas.height;
+            const w = Math.random() * 300 + 100;
+            const h = Math.random() * 40 + 10;
+            
+            const imageData = this.ctx.getImageData(x, y, w, h);
+            const shiftX = (Math.random() - 0.5) * 40;
+            const shiftY = (Math.random() - 0.5) * 20;
+            
+            this.ctx.putImageData(imageData, x + shiftX, y + shiftY);
+          }
+        }
+        
+        // Color Channel Shift - INTENSE
+        generateChannelShift() {
+          const blockCount = Math.floor(Math.random() * 3) + 2;
+          
+          for (let i = 0; i < blockCount; i++) {
+            const x = Math.random() * this.canvas.width;
+            const y = Math.random() * this.canvas.height;
+            const w = Math.random() * 400 + 200;
+            const h = Math.random() * 150 + 80;
+            
+            const color = this.getRandomColor();
+            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.5)`;
+            this.ctx.fillRect(x, y, w, h);
+            
+            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`;
+            this.ctx.fillRect(x + 8, y, w, h);
+          }
+        }
+        
+        // Block Corruption - INTENSE
+        generateBlockCorruption() {
+          const blockSize = 8;
+          const blocksX = Math.floor(this.canvas.width / blockSize);
+          const blocksY = Math.floor(this.canvas.height / blockSize);
+          
+          for (let i = 0; i < 30; i++) {
+            const bx = Math.floor(Math.random() * blocksX) * blockSize;
+            const by = Math.floor(Math.random() * blocksY) * blockSize;
+            const bw = Math.floor(Math.random() * 5 + 1) * blockSize;
+            const bh = Math.floor(Math.random() * 5 + 1) * blockSize;
+            
+            const color = this.getRandomColor();
+            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.6)`;
+            this.ctx.fillRect(bx, by, bw, bh);
+          }
+        }
+        
+        // Scanlines - INTENSE
+        generateScanlines() {
+          const lineCount = Math.floor(Math.random() * 10) + 5;
+          
+          for (let i = 0; i < lineCount; i++) {
+            const y = Math.random() * this.canvas.height;
+            const color = this.getRandomColor();
+            const height = Math.random() * 3 + 1;
+            
+            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.4)`;
+            this.ctx.fillRect(0, y, this.canvas.width, height);
+          }
+        }
+        
+        // Получить случайный яркий цвет
+        getRandomColor() {
+          const colors = [
+            { r: 255, g: 0, b: 255 },   // Маджента
+            { r: 0, g: 255, b: 255 },   // Циан
+            { r: 204, g: 255, b: 0 },   // Салатовый
+            { r: 255, g: 0, b: 136 },   // Розовый
+            { r: 136, g: 0, b: 255 },   // Фиолетовый
+            { r: 0, g: 255, b: 0 },     // Зеленый
+          ];
+          
+          return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Очистка с fade эффектом
+        fade() {
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
+          this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        }
+        
+        // Анимационный цикл - ЭКСТРЕМАЛЬНАЯ ИНТЕНСИВНОСТЬ
+        animate() {
+          if (!this.isAnimating) return;
+          
+          this.fade();
+          
+          // Применяем эффекты ПОСТОЯННО (почти каждый кадр)
+          if (Math.random() > 0.05) this.generateNoise();      // 95% шанс
+          if (Math.random() > 0.1) this.generatePixelShift();  // 90% шанс
+          if (Math.random() > 0.15) this.generateChannelShift(); // 85% шанс
+          if (Math.random() > 0.2) this.generateBlockCorruption(); // 80% шанс
+          if (Math.random() > 0.25) this.generateScanlines(); // 75% шанс
+          this.animationFrame = requestAnimationFrame(() => this.animate());
+        }
+        
+        stop() {
+          this.isAnimating = false;
+          if (this.animationFrame) {
+            cancelAnimationFrame(this.animationFrame);
+          }
+        }
+      }
 
-<style>
-  .wave-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
+      // Глобальная переменная для хранения экземпляра
+      let vramArtifactsInstance = null;
+      
+      function initVRAMArtifacts() {
+        // Останавливаем старый экземпляр если есть
+        if (vramArtifactsInstance) {
+          vramArtifactsInstance.stop();
+        }
+        vramArtifactsInstance = new VRAMArtifacts('vram-canvas');
+        vramArtifactsInstance.isAnimating = true;
+      }
+      
+      // Инициализация при загрузке и после ViewTransitions
+      document.addEventListener('DOMContentLoaded', initVRAMArtifacts);
+      document.addEventListener('astro:page-load', initVRAMArtifacts);
+    </script>
+    
+    <!-- Glitch trigger script -->
+<script is:inline>
+  // glitch-trigger.js
+  // Периодически применяет глитч-эффекты к фону
+
+  const glitchClasses = ['channel-shift', 'pixel-shift', 'block-corrupt', 'text-corrupt'];
+
+  function triggerBackgroundGlitch() {
+    const bgElement = document.querySelector('#encoding-errors');
+    
+    if (!bgElement) return;
+    
+    // Выбираем случайный класс глитча
+    const randomClass = glitchClasses[Math.floor(Math.random() * glitchClasses.length)];
+    
+    // Добавить data-text для channel-shift
+    if (randomClass === 'channel-shift' && bgElement.textContent) {
+      bgElement.setAttribute('data-text', bgElement.textContent.substring(0, 500));
+    }
+    
+    // Применяем глитч
+    bgElement.classList.add(randomClass);
+    
+    // Убираем через 150-300ms
+    const duration = Math.random() * 150 + 150;
+    setTimeout(() => {
+      bgElement.classList.remove(randomClass);
+      if (randomClass === 'channel-shift') {
+        bgElement.removeAttribute('data-text');
+      }
+    }, duration);
   }
 
-  .wave-svg {
-    position: absolute;
-    width: 120%; 
-    height: 100vh;
-    min-height: 100vh;
-    left: -10%; 
+  // Запускать каждые 100-300ms (ОЧЕНЬ ЧАСТО для фона)
+  let glitchTimeout = null;
+  
+  function scheduleNextGlitch() {
+    if (glitchTimeout) clearTimeout(glitchTimeout);
+    
+    const delay = Math.random() * 100 + 3000; // 100-300ms
+    glitchTimeout = setTimeout(() => {
+      triggerBackgroundGlitch();
+      scheduleNextGlitch();
+    }, delay);
   }
-
-  .wave-path {
-    opacity: 0.7;
-    transform-origin: center;
-  }
-
-  .wave-1 {
-    fill: #d8dee9 
-  }
-
-  .wave-2 {
-    fill: #e5e9f0 
-  }
-
-  .wave-3 {
-    fill: #eceff4
-  }
-
-  .wave-4 {
-    fill: #e5e9f0 
-  }
-
-  .wave-5 {
-    fill: #eceff4
-  }
-
-  .wave-6 {
-    fill: #d8dee9 
-  }
-
-  .wave-7 {
-    fill: #e5e9f0 
-  }
-
-  .wave-8 {
-    fill: #d8dee9
-  }
-
-  .wave-9 {
-    fill: #eceff4
-  }
-
-  .dark .wave-1 {
-  fill: #434c5e;
-}
-
-.dark .wave-2 {
-  fill: #4c566a;
-}
-
-.dark .wave-3 {
-  fill: #434c5e;
-}
-
-.dark .wave-4 {
-  fill: #3b4252;
-}
-
-.dark .wave-5 {
-  fill: #434c5e;
-}
-
-.dark .wave-6 {
-  fill: #3b4252;
-}
-
-.dark .wave-7 {
-  fill: #434c5e;
-}
-
-.dark .wave-8 {
-  fill: #4c566a;
-}
-
-.dark .wave-9 {
-  fill: #4c566a;
-}
-
-  /* Адаптивность */
-  @media (max-width: 768px) {
-    .wave-svg {
-      width: 140%; 
-      left: -20%;
+  
+  function stopGlitches() {
+    if (glitchTimeout) {
+      clearTimeout(glitchTimeout);
+      glitchTimeout = null;
     }
   }
 
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-</style>
+  // Инициализация при загрузке и после ViewTransitions
+  document.addEventListener('DOMContentLoaded', scheduleNextGlitch);
+  document.addEventListener('astro:page-load', scheduleNextGlitch);
+  document.addEventListener('astro:before-swap', stopGlitches);
+</script>
+  </body>
+</html>

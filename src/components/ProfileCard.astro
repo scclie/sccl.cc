@@ -35,98 +35,433 @@ if (currentTab === 'contacts') {
 
   <div class="card-footer">
     <span>{currentTab}.md</span>
-    <span class="symbol">;</span>
+    <div class="easter-egg-container">
+      <span class="vim-input" id="vim-input-display"></span>
+      <span class="symbol" id="vim-easter-egg">Type :qa! and press &ltEnter&gt</span>
+    </div>
   </div>
 </div>
 
 <script>
-  // Рандомизация цветов box-shadow
-  class CardShadowRandomizer {
+  // Простые пиксельные тени
+  class PixelShadowEffect {
     constructor() {
       this.card = document.querySelector('.card');
       if (!this.card) return;
       
-      this.colors = [
-        'rgba(255, 0, 255, 0.4)',   // Маджента
-        'rgba(0, 255, 255, 0.4)',   // Циан
-        'rgba(204, 255, 0, 0.3)',   // Салатовый
-        'rgba(255, 0, 136, 0.3)',   // Розовый
-        'rgba(136, 0, 255, 0.4)',   // Фиолетовый
-        'rgba(0, 255, 0, 0.3)',     // Зеленый
-      ];
-      
-      this.isAnimating = true;
-      this.animate();
+      this.accentColor = getComputedStyle(this.card).getPropertyValue('--card-accent').trim();
     }
     
-    getRandomColor() {
-      return this.colors[Math.floor(Math.random() * this.colors.length)];
+    generatePixelShadows() {
+      const shadows = [];
+      shadows.push(`4px 0 0 ${this.accentColor}`);
+      shadows.push(`-4px 0 0 ${this.accentColor}`);
+      shadows.push(`0 4px 0 ${this.accentColor}`);
+      shadows.push(`0 -4px 0 ${this.accentColor}`);
+      return shadows.join(', ');
     }
     
-    updateShadow() {
+    applyShadow() {
       if (!this.card) return;
+      this.card.style.boxShadow = this.generatePixelShadows();
+    }
+  }
+
+  // Пасхалка для Vim-команды :qa!
+  (function initVimEasterEgg() {
+    // Полностью очищаем предыдущее состояние
+    const oldOverlay = document.getElementById('black-overlay');
+    if (oldOverlay) oldOverlay.remove();
+    const oldReboot = document.getElementById('reboot-sequence');
+    if (oldReboot) oldReboot.remove();
+    
+    let userInput = '';
+    const targetCommand = ':qa!';
+    let easterEggElement = null;
+    let inputDisplay = null;
+    let explosionTimeout = null;
+    let reappearTimeout = null;
+    let glitchInterval = null;
+    let rebootInterval = null;
+    
+    function getElements() {
+      easterEggElement = document.getElementById('vim-easter-egg');
+      inputDisplay = document.getElementById('vim-input-display');
+    }
+    
+    function resetEasterEgg() {
+      userInput = '';
+      if (inputDisplay) {
+        inputDisplay.textContent = '';
+        inputDisplay.style.opacity = '0';
+        inputDisplay.style.color = ''; // Сбрасываем цвет
+      }
+      if (easterEggElement) {
+        easterEggElement.textContent = 'Type :qa! and press <Enter>';
+        easterEggElement.style.color = '';
+        easterEggElement.style.animation = '';
+      }
       
-      const accentColor = getComputedStyle(this.card).getPropertyValue('--card-accent').trim();
+      if (explosionTimeout) clearTimeout(explosionTimeout);
+      if (reappearTimeout) clearTimeout(reappearTimeout);
+      if (glitchInterval) clearInterval(glitchInterval);
+      if (rebootInterval) clearTimeout(rebootInterval);
       
-      // Базовые тени (как раньше)
-      const baseShadows = [
-        `4px 0 0 ${accentColor}`,
-        `-4px 0 0 ${accentColor}`,
-        `0 4px 0 ${accentColor}`,
-        `0 -4px 0 ${accentColor}`
+      const overlay = document.getElementById('black-overlay');
+      if (overlay) overlay.remove();
+      
+      const rebootSeq = document.getElementById('reboot-sequence');
+      if (rebootSeq) rebootSeq.remove();
+    }
+    
+    function init() {
+      // Получаем свежие ссылки
+      getElements();
+      
+      // Сбрасываем состояние
+      resetEasterEgg();
+      
+      // Устанавливаем правильные цвета
+      if (inputDisplay && easterEggElement) {
+        const cardStyle = getComputedStyle(document.querySelector('.card'));
+        const accentColor = cardStyle.getPropertyValue('--card-accent').trim();
+        
+        // Применяем цвет акцента к полю ввода
+        inputDisplay.style.color = accentColor;
+        
+        // Убираем все лишние стили
+        inputDisplay.style.opacity = '0';
+        inputDisplay.style.transition = 'none';
+      }
+      
+      // Переустанавливаем обработчик
+      document.removeEventListener('keypress', handleKeyPress);
+      document.addEventListener('keypress', handleKeyPress);
+    }
+    
+    function updateInputDisplay() {
+      if (!inputDisplay) return;
+      
+      if (userInput.length > 0) {
+        inputDisplay.textContent = userInput;
+        inputDisplay.style.opacity = '1';
+      } else {
+        inputDisplay.textContent = '';
+        inputDisplay.style.opacity = '0';
+      }
+    }
+    
+    function handleKeyPress(e) {
+      if (!easterEggElement || !inputDisplay) return;
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      
+      userInput += e.key;
+      
+      if (userInput.length > targetCommand.length) {
+        userInput = userInput.slice(-targetCommand.length);
+      }
+      
+      updateInputDisplay();
+      
+      if (userInput === targetCommand) {
+        activateEasterEgg();
+        userInput = '';
+        updateInputDisplay();
+      }
+    }
+    
+    function terminalGlitch(element, intensity = 1) {
+      if (!element) return;
+      const chars = '!@#$%^&*()_+{}:"<>?|[];\',./';
+      const originalText = element.textContent;
+      let glitchCount = 0;
+      
+      const glitch = setInterval(() => {
+        if (glitchCount > 10) {
+          clearInterval(glitch);
+          element.textContent = originalText;
+          return;
+        }
+        
+        let glitched = '';
+        for (let i = 0; i < originalText.length; i++) {
+          if (Math.random() > 0.7) {
+            glitched += chars[Math.floor(Math.random() * chars.length)];
+          } else {
+            glitched += originalText[i];
+          }
+        }
+        element.textContent = glitched;
+        glitchCount++;
+      }, 50);
+    }
+    
+    function showRebootSequence() {
+      const body = document.body;
+      let step = 0;
+      
+      const rebootMessages = [
+        '[  OK  ] Received SIGTERM from PID 1 (init)',
+        '[  OK  ] Unmounting filesystems...',
+        '[  OK  ] Deactivating swap...',
+        '[  OK  ] Stopping user services...',
+        '[  OK  ] Stopping system services...',
+        '[  OK  ] Unmounting /home',
+        '[  OK  ] Unmounting /tmp',
+        '[  OK  ] Killing remaining processes...',
+        '[  OK  ] All processes terminated',
+        '[  OK  ] Syncing disks...',
+        '[  OK  ] Unmounting /',
+        '[ .... ] System is going down for reboot',
+        '[  OK  ] Reboot initiated',
+        '',
+        '⠀⠀⠀⠀⠀⠀⢀⡤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀',
+        '⠀⠀⠀⠀⠀⢀⡏⠀⠀⠈⠳⣄⠀⠀⠀⠀⠀⣀⠴⠋⠉⠉⡆⠀⠀⠀⠀⠀',
+        '⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠈⠉⠉⠙⠓⠚⠁⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀',
+        '⠀⠀⠀⠀⢀⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣄⠀⠀⠀⠀',
+        '⠀⠀⠀⠀⡞⠀⠀⠀⠀⠀⠶⠀⠀⠀⠀⠀⠀⠦⠀⠀⠀⠀⠀⠸⡆⠀⠀⠀',
+        '⢠⣤⣶⣾⣧⣤⣤⣀⡀⠀⠀⠀⠀⠈⠀⠀⠀⢀⡤⠴⠶⠤⢤⡀⣧⣀⣀⠀',
+        '⠻⠶⣾⠁⠀⠀⠀⠀⠙⣆⠀⠀⠀⠀⠀⠀⣰⠋⠀⠀⠀⠀⠀⢹⣿⣭⣽⠇',
+        '⠀⠀⠙⠤⠴⢤⡤⠤⠤⠋⠉⠉⠉⠉⠉⠉⠉⠳⠖⠦⠤⠶⠦⠞⠁⠀⠀⠀',
+        '',
+        '',
+        '',
+        'Restarting system...',
+        '',
+        ''
       ];
       
-      // МНОГО рандомных цветных теней по всей рамке равномерно
-      const randomShadows = [];
+      const rebootContainer = document.createElement('div');
+      rebootContainer.id = 'reboot-sequence';
+      rebootContainer.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #00ff00;
+        font-size: 18px;
+        font-family: 'VT323', 'Courier New', monospace;
+        z-index: 10000;
+        white-space: pre;
+        text-align: left;
+        line-height: 1.8;
+        text-shadow: 0 0 5px #00ff00;
+        background: #000000;
+        padding: 30px;
+        border: 2px solid #00ff00;
+        max-width: 600px;
+        width: 90%;
+      `;
+      body.appendChild(rebootContainer);
       
-      // Верх и низ
-      for (let i = 0; i < 8; i++) {
-        const x = Math.random() * 24 - 12;
-        const y = Math.random() > 0.5 ? Math.random() * 8 + 8 : -(Math.random() * 8 + 8);
-        randomShadows.push(`${x}px ${y}px 0 ${this.getRandomColor()}`);
+      function printNextMessage() {
+        if (step < rebootMessages.length) {
+          const line = document.createElement('div');
+          line.textContent = rebootMessages[step];
+          line.style.cssText = `
+            opacity: 1;
+            color: #00ff00;
+            margin-bottom: 4px;
+            font-family: 'VT323', 'Courier New', monospace;
+          `;
+          rebootContainer.appendChild(line);
+          
+          step++;
+          rebootInterval = setTimeout(printNextMessage, 400 + Math.random() * 300);
+        } else {
+          const cursor = document.createElement('span');
+          cursor.textContent = '_';
+          cursor.style.cssText = `
+            color: #00ff00;
+            font-size: 24px;
+            animation: blink 1s step-end infinite;
+            margin-left: 4px;
+          `;
+          rebootContainer.appendChild(cursor);
+        }
       }
       
-      // Лево и право
-      for (let i = 0; i < 8; i++) {
-        const x = Math.random() > 0.5 ? Math.random() * 8 + 8 : -(Math.random() * 8 + 8);
-        const y = Math.random() * 24 - 12;
-        randomShadows.push(`${x}px ${y}px 0 ${this.getRandomColor()}`);
-      }
-      
-      // Углы
-      for (let i = 0; i < 4; i++) {
-        const x = Math.random() * 16 - 8;
-        const y = Math.random() * 16 - 8;
-        randomShadows.push(`${x}px ${y}px 0 ${this.getRandomColor()}`);
-      }
-      
-      this.card.style.boxShadow = [...baseShadows, ...randomShadows].join(', ');
+      printNextMessage();
     }
     
-    animate() {
-      if (!this.isAnimating) return;
-      this.updateShadow();
-      setTimeout(() => this.animate(), 100 + Math.random() * 150);
+    function activateEasterEgg() {
+      if (explosionTimeout) clearTimeout(explosionTimeout);
+      if (reappearTimeout) clearTimeout(reappearTimeout);
+      if (glitchInterval) clearInterval(glitchInterval);
+      if (rebootInterval) clearTimeout(rebootInterval);
+      
+      getElements();
+      
+      if (easterEggElement) {
+        easterEggElement.textContent = 'FORCE EXIT INITIATED';
+        easterEggElement.style.color = '#ff0000';
+      }
+      
+      if (inputDisplay) {
+        inputDisplay.style.opacity = '0';
+      }
+      
+      const card = document.querySelector('.card');
+      const main = document.querySelector('main');
+      const body = document.body;
+      
+      if (!card) return;
+      
+      const blackOverlay = document.createElement('div');
+      blackOverlay.id = 'black-overlay';
+      blackOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000000;
+        z-index: 9998;
+        opacity: 0;
+        transition: opacity 0.5s;
+        pointer-events: none;
+      `;
+      body.appendChild(blackOverlay);
+      
+      if (easterEggElement) terminalGlitch(easterEggElement, 2);
+      
+      let shakeStep = 0;
+      
+      glitchInterval = setInterval(() => {
+        if (shakeStep < 15) {
+          const intensity = (15 - shakeStep) * 1.5;
+          card.style.transform = `translate(${(Math.random() * intensity * 2) - intensity}px, ${(Math.random() * intensity) - intensity/2}px)`;
+          card.style.opacity = Math.random() > 0.7 ? '0.9' : '1';
+          
+          if (shakeStep > 8) {
+            card.style.filter = `brightness(${1 + Math.random()})`;
+          }
+          shakeStep++;
+        } else {
+          clearInterval(glitchInterval);
+          
+          blackOverlay.style.opacity = '1';
+          card.style.transform = 'translate(0, 0) scale(0)';
+          card.style.opacity = '0';
+          
+          if (main) {
+            main.style.opacity = '0';
+          }
+          
+          showRebootSequence();
+          
+          reappearTimeout = setTimeout(() => {
+            const rebootSeq = document.getElementById('reboot-sequence');
+            if (rebootSeq) rebootSeq.remove();
+            
+            blackOverlay.style.opacity = '0';
+            
+            setTimeout(() => {
+              blackOverlay.remove();
+            }, 500);
+            
+            if (main) {
+              main.style.opacity = '1';
+            }
+            
+            card.style.transform = 'translate(0, 0) scale(1)';
+            card.style.opacity = '1';
+            card.style.filter = 'none';
+            card.style.boxShadow = `
+              4px 0 0 var(--card-accent),
+              -4px 0 0 var(--card-accent),
+              0 4px 0 var(--card-accent),
+              0 -4px 0 var(--card-accent)
+            `;
+            
+            if (easterEggElement) {
+              easterEggElement.textContent = 'Type :qa! and press <Enter>';
+              easterEggElement.style.color = '';
+            }
+            
+            userInput = '';
+            if (inputDisplay) {
+              inputDisplay.textContent = '';
+              inputDisplay.style.opacity = '0';
+            }
+          }, 14000);
+        }
+      }, 60);
     }
     
-    stop() {
-      this.isAnimating = false;
+    // Запускаем при загрузке
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
     }
-  }
-  
-  // Глобальная переменная
-  let cardShadowInstance = null;
-  
-  function initCardShadow() {
-    if (cardShadowInstance) {
-      cardShadowInstance.stop();
-    }
-    cardShadowInstance = new CardShadowRandomizer();
-  }
-  
-  // Инициализация при загрузке и после ViewTransitions
-  document.addEventListener('DOMContentLoaded', initCardShadow);
-  document.addEventListener('astro:page-load', initCardShadow);
+    
+    // Для ViewTransitions - полная перезагрузка
+    document.addEventListener('astro:page-load', () => {
+      // Удаляем все старые элементы
+      const oldOverlay = document.getElementById('black-overlay');
+      if (oldOverlay) oldOverlay.remove();
+      const oldReboot = document.getElementById('reboot-sequence');
+      if (oldReboot) oldReboot.remove();
+      
+      // Запускаем инициализацию с задержкой
+      setTimeout(init, 50);
+    });
+    
+    // Очищаем при уходе
+    document.addEventListener('astro:before-swap', () => {
+      document.removeEventListener('keypress', handleKeyPress);
+      const overlay = document.getElementById('black-overlay');
+      if (overlay) overlay.remove();
+      const reboot = document.getElementById('reboot-sequence');
+      if (reboot) reboot.remove();
+    });
+    
+    // Добавляем стили
+    const style = document.createElement('style');
+    style.textContent = `
+      .easter-egg-container {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      
+      .vim-input {
+        font-size: 20px;
+        opacity: 0;
+        transition: none;
+        font-family: 'VT323', 'Courier New', monospace;
+        background: transparent;
+        padding: 0;
+        letter-spacing: 1px;
+      }
+      
+      .vim-input::before {
+        content: '>';
+        margin-right: 4px;
+        opacity: 0.7;
+        font-family: 'VT323', 'Courier New', monospace;
+      }
+      
+      .card-footer {
+        transition: none;
+      }
+      
+      main {
+        transition: none;
+      }
+      
+      .card {
+        transition: none;
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  })();
 </script>
 
 <style>
@@ -138,7 +473,14 @@ if (currentTab === 'contacts') {
     position: relative;
     padding: 25px;
     border: 2px solid var(--card-accent);
-    /* box-shadow добавляется через JavaScript */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    will-change: transform, opacity, filter;
+    box-shadow: 4px 0 0 var(--card-accent),
+                -4px 0 0 var(--card-accent),
+                0 4px 0 var(--card-accent),
+                0 -4px 0 var(--card-accent);
   }
   
   .card-header {
@@ -155,6 +497,8 @@ if (currentTab === 'contacts') {
     height: 80px;
     border: 2px solid var(--card-accent);
     image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
     flex-shrink: 0;
   }
   
@@ -168,11 +512,6 @@ if (currentTab === 'contacts') {
     color: var(--card-accent);
     font-size: 30px;
     font-weight: bold;
-  }
-  
-  .status {
-    color: var(--fg);
-    font-size: 20px;
   }
   
   .bio {
@@ -201,9 +540,10 @@ if (currentTab === 'contacts') {
   
   .symbol {
     color: var(--card-accent);
+    transition: none;
+    cursor: default;
   }
   
-  /* Responsive design - Mobile */
   @media (max-width: 767px) {
     .card {
       margin: 5px;
@@ -224,6 +564,22 @@ if (currentTab === 'contacts') {
     .card-content {
       font-size: 12px;
       min-height: 20px;
+    }
+    
+    .card-footer {
+      font-size: 16px;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+    
+    .easter-egg-container {
+      justify-content: center;
+    }
+    
+    #reboot-sequence {
+      font-size: 14px !important;
+      padding: 15px !important;
     }
   }
 </style>

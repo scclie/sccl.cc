@@ -1,382 +1,603 @@
 ---
-import '../styles/global.css';
-import '../styles/background-layers.css';
-import { ViewTransitions } from 'astro:transitions';
+import "../styles/global.css";
+import "../styles/background-layers.css";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
-  title: string;
-  description?: string;
+    title: string;
+    description?: string;
 }
 
 const { title, description = "Personal site" } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/gif" href="/img/logo.gif" />
-    <title>{title}</title>
-    <ViewTransitions />
-  </head>
-  <body>
-    <!-- Encoding errors background -->
-    <div id="encoding-errors"></div>
-    
-    <!-- VRAM artifacts canvas -->
-    <canvas id="vram-canvas"></canvas>
-    
-    <slot />
-    
-    <!-- Encoding errors script -->
-    <script is:inline>
-      class EncodingErrors {
-        constructor() {
-          this.container = document.getElementById('encoding-errors');
-          if (!this.container) return;
-          
-          this.errorChars = [
-            'KERNEL PANIC', 'KERNEL OOPS', 'SYSTEM HALTED', 'WATCHDOG TIMEOUT',
-            'RCU STALL', 'LOCKUP DETECTED', 'SOFT LOCKUP', 'HARD LOCKUP',
-            'IRQ CONFLICT', 'IOMMU ERROR', 'DMA MAPPING ERROR', 'PCI BIOS BUG',
-            'ACPI ERROR', 'APIC ERROR', 'SMP ERROR', 'EFI FAULT',
-            'VFS: BUSY INODES', 'EXT4 FILESYSTEM ERROR', 'XFS CORRUPTION',
-            'BTRFS: DEVICE ERROR', 'ZFS POOL CORRUPTED', 'F2FS BUG',
-            'SWAP: BAD PAGE', 'ZRAM: COMPRESSION ERROR',
-            'SEGMENTATION FAULT', 'BUS ERROR (BAD MEMORY ACCESS)',
-            'ILLEGAL INSTRUCTION (SIGILL)', 'FLOATING POINT EXCEPTION',
-            'STACK OVERFLOW (SIGSEGV)', 'ABORT (SIGABRT)', 'TRAP (SIGTRAP)',
-            'TEXT FILE BUSY (ETXTBSY)', 'CROSS-DEVICE LINK (EXDEV)',
-            'INVALID REQUEST (EINVAL)', 'IOCTL ERROR (ENOTTY)',
-            'NETWORK UNREACHABLE (ENETUNREACH)', 'HOST UNREACHABLE (EHOSTUNREACH)',
-            'thread panicked at', 'index out of bounds', 'slice index out of range',
-            'cargo: error: failed to parse manifest',
-            'cargo: error: no matching version found',
-            'cargo: error: dependency resolution failed',
-            '0xDEADBEEF', '0xCAFEBABE',
-            '0x8BADF00D', '0xFEEDFACE',
-            '0xDEADC0DE', '0xBAADF00D',
-            '0xABADBAB', '0xDEADDEAD',
-            '0x0', '0x1', '0xDEAD', '0xBEEF', '0xCODE', '0xFFFF',
-            '0x7FFF', '0x8000', '0xFFFFFFFF', '0xDEADBEEF',
-            '0xFF00FF', '0x4F3A', '0xBADC0DE', '0xC0DEBABE',
-            '����', '����������������������������������������', '��������', '��������������', 
-            '�', '�', '�', '�', '�', '�', '�', '�',
-            '▐', '▐', '▄', '▐', '▒', '▒▒▒', '▐▄', '█', '▓', '░',
-            ' ', '  ', '     ', '     ', '       ', '     ', '   ', '          ', '    ', '      ',
-            '  ', '    ', '  ', '     ', '        ', '     ', '   ', '       ', '         ', '      ',
-            'segmentation fault', 'bus error', 'floating point exception',
-            'illegal instruction', 'bad system call', 'trace trap',
-            'memory not mapped', 'access violation', 'general protection fault',
-            'double fault', 'page fault', 'stack fault', 'alignment check',
-            '/usr/bin', '/etc', '/home', '/var', '/tmp', '/opt',
-            '~/.config', '~/.local', '~/.cache', '~/.bashrc',
-            'PATH=$PATH', 'export', 'alias', 'source', '. ./',
-            'borrow of moved value', 'cannot borrow as mutable',
-            'lifetime mismatch', 'type mismatch', 'expected struct',
-            'unused variable', 'dead code', 'unconditional recursion',
-            'unreachable pattern', 'non-exhaustive patterns',
-            'mov', 'push', 'pop', 'call', 'ret', 'jmp', 'je', 'jne',
-            'cmp', 'add', 'sub', 'mul', 'div', 'and', 'or', 'xor',
-            'nop', 'int', 'syscall', 'iret', 'sti', 'cli', 'hlt',
-            '>>>', '<<<', '===', '!==', '<=>', '||', '&&', '??',
-            '::', '=>', '->', '<-', '-->', '<--', '~~', '^^',
-            'PID 1', 'init', 'systemd', 'kernel thread', 'kworker',
-            'rcu_sched', 'migration', 'watchdog', 'ksoftirqd',
-            'Out of memory', 'Killed process', 'Cannot allocate memory',
-            'Resource temporarily unavailable', 'Operation not permitted',
-            'No such file or directory', 'Permission denied',
-            'Connection refused', 'Network is unreachable',
-            'Broken pipe', 'Connection reset by peer'
-          ];
-          
-          this.textGrid = [];
-          this.generateText();
-          this.startAnimation();
-        }
-        
-        generateText() {
-          const lines = Math.ceil(window.innerHeight / 32);
-          const charsPerLine = Math.ceil(window.innerWidth / 48);
-          
-          this.textGrid = [];
-          for (let i = 0; i < lines; i++) {
-            const line = [];
-            for (let j = 0; j < charsPerLine; j++) {
-              line.push(this.errorChars[Math.floor(Math.random() * this.errorChars.length)]);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/gif" href="/img/logo.gif" />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body>
+        <!-- Encoding errors background -->
+        <div id="encoding-errors"></div>
+
+        <!-- VRAM artifacts canvas -->
+        <canvas id="vram-canvas"></canvas>
+
+        <slot />
+
+        <!-- Encoding errors script -->
+        <script is:inline>
+            class EncodingErrors {
+                constructor() {
+                    this.container = document.getElementById("encoding-errors");
+                    if (!this.container) return;
+
+                    this.errorChars = [
+                        "KERNEL PANIC",
+                        "KERNEL OOPS",
+                        "SYSTEM HALTED",
+                        "WATCHDOG TIMEOUT",
+                        "RCU STALL",
+                        "LOCKUP DETECTED",
+                        "SOFT LOCKUP",
+                        "HARD LOCKUP",
+                        "IRQ CONFLICT",
+                        "IOMMU ERROR",
+                        "DMA MAPPING ERROR",
+                        "PCI BIOS BUG",
+                        "ACPI ERROR",
+                        "APIC ERROR",
+                        "SMP ERROR",
+                        "EFI FAULT",
+                        "VFS: BUSY INODES",
+                        "EXT4 FILESYSTEM ERROR",
+                        "XFS CORRUPTION",
+                        "BTRFS: DEVICE ERROR",
+                        "ZFS POOL CORRUPTED",
+                        "F2FS BUG",
+                        "SWAP: BAD PAGE",
+                        "ZRAM: COMPRESSION ERROR",
+                        "SEGMENTATION FAULT",
+                        "BUS ERROR (BAD MEMORY ACCESS)",
+                        "ILLEGAL INSTRUCTION (SIGILL)",
+                        "FLOATING POINT EXCEPTION",
+                        "STACK OVERFLOW (SIGSEGV)",
+                        "ABORT (SIGABRT)",
+                        "TRAP (SIGTRAP)",
+                        "TEXT FILE BUSY (ETXTBSY)",
+                        "CROSS-DEVICE LINK (EXDEV)",
+                        "INVALID REQUEST (EINVAL)",
+                        "IOCTL ERROR (ENOTTY)",
+                        "NETWORK UNREACHABLE (ENETUNREACH)",
+                        "HOST UNREACHABLE (EHOSTUNREACH)",
+                        "thread panicked at",
+                        "index out of bounds",
+                        "slice index out of range",
+                        "cargo: error: failed to parse manifest",
+                        "cargo: error: no matching version found",
+                        "cargo: error: dependency resolution failed",
+                        "0xDEADBEEF",
+                        "0xCAFEBABE",
+                        "0x8BADF00D",
+                        "0xFEEDFACE",
+                        "0xDEADC0DE",
+                        "0xBAADF00D",
+                        "0xABADBAB",
+                        "0xDEADDEAD",
+                        "0x0",
+                        "0x1",
+                        "0xDEAD",
+                        "0xBEEF",
+                        "0xCODE",
+                        "0xFFFF",
+                        "0x7FFF",
+                        "0x8000",
+                        "0xFFFFFFFF",
+                        "0xDEADBEEF",
+                        "0xFF00FF",
+                        "0x4F3A",
+                        "0xBADC0DE",
+                        "0xC0DEBABE",
+                        "����",
+                        "����������������������������������������",
+                        "��������",
+                        "��������������",
+                        "�",
+                        "�",
+                        "�",
+                        "�",
+                        "�",
+                        "�",
+                        "�",
+                        "�",
+                        "▐",
+                        "▐",
+                        "▄",
+                        "▐",
+                        "▒",
+                        "▒▒▒",
+                        "▐▄",
+                        "█",
+                        "▓",
+                        "░",
+                        " ",
+                        "  ",
+                        "     ",
+                        "     ",
+                        "       ",
+                        "     ",
+                        "   ",
+                        "          ",
+                        "    ",
+                        "      ",
+                        "  ",
+                        "    ",
+                        "  ",
+                        "     ",
+                        "        ",
+                        "     ",
+                        "   ",
+                        "       ",
+                        "         ",
+                        "      ",
+                        "segmentation fault",
+                        "bus error",
+                        "floating point exception",
+                        "illegal instruction",
+                        "bad system call",
+                        "trace trap",
+                        "memory not mapped",
+                        "access violation",
+                        "general protection fault",
+                        "double fault",
+                        "page fault",
+                        "stack fault",
+                        "alignment check",
+                        "/usr/bin",
+                        "/etc",
+                        "/home",
+                        "/var",
+                        "/tmp",
+                        "/opt",
+                        "~/.config",
+                        "~/.local",
+                        "~/.cache",
+                        "~/.bashrc",
+                        "PATH=$PATH",
+                        "export",
+                        "alias",
+                        "source",
+                        ". ./",
+                        "borrow of moved value",
+                        "cannot borrow as mutable",
+                        "lifetime mismatch",
+                        "type mismatch",
+                        "expected struct",
+                        "unused variable",
+                        "dead code",
+                        "unconditional recursion",
+                        "unreachable pattern",
+                        "non-exhaustive patterns",
+                        "mov",
+                        "push",
+                        "pop",
+                        "call",
+                        "ret",
+                        "jmp",
+                        "je",
+                        "jne",
+                        "cmp",
+                        "add",
+                        "sub",
+                        "mul",
+                        "div",
+                        "and",
+                        "or",
+                        "xor",
+                        "nop",
+                        "int",
+                        "syscall",
+                        "iret",
+                        "sti",
+                        "cli",
+                        "hlt",
+                        ">>>",
+                        "<<<",
+                        "===",
+                        "!==",
+                        "<=>",
+                        "||",
+                        "&&",
+                        "??",
+                        "::",
+                        "=>",
+                        "->",
+                        "<-",
+                        "-->",
+                        "<--",
+                        "~~",
+                        "^^",
+                        "PID 1",
+                        "init",
+                        "systemd",
+                        "kernel thread",
+                        "kworker",
+                        "rcu_sched",
+                        "migration",
+                        "watchdog",
+                        "ksoftirqd",
+                        "Out of memory",
+                        "Killed process",
+                        "Cannot allocate memory",
+                        "Resource temporarily unavailable",
+                        "Operation not permitted",
+                        "No such file or directory",
+                        "Permission denied",
+                        "Connection refused",
+                        "Network is unreachable",
+                        "Broken pipe",
+                        "Connection reset by peer",
+                    ];
+
+                    this.textGrid = [];
+                    this.generateText();
+                    this.startAnimation();
+                }
+
+                generateText() {
+                    const lines = Math.ceil(window.innerHeight / 32);
+                    const charsPerLine = Math.ceil(window.innerWidth / 96);
+
+                    this.textGrid = [];
+                    for (let i = 0; i < lines; i++) {
+                        const line = [];
+                        for (let j = 0; j < charsPerLine; j++) {
+                            line.push(
+                                this.errorChars[
+                                    Math.floor(
+                                        Math.random() * this.errorChars.length,
+                                    )
+                                ],
+                            );
+                        }
+                        this.textGrid.push(line);
+                    }
+
+                    this.render();
+                }
+
+                render() {
+                    const text = this.textGrid
+                        .map((line) => line.join(" "))
+                        .join("\n");
+                    this.container.textContent = text;
+                }
+
+                updateRandomChars() {
+                    if (this.textGrid.length === 0) return;
+
+                    const updateCount = Math.floor(Math.random() * 100) + 50;
+
+                    for (let i = 0; i < updateCount; i++) {
+                        const row = Math.floor(
+                            Math.random() * this.textGrid.length,
+                        );
+                        const col = Math.floor(
+                            Math.random() * this.textGrid[row].length,
+                        );
+
+                        this.textGrid[row][col] =
+                            this.errorChars[
+                                Math.floor(
+                                    Math.random() * this.errorChars.length,
+                                )
+                            ];
+                    }
+
+                    this.render();
+                }
+
+                startAnimation() {
+                    if (this.updateInterval) clearInterval(this.updateInterval);
+                    if (this.regenerateInterval)
+                        clearInterval(this.regenerateInterval);
+
+                    this.updateInterval = setInterval(
+                        () => {
+                            this.updateRandomChars();
+                        },
+                        Math.random() * 50 + 50,
+                    );
+
+                    this.regenerateInterval = setInterval(
+                        () => {
+                            this.generateText();
+                        },
+                        Math.random() * 100 + 2000,
+                    );
+                }
+
+                stop() {
+                    if (this.updateInterval) clearInterval(this.updateInterval);
+                    if (this.regenerateInterval)
+                        clearInterval(this.regenerateInterval);
+                }
             }
-            this.textGrid.push(line);
-          }
-          
-          this.render();
-        }
-        
-        render() {
-          const text = this.textGrid.map(line => line.join(' ')).join('\n');
-          this.container.textContent = text;
-        }
-        
-        updateRandomChars() {
-          if (this.textGrid.length === 0) return;
-          
-          const updateCount = Math.floor(Math.random() * 30) + 30;
-          
-          for (let i = 0; i < updateCount; i++) {
-            const row = Math.floor(Math.random() * this.textGrid.length);
-            const col = Math.floor(Math.random() * this.textGrid[row].length);
-            
-            this.textGrid[row][col] = this.errorChars[Math.floor(Math.random() * this.errorChars.length)];
-          }
-          
-          this.render();
-        }
-        
-        startAnimation() {
-          if (this.updateInterval) clearInterval(this.updateInterval);
-          if (this.regenerateInterval) clearInterval(this.regenerateInterval);
 
-          this.updateInterval = setInterval(() => {
-            this.updateRandomChars();
-          }, Math.random() * 50 + 30);
+            let encodingErrorsInstance = null;
 
-          this.regenerateInterval = setInterval(() => {
-            this.generateText();
-          }, (Math.random() * 100) + 3000);
-        }
-        
-        stop() {
-          if (this.updateInterval) clearInterval(this.updateInterval);
-          if (this.regenerateInterval) clearInterval(this.regenerateInterval);
-        }
-      }
-      
-      let encodingErrorsInstance = null;
-      
-      function initEncodingErrors() {
-
-        if (encodingErrorsInstance) {
-          encodingErrorsInstance.stop();
-        }
-        encodingErrorsInstance = new EncodingErrors();
-      }
-
-      document.addEventListener('DOMContentLoaded', initEncodingErrors);
-      document.addEventListener('astro:page-load', initEncodingErrors);
-    </script>
-    
-    <!-- VRAM Artifacts script -->
-    <script is:inline>
-      // vram-artifacts.js
-      // Процедурная генерация артефактов отвала видеопамяти
-
-      class VRAMArtifacts {
-        constructor(canvasId) {
-          this.canvas = document.getElementById(canvasId);
-          if (!this.canvas) return;
-          
-          this.ctx = this.canvas.getContext('2d');
-          this.resize();
-          
-          window.addEventListener('resize', () => this.resize());
-          this.animate();
-        }
-        
-        resize() {
-          this.canvas.width = window.innerWidth;
-          this.canvas.height = window.innerHeight;
-        }
-        
-        generateNoise() {
-          const imageData = this.ctx.createImageData(this.canvas.width, this.canvas.height);
-          const data = imageData.data;
-          
-          for (let i = 0; i < data.length; i += 4) {
-            if (Math.random() > 0.95) {
-              const color = this.getRandomColor();
-              data[i] = color.r;
-              data[i + 1] = color.g;
-              data[i + 2] = color.b;
-              data[i + 3] = 255;
+            function initEncodingErrors() {
+                if (encodingErrorsInstance) {
+                    encodingErrorsInstance.stop();
+                }
+                encodingErrorsInstance = new EncodingErrors();
             }
-          }
-          
-          this.ctx.putImageData(imageData, 0, 0);
-        }
 
-        generatePixelShift() {
-          const blockCount = Math.floor(Math.random() * 10) + 5;
-          
-          for (let i = 0; i < blockCount; i++) {
-            const x = Math.random() * this.canvas.width;
-            const y = Math.random() * this.canvas.height;
-            const w = Math.random() * 300 + 100;
-            const h = Math.random() * 40 + 10;
-            
-            const imageData = this.ctx.getImageData(x, y, w, h);
-            const shiftX = (Math.random() - 0.5) * 40;
-            const shiftY = (Math.random() - 0.5) * 20;
-            
-            this.ctx.putImageData(imageData, x + shiftX, y + shiftY);
-          }
-        }
+            document.addEventListener("DOMContentLoaded", initEncodingErrors);
+            document.addEventListener("astro:page-load", initEncodingErrors);
+        </script>
 
-        generateChannelShift() {
-          const blockCount = Math.floor(Math.random() * 3) + 2;
-          
-          for (let i = 0; i < blockCount; i++) {
-            const x = Math.random() * this.canvas.width;
-            const y = Math.random() * this.canvas.height;
-            const w = Math.random() * 400 + 200;
-            const h = Math.random() * 150 + 80;
-            
-            const color = this.getRandomColor();
-            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.5)`;
-            this.ctx.fillRect(x, y, w, h);
-            
-            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`;
-            this.ctx.fillRect(x + 8, y, w, h);
-          }
-        }
-        
+        <!-- VRAM Artifacts script -->
+        <script is:inline>
+            // vram-artifacts.js
+            // Процедурная генерация артефактов отвала видеопамяти
 
-        generateBlockCorruption() {
-          const blockSize = 8;
-          const blocksX = Math.floor(this.canvas.width / blockSize);
-          const blocksY = Math.floor(this.canvas.height / blockSize);
-          
-          for (let i = 0; i < 30; i++) {
-            const bx = Math.floor(Math.random() * blocksX) * blockSize;
-            const by = Math.floor(Math.random() * blocksY) * blockSize;
-            const bw = Math.floor(Math.random() * 5 + 1) * blockSize;
-            const bh = Math.floor(Math.random() * 5 + 1) * blockSize;
-            
-            const color = this.getRandomColor();
-            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.6)`;
-            this.ctx.fillRect(bx, by, bw, bh);
-          }
-        }
-        
-        generateScanlines() {
-          const lineCount = Math.floor(Math.random() * 10) + 5;
-          
-          for (let i = 0; i < lineCount; i++) {
-            const y = Math.random() * this.canvas.height;
-            const color = this.getRandomColor();
-            const height = Math.random() * 3 + 1;
-            
-            this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.4)`;
-            this.ctx.fillRect(0, y, this.canvas.width, height);
-          }
-        }
-        
-        getRandomColor() {
-          const colors = [
-            { r: 255, g: 0, b: 255 }, 
-            { r: 0, g: 255, b: 255 },   
-            { r: 204, g: 255, b: 0 },  
-            { r: 255, g: 0, b: 136 },   
-            { r: 136, g: 0, b: 255 },   
-            { r: 0, g: 255, b: 0 },    
-          ];
-          
-          return colors[Math.floor(Math.random() * colors.length)];
-        }
+            class VRAMArtifacts {
+                constructor(canvasId) {
+                    this.canvas = document.getElementById(canvasId);
+                    if (!this.canvas) return;
 
-        fade() {
-          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
-          this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        }
+                    this.ctx = this.canvas.getContext("2d");
+                    this.resize();
 
-        animate() {
-          if (!this.isAnimating) return;
-          
-          this.fade();
-          
+                    window.addEventListener("resize", () => this.resize());
+                    this.animate();
+                }
 
-          if (Math.random() > 0.05) this.generateNoise();      // 95% 
-          if (Math.random() > 0.1) this.generatePixelShift();  // 90%
-          if (Math.random() > 0.15) this.generateChannelShift(); // 85% 
-          if (Math.random() > 0.2) this.generateBlockCorruption(); // 80% 
-          if (Math.random() > 0.25) this.generateScanlines(); // 75% 
-          this.animationFrame = requestAnimationFrame(() => this.animate());
-        }
-        
-        stop() {
-          this.isAnimating = false;
-          if (this.animationFrame) {
-            cancelAnimationFrame(this.animationFrame);
-          }
-        }
-      }
+                resize() {
+                    this.canvas.width = window.innerWidth;
+                    this.canvas.height = window.innerHeight;
+                }
 
-      let vramArtifactsInstance = null;
-      
-      function initVRAMArtifacts() {
+                generateNoise() {
+                    const imageData = this.ctx.createImageData(
+                        this.canvas.width,
+                        this.canvas.height,
+                    );
+                    const data = imageData.data;
 
-        if (vramArtifactsInstance) {
-          vramArtifactsInstance.stop();
-        }
-        vramArtifactsInstance = new VRAMArtifacts('vram-canvas');
-        vramArtifactsInstance.isAnimating = true;
-      }
-      
-      document.addEventListener('DOMContentLoaded', initVRAMArtifacts);
-      document.addEventListener('astro:page-load', initVRAMArtifacts);
-    </script>
-    
-    <!-- Glitch trigger script -->
-<script is:inline>
-  // glitch-trigger.js
+                    for (let i = 0; i < data.length; i += 4) {
+                        if (Math.random() > 0.95) {
+                            const color = this.getRandomColor();
+                            data[i] = color.r;
+                            data[i + 1] = color.g;
+                            data[i + 2] = color.b;
+                            data[i + 3] = 255;
+                        }
+                    }
 
-  const glitchClasses = ['channel-shift', 'pixel-shift', 'block-corrupt', 'text-corrupt'];
+                    this.ctx.putImageData(imageData, 0, 0);
+                }
 
-  function triggerBackgroundGlitch() {
-    const bgElement = document.querySelector('#encoding-errors');
-    
-    if (!bgElement) return;
-    
-    const randomClass = glitchClasses[Math.floor(Math.random() * glitchClasses.length)];
-    
-    if (randomClass === 'channel-shift' && bgElement.textContent) {
-      bgElement.setAttribute('data-text', bgElement.textContent.substring(0, 500));
-    }
-    
-    bgElement.classList.add(randomClass);
+                generatePixelShift() {
+                    const blockCount = Math.floor(Math.random() * 10) + 5;
 
-    const duration = Math.random() * 150 + 150;
-    setTimeout(() => {
-      bgElement.classList.remove(randomClass);
-      if (randomClass === 'channel-shift') {
-        bgElement.removeAttribute('data-text');
-      }
-    }, duration);
-  }
+                    for (let i = 0; i < blockCount; i++) {
+                        const x = Math.random() * this.canvas.width;
+                        const y = Math.random() * this.canvas.height;
+                        const w = Math.random() * 300 + 100;
+                        const h = Math.random() * 40 + 10;
 
+                        const imageData = this.ctx.getImageData(x, y, w, h);
+                        const shiftX = (Math.random() - 0.5) * 40;
+                        const shiftY = (Math.random() - 0.5) * 20;
 
-  let glitchTimeout = null;
-  
-  function scheduleNextGlitch() {
-    if (glitchTimeout) clearTimeout(glitchTimeout);
-    
-    const delay = Math.random() * 100 + 3000; // 100-3000ms
-    glitchTimeout = setTimeout(() => {
-      triggerBackgroundGlitch();
-      scheduleNextGlitch();
-    }, delay);
-  }
-  
-  function stopGlitches() {
-    if (glitchTimeout) {
-      clearTimeout(glitchTimeout);
-      glitchTimeout = null;
-    }
-  }
+                        this.ctx.putImageData(
+                            imageData,
+                            x + shiftX,
+                            y + shiftY,
+                        );
+                    }
+                }
 
-  document.addEventListener('DOMContentLoaded', scheduleNextGlitch);
-  document.addEventListener('astro:page-load', scheduleNextGlitch);
-  document.addEventListener('astro:before-swap', stopGlitches);
-</script>
-  </body>
+                generateChannelShift() {
+                    const blockCount = Math.floor(Math.random() * 3) + 2;
+
+                    for (let i = 0; i < blockCount; i++) {
+                        const x = Math.random() * this.canvas.width;
+                        const y = Math.random() * this.canvas.height;
+                        const w = Math.random() * 400 + 800;
+                        const h = Math.random() * 150 + 80;
+
+                        const color = this.getRandomColor();
+                        this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.5)`;
+                        this.ctx.fillRect(x, y, w, h);
+
+                        this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`;
+                        this.ctx.fillRect(x + 8, y, w, h);
+                    }
+                }
+
+                generateBlockCorruption() {
+                    const blockSize = 8;
+                    const blocksX = Math.floor(this.canvas.width / blockSize);
+                    const blocksY = Math.floor(this.canvas.height / blockSize);
+
+                    for (let i = 0; i < 30; i++) {
+                        const bx =
+                            Math.floor(Math.random() * blocksX) * blockSize;
+                        const by =
+                            Math.floor(Math.random() * blocksY) * blockSize;
+                        const bw =
+                            Math.floor(Math.random() * 5 + 1) * blockSize;
+                        const bh =
+                            Math.floor(Math.random() * 5 + 1) * blockSize;
+
+                        const color = this.getRandomColor();
+                        this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.6)`;
+                        this.ctx.fillRect(bx, by, bw, bh);
+                    }
+                }
+
+                generateScanlines() {
+                    const lineCount = Math.floor(Math.random() * 10) + 5;
+
+                    for (let i = 0; i < lineCount; i++) {
+                        const y = Math.random() * this.canvas.height;
+                        const color = this.getRandomColor();
+                        const height = Math.random() * 3 + 1;
+
+                        this.ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.4)`;
+                        this.ctx.fillRect(0, y, this.canvas.width, height);
+                    }
+                }
+
+                getRandomColor() {
+                    const colors = [
+                        { r: 255, g: 0, b: 255 },
+                        { r: 0, g: 255, b: 255 },
+                        { r: 204, g: 255, b: 0 },
+                        { r: 255, g: 0, b: 136 },
+                        { r: 136, g: 0, b: 255 },
+                        { r: 0, g: 255, b: 0 },
+                    ];
+
+                    return colors[Math.floor(Math.random() * colors.length)];
+                }
+
+                fade() {
+                    this.ctx.fillStyle = "rgba(0, 0, 0, 0.01)";
+                    this.ctx.fillRect(
+                        0,
+                        0,
+                        this.canvas.width,
+                        this.canvas.height,
+                    );
+                }
+
+                animate() {
+                    if (!this.isAnimating) return;
+
+                    this.fade();
+
+                    if (Math.random() > 0.05) this.generateNoise(); // 95%
+                    if (Math.random() > 0.1) this.generatePixelShift(); // 90%
+                    if (Math.random() > 0.15) this.generateChannelShift(); // 85%
+                    if (Math.random() > 0.2) this.generateBlockCorruption(); // 80%
+                    if (Math.random() > 0.25) this.generateScanlines(); // 75%
+                    this.animationFrame = requestAnimationFrame(() =>
+                        this.animate(),
+                    );
+                }
+
+                stop() {
+                    this.isAnimating = false;
+                    if (this.animationFrame) {
+                        cancelAnimationFrame(this.animationFrame);
+                    }
+                }
+            }
+
+            let vramArtifactsInstance = null;
+
+            function initVRAMArtifacts() {
+                if (vramArtifactsInstance) {
+                    vramArtifactsInstance.stop();
+                }
+                vramArtifactsInstance = new VRAMArtifacts("vram-canvas");
+                vramArtifactsInstance.isAnimating = true;
+            }
+
+            document.addEventListener("DOMContentLoaded", initVRAMArtifacts);
+            document.addEventListener("astro:page-load", initVRAMArtifacts);
+        </script>
+
+        <!-- Glitch trigger script -->
+        <script is:inline>
+            // glitch-trigger.js
+
+            const glitchClasses = [
+                "channel-shift",
+                "pixel-shift",
+                "block-corrupt",
+                "text-corrupt",
+            ];
+
+            function triggerBackgroundGlitch() {
+                const bgElement = document.querySelector("#encoding-errors");
+
+                if (!bgElement) return;
+
+                glitchClasses.forEach((cls) => bgElement.classList.remove(cls));
+
+                const randomClass =
+                    glitchClasses[
+                        Math.floor(Math.random() * glitchClasses.length)
+                    ];
+
+                if (randomClass === "channel-shift" && bgElement.textContent) {
+                    bgElement.setAttribute(
+                        "data-text",
+                        bgElement.textContent.substring(5000),
+                    );
+                }
+
+                bgElement.classList.add(randomClass);
+
+                if (Math.random() > 0.5) {
+                    const secondClass =
+                        glitchClasses[
+                            Math.floor(Math.random() * glitchClasses.length)
+                        ];
+                    if (secondClass !== randomClass) {
+                        setTimeout(() => {
+                            bgElement.classList.add(secondClass);
+                        }, 50);
+                    }
+                }
+
+                const duration = Math.random() * 300 + 200;
+
+                setTimeout(() => {
+                    bgElement.classList.remove(randomClass);
+
+                    glitchClasses.forEach((cls) =>
+                        bgElement.classList.remove(cls),
+                    );
+
+                    if (randomClass === "channel-shift") {
+                        bgElement.removeAttribute("data-text");
+                    }
+                }, duration);
+            }
+
+            let glitchTimeout = null;
+
+            function scheduleNextGlitch() {
+                if (glitchTimeout) clearTimeout(glitchTimeout);
+
+                const delay = Math.random() * 50 + 2000;
+                glitchTimeout = setTimeout(() => {
+                    triggerBackgroundGlitch();
+                    scheduleNextGlitch();
+                }, delay);
+            }
+
+            function stopGlitches() {
+                if (glitchTimeout) {
+                    clearTimeout(glitchTimeout);
+                    glitchTimeout = null;
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", scheduleNextGlitch);
+            document.addEventListener("astro:page-load", scheduleNextGlitch);
+            document.addEventListener("astro:before-swap", stopGlitches);
+        </script>
+    </body>
 </html>

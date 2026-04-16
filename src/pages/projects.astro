@@ -1,135 +1,157 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ProfileCard from '../components/ProfileCard.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
 ---
 
 <BaseLayout title="Projects - sccl.cc">
-  <main>
-    <ProfileCard currentTab="projects">
-      <div class="projects-content">
-        <div class="project-item">
-          <div class="project-details">
-            <a href="https://wiki.sccl.cc" class="project-title">> Wiki</a>
-            <span class="project-desc">Personal knowledge base</span>
-            <span class="project-url">https://wiki.sccl.cc</span>
-          </div>
-        </div>
+    <main>
+        <ProfileCard currentTab="projects">
+            <div class="projects-content">
+                <div class="project-item">
+                    <div class="project-details">
+                        <a
+                            href="https://github.com/scclie/sccl_nix"
+                            class="project-title">> scclNix</a
+                        >
+                        <span class="project-desc"
+                            >Modular host-profile NixOS architecture</span
+                        >
+                        <span class="project-url"
+                            >https://github.com/scclie/sccl_nix</span
+                        >
+                    </div>
+                </div>
 
-        <div class="project-item">
-          <div class="project-details">
-            <a href="https://heatkeys.sccl.cc" class="project-title">> HeatKeys</a>
-            <span class="project-desc">Keyboard layout heatmap</span>
-            <span class="project-url">https://heatkeys.sccl.cc</span>
-          </div>
-        </div>
-      </div>
-    </ProfileCard>
-  </main>
+                <div class="project-item">
+                    <div class="project-details">
+                        <a href="https://heatkeys.sccl.cc" class="project-title"
+                            >> HeatKeys</a
+                        >
+                        <span class="project-desc">Keyboard layout heatmap</span
+                        >
+                        <span class="project-url">https://heatkeys.sccl.cc</span
+                        >
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-details">
+                        <a href="https://wiki.sccl.cc" class="project-title"
+                            >> Wiki</a
+                        >
+                        <span class="project-desc">Personal knowledge base</span
+                        >
+                        <span class="project-url">https://wiki.sccl.cc</span>
+                    </div>
+                </div>
+            </div>
+        </ProfileCard>
+    </main>
 </BaseLayout>
 
 <style>
-  .projects-content {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
+    .projects-content {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
 
-  .project-item {
-    display: flex;
-    gap: 10px;
-    position: relative;
-    padding: 10px; 
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
-    cursor: pointer; 
-  }
-
-  .project-item:hover {
-    background-color: rgba(136, 192, 208, 0.1);
-  }
-
-  .project-details {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%;
-    position: relative;
-    z-index: 1; 
-  }
-
-  .project-title {
-    color: var(--projects-accent); 
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    transition: color 0.2s ease;
-    position: relative;
-    z-index: 3;
-  }
-
-  .project-desc {
-    color: var(--fg-dim);
-    font-size: 20px;
-    transition: color 0.2s ease;
-    pointer-events: none; 
-    position: relative;
-    z-index: 2;
-  }
-
-  .project-url {
-    color: var(--fg-dim);
-    font-size: 20px;
-    transition: color 0.2s ease;
-    pointer-events: none;
-    position: relative;
-    z-index: 2;
-  }
-
-  .project-item:hover .project-desc,
-  .project-item:hover .project-url {
-    color: var(--fg);
-  }
-
-  .project-item a::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    z-index: 2; 
-  }
-  
-  /* Убираем стандартный hover с ссылки */
-  .project-title:hover {
-    color: var(--projects-accent);
-  }
-  
-  /* Responsive design - Mobile */
-  @media (max-width: 767px) {
     .project-item {
-      gap: 10px;
-      padding: 8px;
+        display: flex;
+        gap: 10px;
+        position: relative;
+        padding: 10px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
     }
-    
+
+    .project-item:hover {
+        background-color: rgba(136, 192, 208, 0.1);
+    }
+
+    .project-details {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
     .project-title {
-      font-size: 20px;
+        color: var(--projects-accent);
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        transition: color 0.2s ease;
+        position: relative;
+        z-index: 3;
     }
-    
+
     .project-desc {
-      font-size: 20px;
+        color: var(--fg-dim);
+        font-size: 20px;
+        transition: color 0.2s ease;
+        pointer-events: none;
+        position: relative;
+        z-index: 2;
     }
-    
+
     .project-url {
-      font-size: 20px;
-      word-break: break-all;
+        color: var(--fg-dim);
+        font-size: 20px;
+        transition: color 0.2s ease;
+        pointer-events: none;
+        position: relative;
+        z-index: 2;
     }
-    
+
+    .project-item:hover .project-desc,
+    .project-item:hover .project-url {
+        color: var(--fg);
+    }
+
     .project-item a::before {
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        z-index: 2;
     }
-  }
+
+    /* Убираем стандартный hover с ссылки */
+    .project-title:hover {
+        color: var(--projects-accent);
+    }
+
+    /* Responsive design - Mobile */
+    @media (max-width: 767px) {
+        .project-item {
+            gap: 10px;
+            padding: 8px;
+        }
+
+        .project-title {
+            font-size: 20px;
+        }
+
+        .project-desc {
+            font-size: 20px;
+        }
+
+        .project-url {
+            font-size: 20px;
+            word-break: break-all;
+        }
+
+        .project-item a::before {
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+        }
+    }
 </style>

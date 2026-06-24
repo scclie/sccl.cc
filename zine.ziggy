@@ -1,0 +1,13 @@
+Site {
+    .title = "sccl.cc",
+    .host_url = "https://sccl.cc",
+    .content_dir_path = "content",
+    .layouts_dir_path = "layouts",
+    .assets_dir_path = "assets",
+    .static_assets = [
+        "img/pfpnew15.png",
+        "img/pfpnew10.png",
+        "img/pfp.jpg",
+        "img/logo.gif",
+    ],
+}

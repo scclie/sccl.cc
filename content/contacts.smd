@@ -1,0 +1,34 @@
+---
+.title = "Contacts - sccl.cc",
+.date = @date("2024-01-01T00:00:00"),
+.author = "sccl",
+.layout = "page.shtml",
+.custom = {
+    .tab = "contacts",
+},
+---
+
+```=html
+<div class="contacts-content">
+  <div class="contact-item">
+    <a href="https://discord.com/users/sccl" class="contact-label">Discord</a>
+    <span class="contact-value" data-copy="sccl">@sccl</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://t.me/scclie" class="contact-label">Telegram</a>
+    <span class="contact-value" data-copy="scclie">@scclie</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://github.com/scclie" class="contact-label">Github</a>
+    <span class="contact-value" data-copy="scclie">scclie</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://steamcommunity.com/id/scclie/" class="contact-label">Steam</a>
+    <span class="contact-value" data-copy="scclie">scclie</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://www.youtube.com/@scclie" class="contact-label">YouTube</a>
+    <span class="contact-value" data-copy="scclie">@scclie</span>
+  </div>
+</div>
+```

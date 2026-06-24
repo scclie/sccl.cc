@@ -1,5 +1,2 @@
-/dist
-/node_modules
-/node_modules/.vite
-/node_modules
 node_modules
+public

@@ -1,0 +1,44 @@
+---
+.title = "Projects - sccl.cc",
+.date = @date("2024-01-01T00:00:00"),
+.author = "sccl",
+.layout = "page.shtml",
+.custom = {
+    .tab = "projects",
+},
+---
+
+```=html
+<div class="projects-content">
+  <div class="project-item">
+    <div class="project-details">
+      <a href="https://shiza.sccl.cc" class="project-title">Wiki (dump storage)</a>
+      <span class="project-desc">S!/#tpost territory</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
+      <a href="https://github.com/scclie/sccl_nix" class="project-title">scclNix</a>
+      <span class="project-desc">Modular host-profile NixOS architecture</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
+      <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS" class="project-title">Rulemak-CAWS</a>
+      <span class="project-desc">Russian phonetically equivalent variant of Colemak CAWS layout</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
+      <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp" class="project-title">Sakuli60lp</a>
+      <span class="project-desc">Craft Handwired Wireless Hotswap Split Choc Low Profile Open Source Keyboard 60 keys.</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
+      <a href="https://heatkeys.sccl.cc" class="project-title">HeatKeys</a>
+      <span class="project-desc">Keyboard layout heatmap</span>
+    </div>
+  </div>
+</div>
+```

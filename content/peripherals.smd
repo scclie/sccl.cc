@@ -1,0 +1,58 @@
+---
+.title = "Peripherals - sccl.cc",
+.date = @date("2024-01-01T00:00:00"),
+.author = "sccl",
+.layout = "page.shtml",
+.custom = {
+    .tab = "peripherals",
+},
+---
+
+```=html
+<div class="peripherals-content">
+  <div class="peripheral-section">
+    <span class="peripheral-label">OS:</span>
+    <span class="peripheral-value">NixOs 26.05 (linux 6.18.8), niri (Wayland)</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">CPU:</span>
+    <span class="peripheral-value">AMD Ryzen 5 5600X @ 4.7GHz</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">GPU:</span>
+    <span class="peripheral-value">AMD Radeon RX 6750 XT (12GiB)</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">RAM:</span>
+    <span class="peripheral-value">32GiB DDR4-3333 CL16</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Storage:</span>
+    <span class="peripheral-value">512GiB NVMe + 1312GiB Sata3 SSD</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Display 0:</span>
+    <span class="peripheral-value">MSI 26.5" MAG 272QP X50 (qd-oled, 1440p, 500Hz)</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Mouse:</span>
+    <span class="peripheral-value">WLmouse Beast X Mini Pro Solid Pink Rabbit (westlab gray)</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Pad:</span>
+    <span class="peripheral-value">Asus Moonstone L (glasspad)</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Arm Sleeve:</span>
+    <span class="peripheral-value">CisA v2 navy</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Keyboard:</span>
+    <span class="peripheral-value">Soffle 64 key (gazzew boba u4t)</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Audio:</span>
+    <span class="peripheral-value">Arturia MiniFuse 2, Philips shp9500, Maono PD100 XLR</span>
+  </div>
+</div>
+```

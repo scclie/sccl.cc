@@ -17,7 +17,7 @@ jobs:
           version: v0.11.3
 
       - name: Build
-        run: zine release
+        run: zine release --force
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

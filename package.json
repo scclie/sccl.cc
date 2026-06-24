@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "./bin/zine",
-    "build": "./bin/zine release",
-    "preview": "./bin/zine release && npx serve public"
+    "dev": "/tmp/zine",
+    "build": "zine release",
+    "preview": "zine release && npx serve public"
   }
 }

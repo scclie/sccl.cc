@@ -4,9 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "/tmp/zine",
-    "prebuild": "curl -sL https://github.com/kristoff-it/zine/releases/download/v0.11.3/x86_64-linux-musl.tar.xz | tar xJ -C /tmp",
-    "build": "/tmp/zine release",
-    "preview": "/tmp/zine release && npx serve public"
+    "dev": "./bin/zine",
+    "build": "./bin/zine release",
+    "preview": "./bin/zine release && npx serve public"
   }
 }

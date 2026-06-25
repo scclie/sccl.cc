@@ -43,11 +43,11 @@
   </div>
   <div class="contact-item">
     <span class="contact-label">LTC</span>
-    <span class="contact-value" data-copy="ltc1qyqvl3v2llnkhktg9st9mh23j9hl6gczv99qp7k">ltc1qyqv...99qp7k</span>
+    <span class="contact-value" data-copy="ltc1qyqvl3v2llnkhktg9st9mh23j9hl6gczv99qp7k">ltc1qyq...zv99qp7k</span>
   </div>
   <div class="contact-item">
     <span class="contact-label">BTC</span>
-    <span class="contact-value" data-copy="bc1qky0vh4yhvn7q3wjac5fgm0vy74y7kg4qr8cu76">bc1qky0...r8cu76</span>
+    <span class="contact-value" data-copy="bc1qky0vh4yhvn7q3wjac5fgm0vy74y7kg4qr8cu76">bc1qky0v...4qr8cu76</span>
   </div>
 </div>
 ```

@@ -30,5 +30,9 @@
     <a href="https://www.youtube.com/@scclie" class="contact-label">YouTube</a>
     <span class="contact-value" data-copy="scclie">@scclie</span>
   </div>
+  <div class="contact-item">
+    <a href="mailto:contact@sccl.cc" class="contact-label">Email</a>
+    <span class="contact-value" data-copy="contact@sccl.cc">contact@sccl.cc</span>
+  </div>
 </div>
 ```

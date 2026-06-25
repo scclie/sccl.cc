@@ -9,5 +9,7 @@ Site {
         "img/pfpnew10.png",
         "img/pfp.jpg",
         "img/logo.gif",
+        "robots.txt",
+        "sitemap.xml",
     ],
 }

@@ -5,6 +5,7 @@
 .layout = "page.shtml",
 .custom = {
     .tab = "peripherals",
+    .description = "Hardware and peripherals used by sccl — NixOS desktop with AMD Ryzen 5600X, RX 6750 XT, WLmouse Beast X, Soffle 64 keyboard, and audio setup",
 },
 ---
 

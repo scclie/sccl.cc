@@ -5,6 +5,7 @@
 .layout = "page.shtml",
 .custom = {
     .tab = "projects",
+    .description = "Open-source projects by sccl — Wiki, scclNix, Rulemak-CAWS keyboard layout, Sakuli60lp keyboard, HeatKeys layout heatmap",
 },
 ---
 

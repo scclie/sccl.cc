@@ -5,6 +5,7 @@
 .layout = "page.shtml",
 .custom = {
     .tab = "contacts",
+    .description = "Contact information for sccl — Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses",
 },
 ---
 

@@ -10,6 +10,7 @@
 
 ```=html
 <div class="contacts-content">
+  <p class="crypto-sep">Contacts</p>
   <div class="contact-item">
     <a href="https://discord.com/users/sccl" class="contact-label">Discord</a>
     <span class="contact-value" data-copy="sccl">@sccl</span>
@@ -33,6 +34,19 @@
   <div class="contact-item">
     <a href="mailto:contact@sccl.cc" class="contact-label">Email</a>
     <span class="contact-value" data-copy="contact@sccl.cc">contact@sccl.cc</span>
+  </div>
+  <p class="crypto-sep">Crypto</p>
+  <div class="contact-item">
+    <span class="contact-label">EVM</span>
+    <span class="contact-value" data-copy="0x133625eeda7205b90a1bc4d2ce7fb97456b7805e">0x133625...56b7805e</span>
+  </div>
+  <div class="contact-item">
+    <span class="contact-label">LTC</span>
+    <span class="contact-value" data-copy="ltc1qyqvl3v2llnkhktg9st9mh23j9hl6gczv99qp7k">ltc1qyqv...99qp7k</span>
+  </div>
+  <div class="contact-item">
+    <span class="contact-label">BTC</span>
+    <span class="contact-value" data-copy="bc1qky0vh4yhvn7q3wjac5fgm0vy74y7kg4qr8cu76">bc1qky0...r8cu76</span>
   </div>
 </div>
 ```

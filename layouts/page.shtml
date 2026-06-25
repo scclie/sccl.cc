@@ -20,12 +20,14 @@
     ::-webkit-scrollbar-thumb{background:var(--fg-dim)}
     *:focus-visible{outline:2px solid var(--page-accent);outline-offset:2px}
     .card{width:min(70vw,55rem);background:var(--nord1);padding:1.25rem;border:2px solid var(--page-accent)}
-    .card-header{display:flex;gap:0.9375rem;align-items:center;margin-bottom:1.25rem;padding-bottom:0.9375rem;border-bottom:1px solid var(--page-accent)}
+    .card-header{display:flex;gap:0.9375rem;align-items:flex-start;margin-bottom:1.25rem;padding-bottom:0.9375rem;border-bottom:1px solid var(--page-accent)}
     .avatar{width:4rem;height:4rem;border:1px solid var(--page-accent);image-rendering:pixelated;flex-shrink:0}
-    .header-info{display:flex;flex-direction:column}
+    .header-info{display:flex;flex-direction:column;flex:1}
     .user{color:var(--page-accent);font-size:1.25rem;font-weight:700}
     .bio{color:var(--fg);font-size:1rem}
-    .card-footer{margin-top:1.25rem;padding-top:0.625rem;border-top:1px solid var(--page-accent);display:flex;justify-content:space-between;font-size:1rem;color:var(--fg)}
+    .card-footer{margin-top:1.25rem;padding-top:0.625rem;border-top:1px solid var(--page-accent);display:flex;justify-content:space-between;align-items:center;font-size:1rem;color:var(--fg)}
+    .zine-credit{color:var(--fg-dim);text-decoration:none;font-size:0.75rem}
+    .zine-credit:hover{color:var(--page-accent)}
     .symbol{color:var(--page-accent)}
     .nav{margin-bottom:0.9375rem;padding-bottom:0.625rem;border-bottom:1px solid var(--page-accent)}
     .nav-links{display:flex;gap:0.9375rem;justify-content:center}
@@ -40,10 +42,10 @@
     .contact-label{color:var(--page-accent);text-decoration:none;font-size:1rem;margin-right:0.5rem}
     .contact-label::before{content:"> ";opacity:0}
     .contact-item:hover .contact-label::before{opacity:1}
+    .crypto-sep{color:var(--fg);font-size:1rem;padding:0.125rem 0.25rem}
     .contact-value{color:var(--fg);font-size:1rem;cursor:pointer;user-select:none}
     .copy-success{color:var(--nord14)!important}
     .copy-error{color:var(--nord11)!important}
-    .projects-content{display:flex;flex-direction:column}
     .project-item{position:relative;padding:0.125rem 0.25rem 0.125rem 1.6em}
     .project-item:hover{background:var(--page-accent)}
     .project-item:hover .project-title,
@@ -91,6 +93,7 @@
       </div>
       <div class="card-footer">
         <span :text="$page.custom.get('tab').suffix('.md')"></span>
+        <a href="https://zine-ssg.io" class="zine-credit" target="_blank">built with zine</a>
         <div class="easter-egg-container">
           <span class="vim-input" id="vim-input-display"></span>
           <span class="symbol" id="vim-easter-egg">Type :qa! and press &lt;Enter&gt;</span>

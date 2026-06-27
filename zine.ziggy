@@ -6,10 +6,9 @@ Site {
     .assets_dir_path = "assets",
     .static_assets = [
         "img/pfpnew15.png",
-        "img/pfpnew10.png",
-        "img/pfp.jpg",
-        "img/logo.gif",
+        "img/logo.png",
         "robots.txt",
         "sitemap.xml",
+        "llms.txt",
     ],
 }

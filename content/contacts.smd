@@ -39,15 +39,16 @@
   <p class="crypto-sep">Crypto</p>
   <div class="contact-item">
     <span class="contact-label">EVM</span>
-    <span class="contact-value" data-copy="0x133625eeda7205b90a1bc4d2ce7fb97456b7805e">0x133625...56b7805e</span>
+    <span class="contact-value" data-copy="0x8d3f783660af5ce6b5dd06c476b9c91aa87c5cc1">0x8d3f78...5cc1</span>
   </div>
   <div class="contact-item">
     <span class="contact-label">LTC</span>
-    <span class="contact-value" data-copy="ltc1qyqvl3v2llnkhktg9st9mh23j9hl6gczv99qp7k">ltc1qyq...zv99qp7k</span>
+    <span class="contact-value" data-copy="ltc1q8j0laewgg5qwuq8k3j5027n6x48xvuz595sccl">ltc1q8j0...sccl</span>
   </div>
   <div class="contact-item">
     <span class="contact-label">BTC</span>
-    <span class="contact-value" data-copy="bc1qky0vh4yhvn7q3wjac5fgm0vy74y7kg4qr8cu76">bc1qky0v...4qr8cu76</span>
+    <span class="contact-value" data-copy="bc1q7ygsn73urgzr6w38ltw0yqzzjy2z9uzeh0sccl">bc1q7ygs...sccl</span>
   </div>
+  <p class="crypto-note">yeah they all end in sccl</p>
 </div>
 ```

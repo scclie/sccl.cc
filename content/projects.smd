@@ -25,6 +25,12 @@
   </div>
   <div class="project-item">
     <div class="project-details">
+      <a href="https://github.com/scclie/bip39_vanity_rs" class="project-title">bip39_vanity_rs</a>
+      <span class="project-desc">BIP39 vanity address generator on rust (BTC, LTC, ETH/EVM...)</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
       <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS" class="project-title">Rulemak-CAWS</a>
       <span class="project-desc">Russian phonetically equivalent variant of Colemak CAWS layout</span>
     </div>

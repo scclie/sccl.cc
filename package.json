@@ -6,6 +6,10 @@
   "scripts": {
     "dev": "/tmp/zine",
     "build": "zine release",
+    "og-image": "node scripts/og-image.mjs",
     "preview": "zine release && npx serve public"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1"
   }
 }

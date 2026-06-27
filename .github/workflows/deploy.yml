@@ -19,6 +19,18 @@ jobs:
       - name: Build
         run: zine release --force
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies & generate OG image
+        run: |
+          npm install --ignore-scripts
+          npx playwright install --with-deps chromium
+          node scripts/og-image.mjs
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

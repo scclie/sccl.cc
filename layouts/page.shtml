@@ -12,6 +12,9 @@
   <meta property="og:title" :content="$page.title">
   <meta property="og:description" :content="$page.custom.get('description')">
   <meta property="og:image" content="https://sccl.cc/img/og-contacts.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:url" :content="$page.link()">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" :content="$page.title">

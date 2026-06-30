@@ -45,7 +45,7 @@ async function main() {
   const page = await browser.newPage()
   await page.setViewportSize({ width: OG_WIDTH, height: OG_HEIGHT })
 
-  await page.goto(`http://localhost:${PORT}/contacts/`, { waitUntil: 'networkidle' })
+  await page.goto(`http://localhost:${PORT}/`, { waitUntil: 'networkidle' })
   // extra wait for fonts & encoding-errors animation
   await page.waitForTimeout(2000)
 

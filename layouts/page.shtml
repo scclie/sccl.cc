@@ -19,7 +19,6 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" :content="$page.title">
   <meta name="twitter:description" :content="$page.custom.get('description')">
-  <ctx :if="$page.link().eql('/')"><meta http-equiv="refresh" content="0; url=/contacts/"></ctx>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--nord0:#2e3440;--nord1:#3b4252;--nord3:#4c566a;--nord4:#d8dee9;--nord8:#88c0d0;--nord11:#bf616a;--nord14:#a3be8c;--nord15:#b48ead;--bg:var(--nord0);--fg:var(--nord4);--fg-dim:var(--nord3)}
@@ -93,7 +92,7 @@
     <div class="card">
       <nav class="nav">
         <div class="nav-links">
-          <a href="/contacts/" class="$page.custom.get('tab').eql('contacts').then('active')">contacts</a>
+          <a href="/" class="$page.custom.get('tab').eql('contacts').then('active')">contacts</a>
           <a href="/projects/" class="$page.custom.get('tab').eql('projects').then('active')">projects</a>
           <a href="/peripherals/" class="$page.custom.get('tab').eql('peripherals').then('active')">peripherals</a>
           <a href="https://shiza.sccl.cc" target="_blank">blog</a>

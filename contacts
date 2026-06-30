@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title :text="$page.title"></title>
+  <title>Contacts - sccl.cc</title>
   <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAAXNSR0IArs4c6QAAABhQTFRFKSkpmU41VYM2CwsL////AAAAAAAAAAAAIAoGTQAAAAh0Uk5T////////AP9gpa+mAAAASUlEQVQokWNgwwMYhp0kMwqgjyQrCiBekhkDECsJBEwogI1oSZAACwsrKwsLiCRVEsNQIiRhgoxQQLokwlCo0QQlMUMOGn54JQE/mw6R8+v/XAAAAABJRU5ErkJggg==">
-  <meta name="description" :content="$page.custom.get('description')">
-  <link rel="canonical" :href="$page.link()">
+  <meta name="description" :content="Contact information for sccl — Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses">
+  <link rel="canonical" :href="/contacts/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="sccl.cc">
-  <meta property="og:title" :content="$page.title">
-  <meta property="og:description" :content="$page.custom.get('description')">
+  <meta property="og:title" :content="Contacts - sccl.cc">
+  <meta property="og:description" :content="Contact information for sccl — Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses">
   <meta property="og:image" content="https://sccl.cc/img/og-contacts.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/png">
-  <meta property="og:url" :content="$page.link()">
+  <meta property="og:url" :content="/contacts/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" :content="$page.title">
-  <meta name="twitter:description" :content="$page.custom.get('description')">
-  <ctx :if="$page.link().eql('/')"><meta http-equiv="refresh" content="0; url=/contacts/"></ctx>
+  <meta name="twitter:title" :content="Contacts - sccl.cc">
+  <meta name="twitter:description" :content="Contact information for sccl — Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses">
+  <link rel="preload" href="/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--nord0:#2e3440;--nord1:#3b4252;--nord3:#4c566a;--nord4:#d8dee9;--nord8:#88c0d0;--nord11:#bf616a;--nord14:#a3be8c;--nord15:#b48ead;--bg:var(--nord0);--fg:var(--nord4);--fg-dim:var(--nord3)}
@@ -78,11 +79,11 @@
     .vim-input::before{content:'>';margin-right:0.25rem;opacity:.7}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
     @media(max-width:767px){html{font-size:14px}.card{margin:5px;padding:0.625rem}.card-header{flex-direction:column;text-align:center;align-items:center;gap:0.625rem}.avatar{width:6rem;height:6rem}.card-footer{font-size:0.875rem;flex-direction:column;gap:0.5rem;text-align:center}.easter-egg-container{justify-content:center}.nav-links{gap:0.5rem;flex-wrap:wrap}.contact-item,.project-item{padding:0.125rem}.contact-label,.contact-value,.project-title,.project-desc,.peripheral-label,.peripheral-value{font-size:0.875rem}}
-    @font-face{font-family:'Space Mono';font-style:normal;font-weight:400;src:url(data:font/woff2;base64,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)format('woff2');font-display:swap}
+    @font-face{font-family:'Space Mono';font-style:normal;font-weight:400;src:url(/fonts/space-mono-400.woff2)format('woff2');font-display:swap}
   </style>
-  <ctx :if="$page.custom.get('tab').eql('contacts')"><style>:root{--page-accent:var(--nord15)}</style></ctx>
-  <ctx :if="$page.custom.get('tab').eql('projects')"><style>:root{--page-accent:var(--nord8)}</style></ctx>
-  <ctx :if="$page.custom.get('tab').eql('peripherals')"><style>:root{--page-accent:var(--nord14)}</style></ctx>
+  <style>:root{--page-accent:var(--nord15)}</style>
+  
+  
 </head>
 <body>
   <div id="encoding-errors"></div>
@@ -90,24 +91,65 @@
     <div class="card">
       <nav class="nav">
         <div class="nav-links">
-          <a href="/contacts/" class="$page.custom.get('tab').eql('contacts').then('active')">contacts</a>
-          <a href="/projects/" class="$page.custom.get('tab').eql('projects').then('active')">projects</a>
-          <a href="/peripherals/" class="$page.custom.get('tab').eql('peripherals').then('active')">peripherals</a>
+          <a href="/contacts/" class="active">contacts</a>
+          <a href="/projects/" class="">projects</a>
+          <a href="/peripherals/" class="">peripherals</a>
           <a href="https://shiza.sccl.cc" target="_blank">blog</a>
         </div>
       </nav>
       <div class="card-header">
-        <img src="data:image/webp;base64,UklGRrYCAABXRUJQVlA4TKoCAAAvRQASAA7JbSMJkvQ/k8/Ts6eysnv6PJD0EAsmCPMH6kpKIJCYpbzKSP2fgD+M/7r93+t1tV/6mdKFL/RZd/rkw5/ykZtU/xN2KZd+5DMeufANJwd3PvCGuuKwC71g4ZRyaeHhcRfLmxUMvuMwUh5WStXCg4KNKw+PtE2VmjkwqRe5odlMqpObNjmY1QbVnHzQzUuHceThpcNGLrLwyEyMysTtDdWp4Sw5Eq2BBUMquzzKsaHTyUGpjDrOB7Zzk5hl3eabO1/gos3UZLwhaqt20Z1LR9qqwdWZN8vbTFA5Twqqm4aEgx5DFLBryk0qVlxgV0CVKZPi2dAhCp0Md4816ZTArWcVRXFwgYIKWSEXtBCaoSvNLIuuJqSXBqqAnlIBlFrRVltheTC/M1cAq3IwLYaKc0EPILr5zBrGViNQ2QnQfWfiijfKrgMDq0wJGg36vYO7Ugvg0F/4gEfIaT+2vVnlZKkefZaXUhS4+BlJW+I52e/xwuENRXX4Ii1cxYVPoFaaLqhw8hNgN9zFl85JvDj5tcoLRxPOX/GgwWmWT53iyAoVVT6jyuEqmOQDeLmvvP7OQZlYsJMfKZQHh9ombsIvtKxuaE5SpDIor+FRJl6zk6jCNbyCaTPKgU7lEcpNeQHLZry3ZIidPADUrqJwFDhFWT1wBQo2ewBoIlyW9IjREpsBQUZhQ2WlcLMEUMVOChSU9W2kkIJQK2dsBkJQnN+o7Ci4AGpLgDgn3ykIwqb5Bp2H2eE7FIDSK9dFqu9wKFUy8ajJ7K0SMzyUgF7EbAB6bqOag/zAMqDfD72qGUAf1XwDM6B3fSPKZ2gEVaZP3iV7rgGVmT3kpTfRwsrM3NEPfVRUmWmx+rBEGZrBCirOXzFWsn1AIwvzYIEEJnFXN72qPUQClK0m" alt="sccl avatar" class="avatar">
+        <img src="/img/pfp.webp" alt="sccl avatar" class="avatar">
         <div class="header-info">
           <span class="user">[pipre@scclie ~]$</span>
           <p class="bio">/ˈsʌk.kʊ.li/</p>
         </div>
       </div>
       <div class="card-content">
-        <div :html="$page.content()"></div>
+        <div><div class="contacts-content">
+  <p class="crypto-sep">Contacts</p>
+  <div class="contact-item">
+    <a href="https://discord.com/users/sccl" class="contact-label">Discord</a>
+    <span class="contact-value" data-copy="sccl">@sccl</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://t.me/scclie" class="contact-label">Telegram</a>
+    <span class="contact-value" data-copy="scclie">@scclie</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://github.com/scclie" class="contact-label">Github</a>
+    <span class="contact-value" data-copy="scclie">scclie</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://steamcommunity.com/id/scclie/" class="contact-label">Steam</a>
+    <span class="contact-value" data-copy="scclie">scclie</span>
+  </div>
+  <div class="contact-item">
+    <a href="https://www.youtube.com/@scclie" class="contact-label">YouTube</a>
+    <span class="contact-value" data-copy="scclie">@scclie</span>
+  </div>
+  <div class="contact-item">
+    <a href="mailto:contact@sccl.cc" class="contact-label">Email</a>
+    <span class="contact-value" data-copy="contact@sccl.cc">contact@sccl.cc</span>
+  </div>
+  <p class="crypto-sep">Crypto</p>
+  <div class="contact-item">
+    <span class="contact-label">EVM</span>
+    <span class="contact-value" data-copy="0x8d3f783660af5ce6b5dd06c476b9c91aa87c5cc1">0x8d3f78...5cc1</span>
+  </div>
+  <div class="contact-item">
+    <span class="contact-label">LTC</span>
+    <span class="contact-value" data-copy="ltc1q8j0laewgg5qwuq8k3j5027n6x48xvuz595sccl">ltc1q8j0...sccl</span>
+  </div>
+  <div class="contact-item">
+    <span class="contact-label">BTC</span>
+    <span class="contact-value" data-copy="bc1q7ygsn73urgzr6w38ltw0yqzzjy2z9uzeh0sccl">bc1q7ygs...sccl</span>
+  </div>
+  <p class="crypto-note">yeah they all end in sccl</p>
+</div>
+</div>
       </div>
       <div class="card-footer">
-        <span :text="$page.custom.get('tab').suffix('.md')"></span>
+        <span>contacts.md</span>
         <a href="https://zine-ssg.io" class="zine-credit" target="_blank">built with zig zine</a>
         <div class="easter-egg-container">
           <span class="vim-input" id="vim-input-display"></span>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title :text="$page.title"></title>
-  <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAAXNSR0IArs4c6QAAABhQTFRFKSkpmU41VYM2CwsL////AAAAAAAAAAAAIAoGTQAAAAh0Uk5T////////AP9gpa+mAAAASUlEQVQokWNgwwMYhp0kMwqgjyQrCiBekhkDECsJBEwogI1oSZAACwsrKwsLiCRVEsNQIiRhgoxQQLokwlCo0QQlMUMOGn54JQE/mw6R8+v/XAAAAABJRU5ErkJggg==">
   <meta name="description" :content="$page.custom.get('description')">
   <link rel="canonical" :href="$page.link()">
   <meta property="og:type" content="website">

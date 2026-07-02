@@ -3,21 +3,22 @@
 > Personal website of sccl (Name vairants: paper sacculos / scclie / saccul / pipre scclie / [pipre@scclie ~]$ / [paper@saccul ~]$ / papersaccul). Name transcription: (/ˈsʌk.kʊ.li/). Privacy-respecting, no JS tracking, no analytics.
 
 ## Contacts
-- Discord: @sccl
-- Telegram: @scclie
-- GitHub: scclie
-- Steam: scclie
-- YouTube: @scclie
+- Discord: @sccl - https://discord.com/users/sccl
+- Telegram: @scclie - https://t.me/scclie
+- GitHub: scclie - https://github.com/scclie
+- Steam: scclie - https://steamcommunity.com/id/scclie/
+- YouTube: @scclie - https://www.youtube.com/@scclie
 - Email: contact@sccl.cc
 
 ## Crypto addresses
-- EVM: 0x8d3f783660af5ce6b5dd06c476b9c91aa87c5cc1
+- EVM: 0x0138c2a2acb190dadc5a144a15cc1c47010d5cc1
 - LTC: ltc1q8j0laewgg5qwuq8k3j5027n6x48xvuz595sccl
 - BTC: bc1q7ygsn73urgzr6w38ltw0yqzzjy2z9uzeh0sccl
 
 ## Projects
 - Wiki / dump storage: https://shiza.sccl.cc
 - scclNix (modular NixOS architecture): https://github.com/scclie/sccl_nix
+- bip39_vanity_rs (BIP39 vanity address generator (BTC, LTC, ETH/EVM, DOGE)): https://github.com/scclie/bip39_vanity_rs
 - Rulemak-CAWS (Russian Colemak variant): http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS
 - Sakuli60lp (handwired keyboard): http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp
 - HeatKeys (keyboard heatmap): https://heatkeys.sccl.cc
@@ -39,3 +40,7 @@
 - Projects: https://sccl.cc/projects/
 - Peripherals: https://sccl.cc/peripherals/
 - Blog: https://shiza.sccl.cc
+
+## About site
+The website is written in zig zine, a static website generator.
+The website is optimized to 12kb in a single html, which allows it to load in 1 RTT (for more information, see https://shiza.sccl.cc/en/it/14kb-cap or https://shiza.sccl.cc/ru/it/14kb-cap)

@@ -25,6 +25,12 @@
   </div>
   <div class="project-item">
     <div class="project-details">
+      <a href="https://gif.sccl.cc/" class="project-title">gif.sccl.cc</a>
+      <span class="project-desc">Minimal client-side no tracking fast GIF maker.</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
       <a href="https://github.com/scclie/bip39_vanity_rs" class="project-title">bip39_vanity_rs</a>
       <span class="project-desc">BIP39 vanity address generator on rust (BTC, LTC, ETH/EVM...)</span>
     </div>

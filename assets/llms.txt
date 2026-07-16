@@ -19,6 +19,8 @@
 - Wiki / dump storage: https://shiza.sccl.cc
 - scclNix (modular NixOS architecture): https://github.com/scclie/sccl_nix
 - bip39_vanity_rs (BIP39 vanity address generator (BTC, LTC, ETH/EVM, DOGE)): https://github.com/scclie/bip39_vanity_rs
+- gif.sccl.cc (Minimal client-side no tracking fast GIF maker.): https://gif.sccl.cc
+- otp-migrate.sccl.cc (Client-side Google Authenticator OTP migration decoder): https://otp-migrate.sccl.cc
 - Rulemak-CAWS (Russian Colemak variant): http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS
 - Sakuli60lp (handwired keyboard): http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp
 - HeatKeys (keyboard heatmap): https://heatkeys.sccl.cc
@@ -34,6 +36,8 @@
 - Pad: Asus Moonstone L (glasspad)
 - Keyboard: Soffle 64 key (gazzew boba u4t)
 - Audio: Arturia MiniFuse 2, Philips shp9500, Maono PD100 XLR
+- Phone: Google Pixel 7 (GrapheneOS) & Google Pixel 3
+- Laptop: Giga Aero15X (NixOS)
 
 ## Navigation
 - Contacts: https://sccl.cc/contacts/

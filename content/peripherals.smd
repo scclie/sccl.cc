@@ -49,11 +49,19 @@
   </div>
   <div class="peripheral-section">
     <span class="peripheral-label">Keyboard:</span>
-    <span class="peripheral-value">Soffle 64 key (gazzew boba u4t)</span>
+    <span class="peripheral-value">Soffle Split 64 key (gazzew boba u4t)</span>
   </div>
   <div class="peripheral-section">
     <span class="peripheral-label">Audio:</span>
     <span class="peripheral-value">Arturia MiniFuse 2, Philips shp9500, Maono PD100 XLR</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Phone:</span>
+    <span class="peripheral-value">Google Pixel 7 (GrapheneOS) & Google Pixel 3</span>
+  </div>
+  <div class="peripheral-section">
+    <span class="peripheral-label">Laptop:</span>
+    <span class="peripheral-value">Giga Aero15X (NixOS)</span>
   </div>
 </div>
 ```

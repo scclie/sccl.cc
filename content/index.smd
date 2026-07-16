@@ -25,6 +25,10 @@
     <span class="contact-value" data-copy="scclie">scclie</span>
   </div>
   <div class="contact-item">
+    <a href="https://codeberg.org/scclie" class="contact-label">Codeberg</a>
+    <span class="contact-value" data-copy="scclie">scclie</span>
+  </div>
+  <div class="contact-item">
     <a href="https://steamcommunity.com/id/scclie/" class="contact-label">Steam</a>
     <span class="contact-value" data-copy="scclie">scclie</span>
   </div>

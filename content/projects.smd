@@ -31,6 +31,18 @@
   </div>
   <div class="project-item">
     <div class="project-details">
+      <a href="https://otp-migrate.sccl.cc/" class="project-title">otp-migrate.sccl.cc</a>
+      <span class="project-desc">Client-side Google Authenticator OTP migration decoder.</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
+      <a href="https://heatkeys.sccl.cc" class="project-title">heatkeys.sccl.cc</a>
+      <span class="project-desc">Keyboard layout heatmap</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
       <a href="https://github.com/scclie/bip39_vanity_rs" class="project-title">bip39_vanity_rs</a>
       <span class="project-desc">BIP39 vanity address generator on rust (BTC, LTC, ETH/EVM...)</span>
     </div>
@@ -44,13 +56,7 @@
   <div class="project-item">
     <div class="project-details">
       <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp" class="project-title">Sakuli60lp</a>
-      <span class="project-desc">Craft Handwired Wireless Hotswap Split Choc Low Profile Open Source Keyboard 60 keys.</span>
-    </div>
-  </div>
-  <div class="project-item">
-    <div class="project-details">
-      <a href="https://heatkeys.sccl.cc" class="project-title">HeatKeys</a>
-      <span class="project-desc">Keyboard layout heatmap</span>
+      <span class="project-desc">Handwired Wireless Hotswap Split Choc Low Profile Open Source Keyboard.</span>
     </div>
   </div>
 </div>

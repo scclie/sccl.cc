@@ -7,6 +7,7 @@ Site {
     .static_assets = [
         "img/pfpnew15.png",
         "img/logo.png",
+        "img/scclie.gif",
         "robots.txt",
         "sitemap.xml",
         "llms.txt",

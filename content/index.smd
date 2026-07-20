@@ -21,6 +21,10 @@
     <span class="contact-value" data-copy="scclie">@scclie</span>
   </div>
   <div class="contact-item">
+    <a href="https://signal.me/#eu/TkvlB78uMmeboYc5CxuhAXZcJxcV8vVPlztUNmI0XdzDxItZZppOA7i6AJHn_bvy" class="contact-label">Signal</a>
+    <span class="contact-value" data-copy="sccl.13">sccl.13</span>
+  </div>
+  <div class="contact-item">
     <a href="https://github.com/scclie" class="contact-label">Github</a>
     <span class="contact-value" data-copy="scclie">scclie</span>
   </div>
@@ -54,5 +58,10 @@
     <span class="contact-value" data-copy="bc1q7ygsn73urgzr6w38ltw0yqzzjy2z9uzeh0sccl">bc1q7ygsn7...sccl</span>
   </div>
   <p class="crypto-note">yeah they all end in sccl</p>
+  <p class="crypto-sep">88x31</p>
+  <div class="buttons-content">
+    <a href="https://sccl.cc"><img src="/img/scclie.gif" width="88" height="31" alt="sccl.cc" class="btn88x31"></a>
+    <span class="buttons-note">   i've no friends but if u wanna be here - contact me</span>
+  </div>
 </div>
 ```

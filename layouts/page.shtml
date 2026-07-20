@@ -57,6 +57,10 @@
     .crypto-sep{color:var(--fg);font-size:1rem;padding:0.125rem 0.25rem}
     .crypto-note{color:var(--fg-dim);font-size:0.8rem;font-style:italic;padding:0.25rem 0.25rem 0}
     .crypto-note code{color:inherit}
+    .buttons-content{display:flex;flex-wrap:wrap;gap:0.375rem;padding:0.25rem;align-items:flex-start}
+    .buttons-content a{display:inline-block;width:88px;height:31px;line-height:0}
+    .btn88x31{image-rendering:pixelated;border:1px solid var(--page-accent);display:block}
+    .buttons-note{color:var(--fg-dim);font-size:0.75rem;font-style:italic}
     .contact-value{color:var(--fg);font-size:1rem;cursor:pointer;user-select:none}
     .copy-success{color:var(--nord14)!important}
     .copy-error{color:var(--nord11)!important}

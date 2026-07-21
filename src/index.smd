@@ -59,17 +59,6 @@
   </div>
   <p class="note">// yeah they all ends in sccl</p>
   <p class="crypto-sep">88x31's</p>
-  <div class="buttons-content">
-    <span class="note"> // my badge</span>
-    <div class="buttons-row">
-      <a href="http://sccl.cc/img/scclie.gif" class="badge badge-0" title="sccl.cc"></a>
-    </div>
-    <span class="note"> // friends & fav's badges</span>
-    <div class="buttons-row">
-      <a href="https://cesa.rs" class="badge badge-1" title="cesa.rs"></a>
-      <a href="https://143aim.club" class="badge badge-2" title="143aim.club"></a>
-      <a href="https://nixos.org" class="badge badge-3" title="nixos.org"></a>
-    </div>
-  </div>
+  %%BADGES%%
 </div>
 ```

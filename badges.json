@@ -1,0 +1,36 @@
+{
+  "my": {
+    "note": " // my badge",
+    "badges": [
+      {
+        "href": "http://sccl.cc/img/scclie.gif",
+        "alt": "sccl.cc",
+        "local": "../img/scclie.gif",
+        "file": "0.gif"
+      }
+    ]
+  },
+  "friends": {
+    "note": " // friends & fav's badges",
+    "badges": [
+      {
+        "url": "https://cesa.rs/assets/cesarean_transparent.png",
+        "href": "https://cesa.rs",
+        "alt": "cesa.rs",
+        "file": "1.png"
+      },
+      {
+        "href": "https://143aim.club",
+        "alt": "143aim.club",
+        "local": "../img/143aim.png",
+        "file": "2.png"
+      },
+      {
+        "href": "https://nixos.org",
+        "alt": "nixos.org",
+        "local": "../img/nix88_31.webp",
+        "file": "3.webp"
+      }
+    ]
+  }
+}

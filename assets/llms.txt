@@ -24,6 +24,7 @@
 - Rulemak-CAWS (Russian Colemak variant): http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS
 - Sakuli60lp (handwired keyboard): http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp
 - HeatKeys (keyboard heatmap): https://heatkeys.sccl.cc
+- xkb.sccl.cc (Linux X keyboard laout generator): https://xkb.sccl.cc
 
 ## Peripherals
 - OS: NixOs 26.05 (linux 6.18.8), niri (Wayland)

@@ -6,8 +6,8 @@
   "scripts": {
     "badges": "node scripts/fetch-badges.mjs && node scripts/gen-badges-css.mjs",
     "gen": "node scripts/gen-content.mjs",
-    "dev": "npm run badges && npm run gen && /tmp/zine",
-    "build": "npm run badges && npm run gen && /tmp/zine release -f",
+    "dev": "npm run badges && npm run gen && zine",
+    "build": "npm run badges && npm run gen && zine release -f",
     "og-image": "node scripts/og-image.mjs",
     "preview": "npm run build && npx serve public"
   },

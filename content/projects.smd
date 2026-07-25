@@ -1,5 +1,5 @@
 ---
-.title = "Projects - sccl.cc",
+.title = "sccl.cc: scclie projects",
 .date = @date("2024-01-01T00:00:00"),
 .author = "sccl",
 .layout = "page.shtml",
@@ -26,13 +26,19 @@
   <div class="project-item">
     <div class="project-details">
       <a href="https://gif.sccl.cc/" class="project-title">gif.sccl.cc</a>
-      <span class="project-desc">Minimal client-side no tracking fast GIF maker.</span>
+      <span class="project-desc">Minimal client-side no tracking fast GIF maker</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
       <a href="https://otp-migrate.sccl.cc/" class="project-title">otp-migrate.sccl.cc</a>
-      <span class="project-desc">Client-side Google Authenticator OTP migration decoder.</span>
+      <span class="project-desc">Client-side Google Authenticator OTP migration decoder</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
+      <a href="https://xkb.sccl.cc" class="project-title">xkb.sccl.cc</a>
+      <span class="project-desc">Linux X keyboard layout generator</span>
     </div>
   </div>
   <div class="project-item">
@@ -56,7 +62,7 @@
   <div class="project-item">
     <div class="project-details">
       <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp" class="project-title">Sakuli60lp</a>
-      <span class="project-desc">Handwired Wireless Hotswap Split Choc Low Profile Open Source Keyboard.</span>
+      <span class="project-desc">Handwired Wireless Hotswap Split Choc Low Profile Open Source Keyboard</span>
     </div>
   </div>
 </div>

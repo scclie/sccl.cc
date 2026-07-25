@@ -20,7 +20,7 @@ function genBadgesHtml() {
     html += `    <div class="buttons-row">\n`;
     for (const b of g.badges) {
       if (!b.file) { idx++; continue; }
-      html += `      <a href="${b.href}" class="badge badge-${idx}" title="${b.alt}"></a>\n`;
+      html += `      <a href="${b.href}" class="badge badge-${idx}" title="${b.alt}">${b.alt}</a>\n`;
       idx++;
     }
     html += `    </div>\n`;

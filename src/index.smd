@@ -1,11 +1,11 @@
 ---
-.title = "sccl.cc",
+.title = "sccl.cc: pipre scclie - personal site",
 .date = @date("2024-01-01T00:00:00"),
 .author = "sccl",
 .layout = "page.shtml",
 .custom = {
     .tab = "contacts",
-    .description = "Contact information for sccl — Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses",
+    .description = "Contact information for sccl - Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses",
 },
 ---
 

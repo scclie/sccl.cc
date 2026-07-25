@@ -1,11 +1,11 @@
 ---
-.title = "sccl.cc",
+.title = "sccl.cc: pipre scclie - personal site",
 .date = @date("2024-01-01T00:00:00"),
 .author = "sccl",
 .layout = "page.shtml",
 .custom = {
     .tab = "contacts",
-    .description = "Contact information for sccl — Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses",
+    .description = "Contact information for sccl - Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses",
 },
 ---
 
@@ -62,13 +62,16 @@
   <div class="buttons-content">
     <span class="note"> // my badge</span>
     <div class="buttons-row">
-      <a href="http://sccl.cc/img/scclie.gif" class="badge badge-0" title="sccl.cc"></a>
+      <a href="http://sccl.cc/img/scclie.gif" class="badge badge-0" title="sccl.cc">sccl.cc</a>
     </div>
-    <span class="note"> // friends & fav's badges</span>
+    <span class="note"> // friends & fav's badges. I also drew some of them ;/</span>
     <div class="buttons-row">
-      <a href="https://cesa.rs" class="badge badge-1" title="cesa.rs"></a>
-      <a href="https://143aim.club" class="badge badge-2" title="143aim.club"></a>
-      <a href="https://nixos.org" class="badge badge-3" title="nixos.org"></a>
+      <a href="https://cesa.rs" class="badge badge-1" title="cesa.rs">cesa.rs</a>
+      <a href="https://143aim.club" class="badge badge-2" title="143aim.club">143aim.club</a>
+      <a href="https://shiza.sccl.cc" class="badge badge-3" title="b/red">b/red</a>
+      <a href="https://nixos.org" class="badge badge-4" title="nixos.org">nixos.org</a>
+      <a href="https://zine-ssg.io" class="badge badge-5" title="zine-ssg.io">zine-ssg.io</a>
+      <a href="https://www.aseprite.org/" class="badge badge-6" title="www.aseprite.org/">www.aseprite.org/</a>
     </div>
   </div>
 </div>

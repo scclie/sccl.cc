@@ -12,7 +12,7 @@ const ZIGGY = join(ROOT, "zine.ziggy");
 const MIME = { ".png": "image/png", ".gif": "image/gif", ".jpg": "image/jpeg", ".webp": "image/webp" };
 
 const config = JSON.parse(readFileSync(BADGES_JSON, "utf8"));
-let css = `.badge{display:inline-block;width:88px;height:31px;image-rendering:pixelated;image-rendering:crisp-edges}\n`;
+let css = `.badge{display:inline-block;width:88px;height:31px;font-size:0;image-rendering:pixelated;image-rendering:crisp-edges}\n`;
 let idx = 0;
 
 for (const group of ["my", "friends"]) {

@@ -1,11 +1,11 @@
 ---
-.title = "Peripherals - sccl.cc",
+.title = "sccl.cc: scclie peripherals",
 .date = @date("2024-01-01T00:00:00"),
 .author = "sccl",
 .layout = "page.shtml",
 .custom = {
     .tab = "peripherals",
-    .description = "Hardware and peripherals used by sccl — NixOS desktop with AMD Ryzen 5600X, RX 6750 XT, WLmouse Beast X, Soffle 64 keyboard, and audio setup",
+    .description = "Hardware and peripherals used by sccl - NixOS desktop with AMD Ryzen 5600X, RX 6750 XT, WLmouse Beast X, Soffle 64 keyboard, and audio setup",
 },
 ---
 

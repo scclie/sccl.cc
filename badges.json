@@ -11,7 +11,7 @@
     ]
   },
   "friends": {
-    "note": " // friends & fav's badges",
+    "note": " // friends & fav's badges. I also drew some of them ;/",
     "badges": [
       {
         "url": "https://cesa.rs/assets/cesarean_transparent.png",
@@ -22,14 +22,32 @@
       {
         "href": "https://143aim.club",
         "alt": "143aim.club",
-        "local": "../img/143aim.png",
+        "local": "../img/143aim2.png",
         "file": "2.png"
+      },
+      {
+        "href": "https://shiza.sccl.cc",
+        "alt": "b/red",
+        "local": "../img/scclie_notes.gif",
+        "file": "3.gif"
       },
       {
         "href": "https://nixos.org",
         "alt": "nixos.org",
-        "local": "../img/nix88_31.webp",
-        "file": "3.webp"
+        "local": "../img/made_with_NixOS.png",
+        "file": "4.png"
+      },
+      {
+        "href": "https://zine-ssg.io",
+        "alt": "zine-ssg.io",
+        "local": "../img/zig_zine.png",
+        "file": "5.png"
+      },
+      {
+        "href": "https://www.aseprite.org/",
+        "alt": "www.aseprite.org/",
+        "local": "../img/draw_in_aseprite.png",
+        "file": "6.png"
       }
     ]
   }

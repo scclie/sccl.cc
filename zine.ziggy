@@ -13,5 +13,7 @@
         "robots.txt",
         "sitemap.xml",
         "llms.txt",
+        "contact.gpg.txt",
+        "id_ed25519.txt",
     ],
 }),

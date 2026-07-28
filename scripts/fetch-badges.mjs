@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from "node:fs";
 import { join, extname, resolve } from "node:path";
 
+const FORCE = process.argv.includes("--force");
 const ROOT = import.meta.dirname + "/..";
 const BADGES_JSON = join(ROOT, "badges.json");
 const BADGES_DIR = join(ROOT, "assets", "img", "badges");
@@ -34,6 +35,12 @@ for (const group of ["my", "friends"]) {
       ext = extname(new URL(b.url).pathname) || ".png";
       filename = `${idx}${ext}`;
       dest = join(BADGES_DIR, filename);
+      if (!FORCE && existsSync(dest)) {
+        console.log(`cached ${b.url} → ${filename} (${(readFileSync(dest).length / 1024).toFixed(1)}kb)`);
+        b.file = filename;
+        idx++;
+        continue;
+      }
       process.stdout.write(`fetch ${b.url} → ${filename} ... `);
       try {
         const res = await fetch(b.url, {

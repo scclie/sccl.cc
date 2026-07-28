@@ -5,7 +5,7 @@
 .layout = "page.shtml",
 .custom = .{
     .tab = "contacts",
-    .description = "Contact information for sccl - Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses",
+    .description = "Contact information for sccl - Discord, Telegram, GitHub, Steam, YouTube, Email, PGP & SSH public keys, and crypto addresses",
 },
 ---
 
@@ -44,6 +44,7 @@
     <a href="mailto:contact@sccl.cc" class="contact-label">Email</a>
     <span class="contact-value" data-copy="contact@sccl.cc">contact@sccl.cc</span>
   </div>
+  <span style="white-space:nowrap"><a href="/id_ed25519.txt" class="zine-credit">&nbsp;&nbsp;[ SSH keys ]</a> <a href="/contact.gpg.txt" class="zine-credit">[ PGP key ]</a> <span class="note">// CF86 4506 0B45 9DAF E789 7056 E75E FAEC 7946 D96A</span></span>
   <p class="crypto-sep">Crypto</p>
   <div class="contact-item">
     <span class="contact-label">EVM</span>
@@ -57,7 +58,7 @@
     <span class="contact-label">BTC</span>
     <span class="contact-value" data-copy="bc1q7ygsn73urgzr6w38ltw0yqzzjy2z9uzeh0sccl">bc1q7ygsn7...sccl</span>
   </div>
-  <p class="note">// yeah they all ends in sccl</p>
+  <p class="note">&nbsp;&nbsp;&nbsp;// they all ends in sccl</p>
   <p class="crypto-sep">88x31's</p>
   <div class="buttons-content">
     <span class="note"> // my badge</span>

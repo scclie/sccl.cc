@@ -113,7 +113,7 @@
       </div>
       <div class="card-footer">
         <span :text="$page.custom.get('tab').suffix('.smd')"></span>
-        <a href="https://github.com/scclie/sccl.cc" class="zine-credit" target="_blank">source</a><a href="https://zine-ssg.io" class="zine-credit" target="_blank">built with zig zine</a><a href="https://shiza.sccl.cc/en/it/88x31-in-CSS" class="zine-credit" target="_blank">1http & 1rtt: ~12kb page</a>
+        <a href="https://github.com/scclie/sccl.cc" class="zine-credit" target="_blank">source</a><a href="https://zine-ssg.io" class="zine-credit" target="_blank">built with zig zine</a><a href="https://shiza.sccl.cc/en/it/88x31-in-CSS" class="zine-credit" target="_blank">1http & 1rtt: ~13kb page</a>
         <div class="easter-egg-container">
           <span class="vim-input" id="vim-input-display"></span>
           <span class="symbol" id="vim-easter-egg">Type :qa! and press &lt;Enter&gt;</span>

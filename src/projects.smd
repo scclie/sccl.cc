@@ -19,8 +19,14 @@
   </div>
   <div class="project-item">
     <div class="project-details">
-      <a href="https://github.com/scclie/sccl_nix" class="project-title">scclNix</a>
+      <a href="https://codeberg.org/scclie/sccl_nix/" class="project-title">scclNix</a>
       <span class="project-desc">Modular host-profile NixOS architecture</span>
+    </div>
+  </div>
+  <div class="project-item">
+    <div class="project-details">
+      <a href="https://notizine.sccl.cc/" class="project-title">notizine</a>
+      <span class="project-desc">Minimal modular Zine-based toolkit for multilingual static sites</span>
     </div>
   </div>
   <div class="project-item">
@@ -50,7 +56,7 @@
   <div class="project-item">
     <div class="project-details">
       <a href="https://github.com/scclie/bip39_vanity_rs" class="project-title">bip39_vanity_rs</a>
-      <span class="project-desc">BIP39 vanity address generator on rust (BTC, LTC, ETH/EVM...)</span>
+      <span class="project-desc">BIP39 vanity address generator on rust (BTC, LTC, ETH/EVM, TON...)</span>
     </div>
   </div>
   <div class="project-item">

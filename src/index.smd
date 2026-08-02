@@ -25,11 +25,11 @@
     <span class="contact-value" data-copy="sccl.13">sccl.13</span>
   </div>
   <div class="contact-item">
-    <a href="https://github.com/scclie" class="contact-label">Github</a>
+    <a href="https://codeberg.org/scclie" class="contact-label">Codeberg</a>
     <span class="contact-value" data-copy="scclie">scclie</span>
   </div>
   <div class="contact-item">
-    <a href="https://codeberg.org/scclie" class="contact-label">Codeberg</a>
+    <a href="https://github.com/scclie" class="contact-label">Github</a>
     <span class="contact-value" data-copy="scclie">scclie</span>
   </div>
   <div class="contact-item">
@@ -41,10 +41,10 @@
     <span class="contact-value" data-copy="scclie">@scclie</span>
   </div>
   <div class="contact-item">
-    <a href="mailto:contact@sccl.cc" class="contact-label">Email</a>
-    <span class="contact-value" data-copy="contact@sccl.cc">contact@sccl.cc</span>
+    <a href="mailto:hi@sccl.cc" class="contact-label">Email</a>
+    <span class="contact-value" data-copy="hi@sccl.cc">hi@sccl.cc</span>
   </div>
-  <span style="white-space:nowrap"><a href="/id_ed25519.txt" class="zine-credit">&nbsp;&nbsp;[ SSH keys ]</a> <a href="/contact.gpg.txt" class="zine-credit">[ PGP key ]</a> <span class="note">// CF86 4506 0B45 9DAF E789 7056 E75E FAEC 7946 D96A</span></span>
+  <span style="white-space:nowrap"><a href="/age-public.txt" class="zine-credit">&nbsp;&nbsp;&nbsp;&nbsp;[ AGE key ]</a> <a href="/id_ed25519.txt" class="zine-credit">[ SSH keys ]</a> <a href="/gpg.txt" class="zine-credit">[ PGP key ]</a> <span class="note">// CF86 4506 0B45 9DAF E789 7056 E75E FAEC 7946 D96A</span></span>
   <p class="crypto-sep">Crypto</p>
   <div class="contact-item">
     <span class="contact-label">EVM</span>

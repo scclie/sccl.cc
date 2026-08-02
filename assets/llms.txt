@@ -10,6 +10,40 @@
 - YouTube: @scclie - https://www.youtube.com/@scclie
 - Email: contact@sccl.cc
 
+## Public keys:
+### age key
+age1v925pdj23e5lhz38r6yyd35uzvfdjapznld0szv3e2y3gxvt2c8qf9nv57
+
+### ssh keys
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAgWdNGboxi/EUBfS220zvliT717eBuFIJuXUBGbFVZk scclie@sccl.cc
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiYVDyRQt0aMiIE3KomGT7O1mMFFPGJWs8fXRRuxR0f git@sccl.cc
+
+### pgp key
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEamjJxBYJKwYBBAHaRw8BAQdAWenOtu7TCxYBuanIvJcXnatZBhOSsAszqwmZ
+zkEfAWW0FHNjY2xpZSA8Z2l0QHNjY2wuY2M+iJAEExYKADgWIQTPhkUGC0Wdr+eJ
+cFbnXvrseUbZagUCam2xIgIbIwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRDn
+XvrseUbZat+DAQDgDcb3F5nAiW5WZsKh3xKxX14Y6rHHRLDYo02r70EZEgEA9GeE
+j7gvzeLRwlhWLV3TpP/kb4Yb6UyC5QXN1e1TFAm0E3NjY2xpZSA8aGlAc2NjbC5j
+Yz6IkAQTFgoAOBYhBM+GRQYLRZ2v54lwVude+ux5RtlqBQJqbbUfAhsjBQsJCAcC
+BhUKCQgLAgQWAgMBAh4BAheAAAoJEOde+ux5RtlqmNAA/1/3ZFwM9FbG7GLCVLN8
+8Nc8+jK8qaidmm3VKfdEy6OrAQD7ltx8YIbRsL+6L14i2AvRnxKtd8W2d0Z8eqrF
++N5yDbQXc2NjbGllIDxub3RpZnlAc2NjbC5jYz6IkAQTFgoAOBYhBM+GRQYLRZ2v
+54lwVude+ux5RtlqBQJqbbUkAhsjBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJ
+EOde+ux5RtlqHoQA/Rra0NHtz/5R5y3yazh8HRPotYFRHnQbmQZrQ/z0FwUdAQCw
+tJQzsMrQ7wJ0e8B0Ub+HqkbYbaf+J/PIjJc7tuEmDrQYc2NjbGllIDxjb250YWN0
+QHNjY2wuY2M+iJAEExYKADgWIQTPhkUGC0Wdr+eJcFbnXvrseUbZagUCam23JwIb
+IwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRDnXvrseUbZaqE9AP9dwV3lW7CG
+tb4GlAZr3YJOKB647+7RO+IVxHgaFjsW0wEA0eyHxRN6PaWqfge7wyKudwKo152v
+OjegivY8Aj9ZBAC4OARqaMnEEgorBgEEAZdVAQUBAQdAXPyut3KUjGc6WOxTyBT3
++OBN/XpcvTepaNLQPwxbbUQDAQgHiHgEGBYKACAWIQTPhkUGC0Wdr+eJcFbnXvrs
+eUbZagUCamjJxAIbDAAKCRDnXvrseUbZaiNLAQCKr7XOM3wxoHlb8ACco0Fqyqs3
+uxZr9+q6SIb0gnPPywEAkFT+zg4aktxkw7+bbmJplj4CBVFeQQw7AaU0O2oqcA4=
+=Yev8
+-----END PGP PUBLIC KEY BLOCK-----
+
+
 ## Crypto addresses
 - EVM: 0x0138c2a2acb190dadc5a144a15cc1c47010d5cc1
 - LTC: ltc1q8j0laewgg5qwuq8k3j5027n6x48xvuz595sccl
@@ -18,6 +52,7 @@
 ## Projects
 - Wiki / dump storage: https://shiza.sccl.cc
 - scclNix (modular NixOS architecture): https://github.com/scclie/sccl_nix
+- notizine (Minimal modular Zine-based toolkit for multilingual static sites): https://notizine.sccl.cc
 - bip39_vanity_rs (BIP39 vanity address generator (BTC, LTC, ETH/EVM, DOGE)): https://github.com/scclie/bip39_vanity_rs
 - gif.sccl.cc (Minimal client-side no tracking fast GIF maker.): https://gif.sccl.cc
 - otp-migrate.sccl.cc (Client-side Google Authenticator OTP migration decoder): https://otp-migrate.sccl.cc

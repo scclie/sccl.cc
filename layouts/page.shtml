@@ -72,7 +72,7 @@
     .project-item:hover .project-title::before{opacity:1}
     .project-desc{color:var(--fg);font-size:1rem}
     .peripherals-content{display:flex;flex-direction:column}
-    .peripheral-section{display:flex;flex-direction:row;gap:0.5rem}
+    .peripheral-section{display:flex;flex-direction:row;gap:0.5rem;padding-left:1rem}
     .peripheral-label{color:var(--page-accent);font-size:1rem}
     .peripheral-value{color:var(--fg);font-size:1rem}
     .easter-egg-container{display:flex;gap:0.5rem;align-items:center}

@@ -13,44 +13,44 @@
 <div class="projects-content">
   <div class="project-item">
     <div class="project-details">
-      <a href="https://shiza.sccl.cc" class="project-title">Wiki (dump storage)</a>
-      <span class="project-desc">S!/#tpost territory</span>
+      <a href="https://shiza.sccl.cc" class="project-title">wiki (dump storage)</a>
+      <span class="project-desc">s!/#tpost territory</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
       <a href="https://codeberg.org/scclie/sccl_nix/" class="project-title">scclNix</a>
-      <span class="project-desc">Modular host-profile NixOS architecture</span>
+      <span class="project-desc">modular host-profile NixOS architecture</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
       <a href="https://notizine.sccl.cc/" class="project-title">notizine</a>
-      <span class="project-desc">Minimal modular Zine-based toolkit for multilingual static sites</span>
+      <span class="project-desc">minimal modular Zine-based toolkit for multilingual static sites</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
       <a href="https://gif.sccl.cc/" class="project-title">gif.sccl.cc</a>
-      <span class="project-desc">Minimal client-side no tracking fast GIF maker</span>
+      <span class="project-desc">minimal client-side no tracking fast GIF maker</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
       <a href="https://otp-migrate.sccl.cc/" class="project-title">otp-migrate.sccl.cc</a>
-      <span class="project-desc">Client-side Google Authenticator OTP migration decoder</span>
+      <span class="project-desc">client-side Google Authenticator OTP migration decoder</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
       <a href="https://xkb.sccl.cc" class="project-title">xkb.sccl.cc</a>
-      <span class="project-desc">Linux X keyboard layout generator</span>
+      <span class="project-desc">linux X keyboard layout generator</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
       <a href="https://heatkeys.sccl.cc" class="project-title">heatkeys.sccl.cc</a>
-      <span class="project-desc">Keyboard layout heatmap</span>
+      <span class="project-desc">keyboard layout heatmap</span>
     </div>
   </div>
   <div class="project-item">
@@ -61,14 +61,14 @@
   </div>
   <div class="project-item">
     <div class="project-details">
-      <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS" class="project-title">Rulemak-CAWS</a>
-      <span class="project-desc">Russian phonetically equivalent variant of Colemak CAWS layout</span>
+      <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS" class="project-title">rulemak-CAWS</a>
+      <span class="project-desc">russian phonetically equivalent variant of Colemak CAWS layout</span>
     </div>
   </div>
   <div class="project-item">
     <div class="project-details">
-      <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp" class="project-title">Sakuli60lp</a>
-      <span class="project-desc">Handwired Wireless Hotswap Split Choc Low Profile Open Source Keyboard</span>
+      <a href="http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp" class="project-title">sakuli60lp</a>
+      <span class="project-desc">handwired Wireless Hotswap Split Choc Low Profile Open Source Keyboard</span>
     </div>
   </div>
 </div>

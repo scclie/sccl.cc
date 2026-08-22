@@ -6,6 +6,7 @@ const SRC = join(ROOT, "src");
 const DEST = join(ROOT, "content");
 const BADGES_JSON = join(ROOT, "badges.json");
 const MARKER = "%%BADGES%%";
+const LLMS_BODY_MARKER = "%%BODY%%";
 
 // --- badges HTML ---
 function genBadgesHtml() {
@@ -84,6 +85,23 @@ function renderItem(tab, fields, file, lineno, line) {
   ].join("\n");
 }
 
+function collectLlmsItem(llms, tab, sectionName, fields) {
+  if (tab === "contacts" && sectionName === "contacts") {
+    const [label, href, display] = fields;
+    if (href) {
+      const name = { github: "GitHub", youtube: "YouTube" }[label] ?? `${label[0].toUpperCase()}${label.slice(1)}`;
+      llms.contacts.push(`- ${name}: ${display} - ${href}`);
+    }
+  } else if (tab === "contacts" && sectionName === "crypto") {
+    if (fields[3]) llms.crypto.push(`- ${fields[0]}: ${fields[3]}`);
+  } else if (tab === "projects") {
+    const [title, href, desc] = fields;
+    llms.projects.push(desc ? `- ${title} (${desc}): ${href}` : `- ${title}: ${href}`);
+  } else if (tab === "peripherals") {
+    llms.peripherals.push(`- ${fields[0]}: ${fields[1]}`);
+  }
+}
+
 function renderRow(centered, rest, file, lineno, line) {
   const tokens = rest.split(" | ");
   const parts = [];
@@ -102,23 +120,26 @@ function renderRow(centered, rest, file, lineno, line) {
     : `  ${inner}`;
 }
 
-function generateFromData(dataText, tab, file) {
+function generateFromData(dataText, tab, file, llms) {
   const out = [];
+  let sectionName = "";
   dataText.split("\n").forEach((raw, i) => {
     const line = raw.trim();
     if (!line) return;
     if (line === MARKER) { out.push(raw); return; }
     const section = line.match(/^\[([^\]]+)\]$/);
-    if (section) { out.push(renderSection(tab, section[1])); return; }
+    if (section) { sectionName = section[1]; out.push(renderSection(tab, section[1])); return; }
     if (line.startsWith("note | ")) { out.push(`  <p class="note">${line.slice(7)}</p>`); return; }
     const row = line.match(/^row(\.centered)? \| (.+)$/);
     if (row) { out.push(renderRow(!!row[1], row[2], file, i + 1, line)); return; }
-    out.push(renderItem(tab, line.split(/\s*\|\s*/), file, i + 1, line));
+    const fields = line.split(/\s*\|\s*/);
+    collectLlmsItem(llms, tab, sectionName, fields);
+    out.push(renderItem(tab, fields, file, i + 1, line));
   });
   return out.join("\n");
 }
 
-function expandShorthand(content, file) {
+function expandShorthand(content, file, llms) {
   const lines = content.split("\n");
   const start = lines.findIndex((l) => l.trim() === "```=data");
   if (start === -1) return null;
@@ -128,9 +149,48 @@ function expandShorthand(content, file) {
   }
   if (end === -1) throw new Error(`${file}: unterminated \`\`\`=data block`);
   const tab = detectTab(lines.slice(0, start).join("\n"), file);
-  const body = generateFromData(lines.slice(start + 1, end).join("\n"), tab, file);
+  const body = generateFromData(lines.slice(start + 1, end).join("\n"), tab, file, llms);
   const block = ["```=html", `<div class="${tab}-content">`, body, "</div>", "```"].join("\n");
   return [...lines.slice(0, start), block, ...lines.slice(end + 1)].join("\n");
+}
+
+// --- llms.txt ---
+function genLlmsBody(llms) {
+  const ziggy = readFileSync(join(ROOT, "zine.ziggy"), "utf8");
+  const host = ziggy.match(/\.host_url\s*=\s*"([^"]+)"/)[1].replace(/\/+$/, "");
+  const key = (name) => readFileSync(join(ROOT, "assets", name), "utf8").replace(/\s+$/, "");
+  const sections = [
+    ["## Contacts", llms.contacts],
+    ["## Public keys:", [
+      "### age key",
+      key("age-public.txt"),
+      "",
+      "### ssh keys",
+      key("id_ed25519.txt"),
+      "",
+      "### pgp key",
+      key("gpg.txt"),
+    ]],
+    ["## Crypto addresses", llms.crypto],
+    ["## Projects", llms.projects],
+    ["## Peripherals", llms.peripherals],
+    ["## Navigation", [
+      `- Contacts: ${host}/`,
+      `- Projects: ${host}/projects/`,
+      `- Peripherals: ${host}/peripherals/`,
+      "- Blog: https://shiza.sccl.cc",
+    ]],
+  ];
+  return sections.map(([title, lines]) => [title, ...lines].join("\n")).join("\n\n");
+}
+
+function writeLlms(llms) {
+  const template = readFileSync(join(ROOT, "assets", "llms.header.txt"), "utf8");
+  if (!template.includes(LLMS_BODY_MARKER)) {
+    throw new Error("assets/llms.header.txt: missing %%BODY%% marker");
+  }
+  const body = genLlmsBody(llms);
+  writeFileSync(join(ROOT, "assets", "llms.txt"), template.replace(LLMS_BODY_MARKER, () => body));
 }
 
 // --- copy src/ → content/ with replacements ---
@@ -138,13 +198,14 @@ if (!existsSync(DEST)) mkdirSync(DEST, { recursive: true });
 
 const badgesHtml = genBadgesHtml();
 const files = readdirSync(SRC).filter(f => extname(f) === ".smd");
+const llms = { contacts: [], crypto: [], projects: [], peripherals: [] };
 
 for (const file of files) {
   const srcPath = join(SRC, file);
   const destPath = join(DEST, file);
   let content = readFileSync(srcPath, "utf8");
 
-  const expanded = expandShorthand(content, file);
+  const expanded = expandShorthand(content, file, llms);
   if (expanded !== null) content = expanded;
 
   if (content.includes(MARKER)) {
@@ -154,4 +215,6 @@ for (const file of files) {
   writeFileSync(destPath, content);
 }
 
-console.log(`generated ${files.length} files → content/`);
+writeLlms(llms);
+
+console.log(`generated ${files.length} files → content/, assets/llms.txt`);

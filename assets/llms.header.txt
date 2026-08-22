@@ -1,0 +1,9 @@
+# sccl.cc
+
+> Personal website of sccl (Name vairants: paper sacculos / scclie / saccul / pipre scclie / [pipre@scclie ~]$ / [paper@saccul ~]$ / papersaccul). Name transcription: (/ˈsʌk.kʊ.li/). Privacy-respecting, no JS tracking, no analytics.
+
+%%BODY%%
+
+## About site
+The website is written in zig zine, a static website generator.
+The website is optimized to 12kb in a single html, which allows it to load in 1 RTT (for more information, see https://shiza.sccl.cc/en/it/14kb-cap or https://shiza.sccl.cc/ru/it/14kb-cap)

@@ -9,58 +9,25 @@
 },
 ---
 
-```=html
-<div class="contacts-content">
-  <p class="crypto-sep">[contacts]</p>
-  <div class="contact-item">
-    <a href="https://discord.com/users/sccl" class="contact-label">discord</a>
-    <span class="contact-value" data-copy="sccl">@sccl</span>
-  </div>
-  <div class="contact-item">
-    <a href="https://t.me/scclie" class="contact-label">telegram</a>
-    <span class="contact-value" data-copy="scclie">@scclie</span>
-  </div>
-  <div class="contact-item">
-    <a href="https://signal.me/#eu/TkvlB78uMmeboYc5CxuhAXZcJxcV8vVPlztUNmI0XdzDxItZZppOA7i6AJHn_bvy" class="contact-label">signal</a>
-    <span class="contact-value" data-copy="sccl.13">sccl.13</span>
-  </div>
-  <div class="contact-item">
-    <a href="https://codeberg.org/scclie" class="contact-label">codeberg</a>
-    <span class="contact-value" data-copy="scclie">scclie</span>
-  </div>
-  <div class="contact-item">
-    <a href="https://github.com/scclie" class="contact-label">github</a>
-    <span class="contact-value" data-copy="scclie">scclie</span>
-  </div>
-  <div class="contact-item">
-    <a href="https://steamcommunity.com/id/scclie/" class="contact-label">steam</a>
-    <span class="contact-value" data-copy="scclie">scclie</span>
-  </div>
-  <div class="contact-item">
-    <a href="https://www.youtube.com/@scclie" class="contact-label">youtube</a>
-    <span class="contact-value" data-copy="scclie">@scclie</span>
-  </div>
-  <div class="contact-item">
-    <a href="mailto:hi@sccl.cc" class="contact-label">email</a>
-    <span class="contact-value" data-copy="hi@sccl.cc">hi@sccl.cc</span>
-  </div>
-  <span style="white-space:nowrap"><a href="/age-public.txt" class="zine-credit">&nbsp;&nbsp;&nbsp;&nbsp;[ AGE key ]</a> <a href="/id_ed25519.txt" class="zine-credit">[ SSH keys ]</a> <a href="/gpg.txt" class="zine-credit">[ PGP key ]</a> <span class="note">// CF86 4506 0B45 9DAF E789 7056 E75E FAEC 7946 D96A</span></span>
-  <p class="crypto-sep">[crypto]</p>
-  <div class="contact-item">
-    <span class="contact-label">EVM</span>
-    <span class="contact-value" data-copy="0x0138c2a2acb190dadc5a144a15cc1c47010d5cc1">0x0138c2a2...5cc1</span>
-  </div>
-  <div class="contact-item">
-    <span class="contact-label">LTC</span>
-    <span class="contact-value" data-copy="ltc1q8j0laewgg5qwuq8k3j5027n6x48xvuz595sccl">ltc1q8j0la...sccl</span>
-  </div>
-  <div class="contact-item">
-    <span class="contact-label">BTC</span>
-    <span class="contact-value" data-copy="bc1q7ygsn73urgzr6w38ltw0yqzzjy2z9uzeh0sccl">bc1q7ygsn7...sccl</span>
-  </div>
-  <p class="note">&nbsp;&nbsp;&nbsp;// they all ends in sccl</p>
-  <p class="crypto-sep">[88x31's]</p>
+```=data
+[contacts]
+discord | https://discord.com/users/sccl | @sccl | sccl
+telegram | https://t.me/scclie | @scclie | scclie
+signal | https://signal.me/#eu/TkvlB78uMmeboYc5CxuhAXZcJxcV8vVPlztUNmI0XdzDxItZZppOA7i6AJHn_bvy | sccl.13
+codeberg | https://codeberg.org/scclie | scclie
+github | https://github.com/scclie | scclie
+steam | https://steamcommunity.com/id/scclie/ | scclie
+youtube | https://www.youtube.com/@scclie | @scclie | scclie
+email | mailto:hi@sccl.cc | hi@sccl.cc
+row | &nbsp;&nbsp;&nbsp;&nbsp;[ AGE key ] | /age-public.txt | [ SSH keys ] | /id_ed25519.txt | [ PGP key ] | /gpg.txt | // CF86 4506 0B45 9DAF E789 7056 E75E FAEC 7946 D96A
+
+[crypto]
+EVM | | 0x0138c2a2...5cc1 | 0x0138c2a2acb190dadc5a144a15cc1c47010d5cc1
+LTC | | ltc1q8j0la...sccl | ltc1q8j0laewgg5qwuq8k3j5027n6x48xvuz595sccl
+BTC | | bc1q7ygsn7...sccl | bc1q7ygsn73urgzr6w38ltw0yqzzjy2z9uzeh0sccl
+note | &nbsp;&nbsp;&nbsp;// they all ends in sccl
+
+[88x31's]
   %%BADGES%%
-  <div style="text-align:center"><span style="white-space:nowrap"><a href="https://nixwebr.ing/prev/scclie" class="zine-credit">[&lt;&lt; Prev]</a> <a href="https://nixwebr.ing" class="zine-credit">[nixwebr.ing]</a> <a href="https://nixwebr.ing/next/scclie" class="zine-credit">[Next &gt;&gt;]</a></span></div>
-</div>
+row.centered | [&lt;&lt; Prev] | https://nixwebr.ing/prev/scclie | [nixwebr.ing] | https://nixwebr.ing | [Next &gt;&gt;] | https://nixwebr.ing/next/scclie
 ```

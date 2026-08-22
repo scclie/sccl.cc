@@ -11,21 +11,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Zine
-        uses: kristoff-it/setup-zine@v2
-
-      - name: Build
-        run: zine release --force
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      - name: Install dependencies & generate OG image
+      - name: Install dependencies & generate content
         run: |
           npm install --ignore-scripts
+          npm run gen
+
+      - name: Setup Zine
+        uses: kristoff-it/setup-zine@v2
+
+      - name: Build
+        run: zine release --force
+
+      - name: Generate OG image
+        run: |
           npx playwright install --with-deps chromium
           node scripts/og-image.mjs
 

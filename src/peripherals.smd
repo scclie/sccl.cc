@@ -9,111 +9,37 @@
 },
 ---
 
-```=html
-<div class="peripherals-content">
-  <span class="crypto-sep">[server]</span>
-  <div class="peripheral-section">
-    <span class="peripheral-label">OS:</span>
-    <span class="peripheral-value">NixOS 26.05 (linux 7.1.0)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">CPU:</span>
-    <span class="peripheral-value">ryzen 5600x @ 4.7ghz</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">RAM:</span>
-    <span class="peripheral-value">32gb ddr4-3000 cl16</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">storage:</span>
-    <span class="peripheral-value">1tb ssd</span>
-  </div>
-  <span class="crypto-sep">[desktop]</span>
-  <div class="peripheral-section">
-    <span class="peripheral-label">OS:</span>
-    <span class="peripheral-value">NixOS 26.05 (linux 7.1.0), niri 26.04 (wayland)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">CPU:</span>
-    <span class="peripheral-value">ryzen 5500x3d @ 4.0ghz</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">GPU:</span>
-    <span class="peripheral-value">radeon rx6750xt (12gb)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">RAM:</span>
-    <span class="peripheral-value">16gb ddr4-3400 cl16</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">storage:</span>
-    <span class="peripheral-value">512gb nvme + 256gb sata3 ssd</span>
-  </div>
-  <span class="crypto-sep">[peripherals]</span>
-  <div class="peripheral-section">
-    <span class="peripheral-label">display0:</span>
-    <span class="peripheral-value">msi 26.5" mag 272qp x50 (qd-oled, 1440p, 500hz)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">mouse0:</span>
-    <span class="peripheral-value">wlmouse beast x mini pro solid pink rabbit (westlab gray)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">mouse1:</span>
-    <span class="peripheral-value">lamzu thron (x-raypad obsidian)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">pad0:</span>
-    <span class="peripheral-value">asus moonstone l (glasspad)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">pad1:</span>
-    <span class="peripheral-value">artisan raiden mid dai dai (clothpad)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">arm sleeve:</span>
-    <span class="peripheral-value">cisa v2 navy</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">keyboard:</span>
-    <span class="peripheral-value">soffle split 64 key (gazzew boba u4t)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">audio:</span>
-    <span class="peripheral-value">arturia minifuse 2, philips shp9500, maono pd100 xlr</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">phone:</span>
-    <span class="peripheral-value">google pixel 7 (grapheneOS) & google pixel 3</span>
-  </div>
-  <span class="crypto-sep">[laptop]</span>
-  <div class="peripheral-section">
-    <span class="peripheral-label">model:</span>
-    <span class="peripheral-value">giga Aero15X</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">OS:</span>
-    <span class="peripheral-value">NixOS 26.05 (linux 7.1.0), niri 26.04 (wayland)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">CPU:</span>
-    <span class="peripheral-value">i7 8750H</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">GPU:</span>
-    <span class="peripheral-value">gtx1070 (8gb)</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">RAM:</span>
-    <span class="peripheral-value">16gb ddr4</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">storage:</span>
-    <span class="peripheral-value">512gb nvme</span>
-  </div>
-  <div class="peripheral-section">
-    <span class="peripheral-label">display0:</span>
-    <span class="peripheral-value">15.6" ips 1080p 144hz</span>
-  </div>
-</div>
+```=data
+[server]
+OS | NixOS 26.05 (linux 7.1.0)
+CPU | ryzen 5600x @ 4.7ghz
+RAM | 32gb ddr4-3000 cl16
+storage | 1tb ssd
+
+[desktop]
+OS | NixOS 26.05 (linux 7.1.0), niri 26.04 (wayland)
+CPU | ryzen 5500x3d @ 4.0ghz
+GPU | radeon rx6750xt (12gb)
+RAM | 16gb ddr4-3400 cl16
+storage | 512gb nvme + 256gb sata3 ssd
+
+[peripherals]
+display0 | msi 26.5" mag 272qp x50 (qd-oled, 1440p, 500hz)
+mouse0 | wlmouse beast x mini pro solid pink rabbit (westlab gray)
+mouse1 | lamzu thron (x-raypad obsidian)
+pad0 | asus moonstone l (glasspad)
+pad1 | artisan raiden mid dai dai (clothpad)
+arm sleeve | cisa v2 navy
+keyboard | soffle split 64 key (gazzew boba u4t)
+audio | arturia minifuse 2, philips shp9500, maono pd100 xlr
+phone | google pixel 7 (grapheneOS) & google pixel 3
+
+[laptop]
+model | giga Aero15X
+OS | NixOS 26.05 (linux 7.1.0), niri 26.04 (wayland)
+CPU | i7 8750H
+GPU | gtx1070 (8gb)
+RAM | 16gb ddr4
+storage | 512gb nvme
+display0 | 15.6" ips 1080p 144hz
 ```

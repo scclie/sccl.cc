@@ -1,0 +1,48 @@
+name: deploy
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: sccl-cc-deploy
+
+jobs:
+  deploy:
+    if: startsWith(github.server_url, 'http://10.69.0.10') || startsWith(github.server_url, 'https://git.sccl.cc')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies & generate content
+        run: |
+          npm install --ignore-scripts
+          npm run gen
+
+      - name: Setup Zine
+        uses: https://github.com/kristoff-it/setup-zine@v2
+
+      - name: Build
+        run: zine release --force
+
+      - name: Generate OG image
+        run: |
+          npx playwright install --with-deps chromium
+          node scripts/og-image.mjs
+
+      - name: Install rsync
+        run: apt-get update && apt-get install -y rsync
+
+      - name: Publish to /tank/sites
+        run: |
+          set -euo pipefail
+          RELEASE="$(date -u +%Y%m%dT%H%M%S)-${GITHUB_SHA::8}"
+          REL="/tank/sites/sccl.cc/releases/${RELEASE}"
+          mkdir -p "${REL}"
+          rsync -a --delete ./public/ "${REL}/"
+          ln -sfn "releases/${RELEASE}" /tank/sites/sccl.cc/public
+          ls -1 /tank/sites/sccl.cc/releases | sort | head -n -5 | xargs -r -I{} rm -rf "/tank/sites/sccl.cc/releases/{}"

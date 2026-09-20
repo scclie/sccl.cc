@@ -1,0 +1,158 @@
+---
+.title = "sccl.cc: guestbook",
+.date = .date("2024-01-01T00:00:00"),
+.authors = ["sccl"],
+.layout = "page.shtml",
+.custom = .{
+    .tab = "guestbook",
+    .description = "Leave a comment, ask a question, or just say hi",
+},
+---
+
+```=html
+<style>
+.guestbook-content{display:flex;flex-direction:column;gap:1rem}
+#comments-container{margin:1rem 0}
+.comment{background:var(--nord0);border-left:3px solid var(--page-accent);padding:0.75rem;margin-bottom:0.75rem;border-radius:0 4px 4px 0}
+.comment-header{display:flex;justify-content:space-between;margin-bottom:0.5rem;font-size:0.85rem;opacity:0.8}
+.comment-nickname{font-weight:bold;color:var(--page-accent)}
+.comment-site a{color:var(--fg-dim);text-decoration:none;font-size:0.85rem}
+.comment-site a:hover{color:var(--page-accent);text-decoration:underline}
+.comment-content{line-height:1.5}
+.comment-content code{background:rgba(255,255,255,0.05);padding:0.15em 0.3em;border-radius:3px;font-size:0.9em}
+.comment-content a{color:var(--page-accent)}
+#comment-form{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--page-accent)}
+#comment-form input,#comment-form textarea{background:var(--nord0);border:1px solid var(--fg-dim);color:var(--fg);padding:0.6rem;font-family:inherit;font-size:0.9rem;border-radius:3px}
+#comment-form input:focus,#comment-form textarea:focus{border-color:var(--page-accent);outline:none}
+#comment-form textarea{min-height:80px;resize:vertical}
+#comment-form button{background:var(--page-accent);color:#000;border:none;padding:0.6rem 1.2rem;font-weight:bold;cursor:pointer;border-radius:3px;font-family:inherit;font-size:0.9rem;transition:opacity 0.2s}
+#comment-form button:hover{opacity:0.9}
+#comment-form button:disabled{opacity:0.5;cursor:not-allowed}
+</style>
+
+<div class="guestbook-content">
+  <p>leave a comment, ask a question, or just say hi~~</p>
+
+  <div id="comments-container"></div>
+
+  <form id="comment-form">
+    <div style="display:flex;gap:0.5rem;align-items:center">
+      <input type="text" id="nickname" name="nickname" placeholder="nickname" required maxlength="32" style="flex:1">
+      <button type="button" id="random-nick" title="generate random nickname" style="padding:0.6rem;white-space:nowrap">[ random ]</button>
+    </div>
+    <input type="url" id="site" name="site" placeholder="site (https://...)">
+    <textarea id="content" name="content" placeholder="ur comment (markdown supprtd)" required maxlength="2048"></textarea>
+    <input type="text" id="honeypot" name="honeypot" style="display:none">
+    <button type="submit">post comment</button>
+  </form>
+</div>
+
+<script>
+const API_BASE = 'https://comments.pierdol.ing';
+const THREAD_ID = '/guestbook/';
+
+async function loadComments() {
+  try {
+    const response = await fetch(`${API_BASE}/api/threads/${encodeURIComponent(THREAD_ID)}/comments`);
+    const data = await response.json();
+
+    const container = document.getElementById('comments-container');
+    container.innerHTML = '';
+
+    if (!data.comments || data.comments.length === 0) {
+      container.innerHTML = '<p style="opacity:0.6;text-align:center;padding:1rem;">no comments yet. be the first!</p>';
+      return;
+    }
+
+    data.comments.forEach(comment => {
+      const div = document.createElement('div');
+      div.className = 'comment';
+
+      const date = new Date(comment.created_at * 1000).toLocaleString();
+      const nicknameHtml = comment.site
+        ? `<a href="${comment.site}" target="_blank" rel="noopener">${escapeHtml(comment.nickname)}</a>`
+        : escapeHtml(comment.nickname);
+
+      div.innerHTML = `
+        <div class="comment-header">
+          <span class="comment-nickname">${nicknameHtml}</span>
+          <span>${date}</span>
+        </div>
+        <div class="comment-content">${comment.html}</div>
+      `;
+
+      container.appendChild(div);
+    });
+  } catch (err) {
+    console.error('Failed to load comments:', err);
+    document.getElementById('comments-container').innerHTML = '<p style="opacity:0.6;text-align:center;padding:1rem;">failed to load comments</p>';
+  }
+}
+
+document.getElementById('comment-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const button = e.target.querySelector('button');
+  button.disabled = true;
+  button.textContent = 'posting...';
+
+  const data = {
+    nickname: document.getElementById('nickname').value,
+    site: document.getElementById('site').value || null,
+    content: document.getElementById('content').value,
+    honeypot: document.getElementById('honeypot').value
+  };
+
+  try {
+    const response = await fetch(`${API_BASE}/api/threads/${encodeURIComponent(THREAD_ID)}/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert('comment posted! it will appear after moderation.');
+      e.target.reset();
+      loadComments();
+    } else {
+      const err = await response.json();
+      alert('error: ' + (err.error || 'unknown error'));
+    }
+  } catch (err) {
+    alert('failed to post comment');
+  } finally {
+    button.disabled = false;
+    button.textContent = 'post comment';
+  }
+});
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+const adjectives = ['null','void','shadow','cyber','glitch','silent','dark','neon','quantum','binary','pixel','ghost','chaos','crypt','zero','phantom','static','broken','wild','frozen'];
+const nouns = ['puppy','kitten','wolf','fox','cat','dragon','ninja','samurai','wizard','ghost','byte','bit','node','root','daemon','spectre','raven','lynx','serpent','phoenix'];
+const symbols = ['0x','_','.','-','@','#','$'];
+const numbers = ['42','13','7','666','404','1337','9000','420','69','0'];
+
+function generateNickname() {
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+  const template = Math.floor(Math.random() * 5);
+  switch(template) {
+    case 0: return `${pick(adjectives)}_${pick(nouns)}`;
+    case 1: return `${pick(symbols)}${pick(adjectives)}_${pick(nouns)}`;
+    case 2: return `${pick(adjectives)}_${pick(nouns)}_${pick(numbers)}`;
+    case 3: return `${pick(nouns)}${pick(symbols)}${pick(nouns)}`;
+    case 4: return `${pick(symbols)}${pick(nouns)}_${pick(numbers)}`;
+  }
+}
+
+document.getElementById('random-nick').addEventListener('click', () => {
+  document.getElementById('nickname').value = generateNickname();
+});
+
+loadComments();
+</script>
+```

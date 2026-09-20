@@ -88,6 +88,7 @@
   <ctx :if="$page.custom.get('tab').eql('contacts')"><style>:root{--page-accent:var(--nord15)}.av-i{filter:hue-rotate(0deg)}</style></ctx>
   <ctx :if="$page.custom.get('tab').eql('projects')"><style>:root{--page-accent:var(--nord8)}.av-i{filter:hue-rotate(233deg)}</style></ctx>
   <ctx :if="$page.custom.get('tab').eql('peripherals')"><style>:root{--page-accent:var(--nord14)}.av-i{filter:hue-rotate(131deg)}</style></ctx>
+  <ctx :if="$page.custom.get('tab').eql('guestbook')"><style>:root{--page-accent:var(--nord13)}.av-i{filter:hue-rotate(90deg)}</style></ctx>
 </head>
 <body>
   <div id="encoding-errors"></div>
@@ -96,6 +97,7 @@
       <nav class="nav">
         <div class="nav-links">
           <a href="/" class="$page.custom.get('tab').eql('contacts').then('active')">contacts</a>
+          <a href="/guestbook/" class="$page.custom.get('tab').eql('guestbook').then('active')">guestbook</a>
           <a href="/projects/" class="$page.custom.get('tab').eql('projects').then('active')">projects</a>
           <a href="/peripherals/" class="$page.custom.get('tab').eql('peripherals').then('active')">peripherals</a>
           <a href="https://shiza.sccl.cc" target="_blank">blog</a>

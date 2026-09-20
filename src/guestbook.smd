@@ -92,15 +92,26 @@ async function loadComments() {
 document.getElementById('comment-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const button = e.target.querySelector('button');
-  button.disabled = true;
-  button.textContent = 'posting...';
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const randomBtn = form.querySelector('#random-nick');
+  const nicknameInput = form.querySelector('#nickname');
+  const siteInput = form.querySelector('#site');
+  const contentInput = form.querySelector('#content');
+
+  // Lock all fields and buttons
+  submitBtn.disabled = true;
+  randomBtn.disabled = true;
+  nicknameInput.disabled = true;
+  siteInput.disabled = true;
+  contentInput.disabled = true;
+  submitBtn.textContent = 'posting...';
 
   const data = {
-    nickname: document.getElementById('nickname').value,
-    site: document.getElementById('site').value || null,
-    content: document.getElementById('content').value,
-    honeypot: document.getElementById('honeypot').value
+    nickname: nicknameInput.value,
+    site: siteInput.value || null,
+    content: contentInput.value,
+    honeypot: form.querySelector('#honeypot').value
   };
 
   try {
@@ -112,7 +123,7 @@ document.getElementById('comment-form').addEventListener('submit', async (e) => 
 
     if (response.ok) {
       alert('comment posted! it will appear after moderation.');
-      e.target.reset();
+      form.reset();
       loadComments();
     } else {
       const err = await response.json();
@@ -121,8 +132,12 @@ document.getElementById('comment-form').addEventListener('submit', async (e) => 
   } catch (err) {
     alert('failed to post comment');
   } finally {
-    button.disabled = false;
-    button.textContent = 'post comment';
+    submitBtn.disabled = false;
+    randomBtn.disabled = false;
+    nicknameInput.disabled = false;
+    siteInput.disabled = false;
+    contentInput.disabled = false;
+    submitBtn.textContent = 'post comment';
   }
 });
 

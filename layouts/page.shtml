@@ -21,7 +21,7 @@
   <meta name="twitter:description" :content="$page.custom.get('description')">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    :root{--nord0:#2e3440;--nord1:#3b4252;--nord3:#4c566a;--nord4:#d8dee9;--nord8:#88c0d0;--nord11:#bf616a;--nord14:#a3be8c;--nord15:#b48ead;--bg:var(--nord0);--fg:var(--nord4);--fg-dim:var(--nord3)}
+    :root{--nord0:#2e3440;--nord1:#3b4252;--nord3:#4c566a;--nord4:#d8dee9;--nord8:#88c0d0;--nord11:#bf616a;--nord13:#ebcb8b;--nord14:#a3be8c;--nord15:#b48ead;--bg:var(--nord0);--fg:var(--nord4);--fg-dim:var(--nord3)}
     html{background:var(--bg);color:var(--fg);font-family:"Space Mono",monospace;font-size:clamp(14px,1.2vw,24px);line-height:1.6;-webkit-font-smoothing:none;font-smooth:never}
     body{background:var(--bg);min-height:100vh}
     main{min-height:100vh;padding:1.875rem 1.25rem;display:flex;align-items:center;justify-content:center;position:relative;z-index:10}

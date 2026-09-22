@@ -12,44 +12,133 @@
 ```=html
 <style>
 .guestbook-content{display:flex;flex-direction:column;gap:1rem}
-#comments-container{margin:1rem 0}
-.comment{background:var(--nord0);border-left:3px solid var(--page-accent);padding:0.75rem;margin-bottom:0.75rem;border-radius:0 4px 4px 0}
-.comment-header{display:flex;justify-content:space-between;margin-bottom:0.5rem;font-size:0.85rem;opacity:0.8}
-.comment-nickname{font-weight:bold;color:var(--page-accent)}
-.comment-site a{color:var(--fg-dim);text-decoration:none;font-size:0.85rem}
-.comment-site a:hover{color:var(--page-accent);text-decoration:underline}
+#comments-container{background:var(--nord0);border:1px solid var(--fg-dim);padding:0.75rem;max-height:40vh;overflow-y:auto;margin:1rem 0;overscroll-behavior:contain}
+#comments-container::-webkit-scrollbar{width:8px}
+#comments-container::-webkit-scrollbar-track{background:transparent}
+#comments-container::-webkit-scrollbar-thumb{background:var(--fg-dim)}
+.thread{margin-bottom:0.75rem}
+.thread:last-child{margin-bottom:0}
+.comment{background:var(--nord1);padding:0.5rem 0.75rem}
+.comment-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.15rem;font-size:0.95rem}
+.comment-nickname{color:var(--page-accent);font-weight:bold}
+.comment-nickname::after{content:":"}
+.comment-nickname a{color:var(--page-accent);text-decoration:underline}
+.comment-nickname a:hover{color:#000}
+.comment-meta{display:flex;align-items:baseline;gap:0.875rem;margin-left:1rem;white-space:nowrap}
+.comment-date{color:var(--fg-dim);font-size:0.8rem}
+.comment-num{color:var(--fg);font-size:0.8rem}
 .comment-content{line-height:1.5}
-.comment-content code{background:rgba(255,255,255,0.05);padding:0.15em 0.3em;border-radius:3px;font-size:0.9em}
+.comment-content code{background:rgba(255,255,255,0.05);padding:0.15em 0.3em;font-size:0.9em}
 .comment-content a{color:var(--page-accent)}
-#comment-form{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--page-accent)}
-#comment-form input,#comment-form textarea{background:var(--nord0);border:1px solid var(--fg-dim);color:var(--fg);padding:0.6rem;font-family:inherit;font-size:0.9rem;border-radius:3px}
+.comment-reply{background:transparent;margin-top:0.1rem;display:flex;align-items:flex-start;gap:0.75rem}
+.comment-reply-line{display:flex;flex:1;align-items:flex-start;gap:0.5rem}
+.comment-reply .comment-reply-colon{color:var(--page-accent);font-weight:bold}
+.comment-reply .comment-date{color:var(--fg-dim);font-size:0.8rem;white-space:nowrap}
+#comment-form{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--fg-dim)}
+#comment-form input,#comment-form textarea{background:var(--nord0);border:1px solid var(--fg-dim);color:var(--fg);padding:0.6rem;font-family:inherit;font-size:0.9rem}
 #comment-form input:focus,#comment-form textarea:focus{border-color:var(--page-accent);outline:none}
 #comment-form textarea{min-height:80px;resize:vertical}
-#comment-form button{background:var(--page-accent);color:#000;border:none;padding:0.6rem 1.2rem;font-weight:bold;cursor:pointer;border-radius:3px;font-family:inherit;font-size:0.9rem;transition:opacity 0.2s}
-#comment-form button:hover{opacity:0.9}
+#comment-form button{background:none;border:none;color:var(--page-accent);font-family:inherit;font-size:1rem;font-weight:bold;cursor:pointer;padding:0;text-align:left}
+#comment-form button[type="submit"]{align-self:center}
+#comment-form button:hover{color:#000}
 #comment-form button:disabled{opacity:0.5;cursor:not-allowed}
+#comment-form button:disabled:hover{color:var(--page-accent)}
+.guestbook-intro{margin-bottom:0.5rem;padding-bottom:0.875rem;border-bottom:1px solid var(--fg-dim)}
 </style>
 
 <div class="guestbook-content">
-  <p>leave a comment, ask a question, or just say hi~~</p>
+  <p class="guestbook-intro">leave a comment, ask a question, or just say hi~~</p>
 
   <div id="comments-container"></div>
 
   <form id="comment-form">
-    <div style="display:flex;gap:0.5rem;align-items:center">
+    <div style="display:flex;gap:0.75rem;align-items:center">
       <input type="text" id="nickname" name="nickname" placeholder="nickname" required maxlength="32" style="flex:1">
-      <button type="button" id="random-nick" title="generate random nickname" style="padding:0.6rem;white-space:nowrap">[ random ]</button>
+      <button type="button" id="random-nick" title="generate random nickname" style="white-space:nowrap">[ random ]</button>
     </div>
     <input type="url" id="site" name="site" placeholder="site (https://...)">
     <textarea id="content" name="content" placeholder="ur comment (markdown supprtd)" required maxlength="2048"></textarea>
     <input type="text" id="honeypot" name="honeypot" style="display:none">
-    <button type="submit">post comment</button>
+    <button type="submit">[ post comment ]</button>
   </form>
 </div>
 
 <script>
 const API_BASE = 'https://comments.pierdol.ing';
 const THREAD_ID = '/guestbook/';
+
+function formatDate(ms) {
+  const d = new Date(ms);
+  const p = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+
+function renderComment(comment) {
+  const div = document.createElement('div');
+  div.className = 'comment';
+
+  const header = document.createElement('div');
+  header.className = 'comment-header';
+
+  const nick = document.createElement('span');
+  nick.className = 'comment-nickname';
+  if (comment.site) {
+    nick.innerHTML = `<a href="${comment.site}" target="_blank" rel="noopener">${escapeHtml(comment.nickname)}</a>`;
+  } else {
+    nick.textContent = comment.nickname;
+  }
+
+  const date = document.createElement('span');
+  date.className = 'comment-date';
+  date.textContent = formatDate(comment.created_at / 1000);
+
+  const num = document.createElement('span');
+  num.className = 'comment-num';
+  num.textContent = `#${comment.num}`;
+
+  const meta = document.createElement('span');
+  meta.className = 'comment-meta';
+  meta.appendChild(date);
+  meta.appendChild(num);
+
+  header.appendChild(nick);
+  header.appendChild(meta);
+
+  const content = document.createElement('div');
+  content.className = 'comment-content';
+  content.innerHTML = comment.html;
+
+  div.appendChild(header);
+  div.appendChild(content);
+  return div;
+}
+
+function renderReply(reply) {
+  const div = document.createElement('div');
+  div.className = 'comment comment-reply';
+
+  const line = document.createElement('div');
+  line.className = 'comment-reply-line';
+
+  const colon = document.createElement('span');
+  colon.className = 'comment-reply-colon';
+  colon.textContent = 're:';
+
+  const content = document.createElement('div');
+  content.className = 'comment-content';
+  content.innerHTML = reply.html;
+
+  line.appendChild(colon);
+  line.appendChild(content);
+
+  const date = document.createElement('span');
+  date.className = 'comment-date';
+  date.textContent = formatDate(reply.created_at / 1000);
+
+  div.appendChild(line);
+  div.appendChild(date);
+  return div;
+}
 
 async function loadComments() {
   try {
@@ -64,25 +153,25 @@ async function loadComments() {
       return;
     }
 
-    data.comments.forEach(comment => {
-      const div = document.createElement('div');
-      div.className = 'comment';
-
-      const date = new Date(comment.created_at * 1000).toLocaleString();
-      const nicknameHtml = comment.site
-        ? `<a href="${comment.site}" target="_blank" rel="noopener">${escapeHtml(comment.nickname)}</a>`
-        : escapeHtml(comment.nickname);
-
-      div.innerHTML = `
-        <div class="comment-header">
-          <span class="comment-nickname">${nicknameHtml}</span>
-          <span>${date}</span>
-        </div>
-        <div class="comment-content">${comment.html}</div>
-      `;
-
-      container.appendChild(div);
+    const byParent = new Map();
+    data.comments.forEach(c => {
+      const key = c.parent_id || '';
+      if (!byParent.has(key)) byParent.set(key, []);
+      byParent.get(key).push(c);
     });
+
+    (byParent.get('') || []).forEach((comment, i) => {
+      comment.num = i + 1;
+      const thread = document.createElement('div');
+      thread.className = 'thread';
+      thread.appendChild(renderComment(comment));
+      (byParent.get(comment.id) || []).forEach(reply => {
+        thread.appendChild(renderReply(reply));
+      });
+      container.appendChild(thread);
+    });
+
+    container.scrollTop = container.scrollHeight;
   } catch (err) {
     console.error('Failed to load comments:', err);
     document.getElementById('comments-container').innerHTML = '<p style="opacity:0.6;text-align:center;padding:1rem;">failed to load comments</p>';
@@ -137,7 +226,7 @@ document.getElementById('comment-form').addEventListener('submit', async (e) => 
     nicknameInput.disabled = false;
     siteInput.disabled = false;
     contentInput.disabled = false;
-    submitBtn.textContent = 'post comment';
+    submitBtn.textContent = '[ post comment ]';
   }
 });
 

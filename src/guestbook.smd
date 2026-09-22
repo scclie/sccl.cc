@@ -236,25 +236,16 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-const adjectives = ['null','void','shadow','cyber','glitch','silent','dark','neon','quantum','binary','pixel','ghost','chaos','crypt','zero','phantom','static','broken','wild','frozen'];
-const nouns = ['puppy','kitten','wolf','fox','cat','dragon','ninja','samurai','wizard','ghost','byte','bit','node','root','daemon','spectre','raven','lynx','serpent','phoenix'];
-const symbols = ['0x','_','.','-','@','#','$'];
-const numbers = ['42','13','7','666','404','1337','9000','420','69','0'];
-
-function generateNickname() {
-  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
-  const template = Math.floor(Math.random() * 5);
-  switch(template) {
-    case 0: return `${pick(adjectives)}_${pick(nouns)}`;
-    case 1: return `${pick(symbols)}${pick(adjectives)}_${pick(nouns)}`;
-    case 2: return `${pick(adjectives)}_${pick(nouns)}_${pick(numbers)}`;
-    case 3: return `${pick(nouns)}${pick(symbols)}${pick(nouns)}`;
-    case 4: return `${pick(symbols)}${pick(nouns)}_${pick(numbers)}`;
+document.getElementById('random-nick').addEventListener('click', async () => {
+  const input = document.getElementById('nickname');
+  try {
+    const response = await fetch(`${API_BASE}/api/nickname`);
+    if (!response.ok) throw new Error('bad status');
+    const data = await response.json();
+    input.value = data.nickname;
+  } catch (err) {
+    input.value = 'guest' + Math.floor(Math.random() * 1000);
   }
-}
-
-document.getElementById('random-nick').addEventListener('click', () => {
-  document.getElementById('nickname').value = generateNickname();
 });
 
 loadComments();

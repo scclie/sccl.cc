@@ -10,7 +10,6 @@
 ---
 
 ```=data
-pierdol.ing | https://pierdol.ing/ | my matrix server, api's, and some shit(idk why i need this fkn domain)
 scclNix | https://git.sccl.cc/scclie/sccl_nix/ | modular host-profile NixOS architecture
 notizine | https://notizine.sccl.cc/ | minimal modular Zine-based toolkit for multilingual static sites
 gif.sccl.cc | https://gif.sccl.cc/ | minimal client-side no tracking fast gif/webp maker with hosting
@@ -20,4 +19,6 @@ heatkeys.sccl.cc | https://heatkeys.sccl.cc | keyboard layout heatmap
 bip39_vanity_rs | https://git.sccl.cc/scclie/bip39_vanity_rs | bip39 vanity address generator on rust (BTC, LTC, ETH/EVM, TON...)
 rulemak-CAWS | http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS | russian phonetically equivalent variant of Colemak CAWS layout
 sakuli60lp | http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp | handwired wireless hotswap split choc low profile open source keyboard
+pierdol.ing | https://pierdol.ing/ | my matrix server, api's, and some shit(idk why i need this fkn domain)
+valheim.pierdol.ing | https://valheim.pierdol.ing/ | valheim modded server
 ```

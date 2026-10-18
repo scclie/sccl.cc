@@ -12,4 +12,8 @@
     <loc>https://sccl.cc/peripherals/</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://sccl.cc/dns/</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>

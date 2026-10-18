@@ -5,7 +5,7 @@
 .layout = "page.shtml",
 .custom = .{
     .tab = "contacts",
-    .description = "Contact information for sccl - Discord, Telegram, GitHub, Steam, YouTube, Email, PGP & SSH public keys, and crypto addresses",
+    .description = "my contact information - discord, telegram, gitHub, steam, youtube, email, pgp & ssh public keys, and crypto addresses",
 },
 ---
 

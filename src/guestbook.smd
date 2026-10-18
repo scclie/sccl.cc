@@ -5,7 +5,7 @@
 .layout = "page.shtml",
 .custom = .{
     .tab = "guestbook",
-    .description = "Leave a comment, ask a question, or just say hi",
+    .description = "leave a comment, ask a question, or just say hi",
 },
 ---
 

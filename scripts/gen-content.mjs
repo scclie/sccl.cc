@@ -47,7 +47,7 @@ function renderSection(tab, name) {
 }
 
 function renderItem(tab, fields, file, lineno, line) {
-  const arity = { contacts: [3, 4], projects: [3], peripherals: [2] };
+  const arity = { contacts: [3, 4], projects: [3], peripherals: [2], dns: [1, 2] };
   if (!arity[tab] || !arity[tab].includes(fields.length)) fail(file, lineno, line);
 
   if (tab === "contacts") {
@@ -71,6 +71,16 @@ function renderItem(tab, fields, file, lineno, line) {
       `      <a href="${href}" class="project-title">${title}</a>`,
       `      <span class="project-desc">${desc}</span>`,
       `    </div>`,
+      `  </div>`,
+    ].join("\n");
+  }
+
+  if (tab === "dns") {
+    const [domain, desc] = fields;
+    return [
+      `  <div class="project-item">`,
+      `    <a href="https://${domain}/" class="project-title">${domain}</a>`,
+      ...(desc ? [`    <span class="project-desc">${desc}</span>`] : []),
       `  </div>`,
     ].join("\n");
   }
@@ -178,6 +188,7 @@ function genLlmsBody(llms) {
       `- Contacts: ${host}/`,
       `- Projects: ${host}/projects/`,
       `- Peripherals: ${host}/peripherals/`,
+      `- DNS: ${host}/dns/`,
       "- Blog: https://shiza.sccl.cc",
     ]],
   ];

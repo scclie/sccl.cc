@@ -1,0 +1,51 @@
+---
+.title = "sccl.cc: scclie dns",
+.date = .date("2026-10-18T00:00:00"),
+.authors = ["sccl"],
+.layout = "page.shtml",
+.custom = .{
+    .tab = "dns",
+    .description = "all my domains",
+},
+---
+
+```=data
+[sccl.cc]
+sccl.cc | main site
+mail.sccl.cc | stalwart mail server
+webmail.sccl.cc | stalwart ui
+prometheus.sccl.cc | metrics
+loki.sccl.cc | logs
+alertmanager.sccl.cc | alerts
+grafana.sccl.cc | dashboards
+files.sccl.cc | sftpgo file sharing
+files-lan.sccl.cc | local file access
+status.sccl.cc | gatus status page
+xkb.sccl.cc | x keyboard layout generator
+otp-migrate.sccl.cc | google authenticator migration decoder
+gif.sccl.cc | gif/webp maker and hosting
+murmur.sccl.cc | mumble voice server (ts alternative)
+pass.sccl.cc | vaultwarden password manager
+obsi.sccl.cc | silverbullet notes
+git.sccl.cc | forgejo
+bred.sccl.cc | blog (shitpost)
+heatkeys.sccl.cc | keyboard layout heatmap
+notizine.sccl.cc | multilingual zine site toolkit
+ns1.sccl.cc | local dns nameserver
+
+[pierdol.ing]
+pierdol.ing | matrix homeserver and apis
+mirror.pierdol.ing | my micro repository
+id.pierdol.ing | kanidm
+chat.pierdol.ing | cinny matrix web client
+discord-bridge.pierdol.ing | matrix–discord bridge
+livekit.pierdol.ing | matrixrtc voice backend
+call.pierdol.ing | element call voice client
+comments.pierdol.ing | comments api
+macc.pierdol.ing | matrix account self-service portal
+sx.pierdol.ing | searxng metasearch
+valheim.pierdol.ing | modded valheim server
+map-valheim.pierdol.ing | valheim world map
+mail.pierdol.ing | stalwart mail server
+ns1.pierdol.ing | local dns nameserver
+```

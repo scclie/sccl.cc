@@ -11,20 +11,26 @@ jobs:
     if: startsWith(github.server_url, 'http://10.69.0.10') || startsWith(github.server_url, 'https://git.sccl.cc')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
 
       - name: Install dependencies & generate content
         run: |
-          npm install --ignore-scripts
+          npm ci --ignore-scripts
           npm run gen
 
       - name: Setup Zine
-        uses: https://github.com/kristoff-it/setup-zine@v2
+        run: |
+          set -euo pipefail
+          curl --fail --show-error --location --proto '=https' --proto-redir '=https' -o "$RUNNER_TEMP/zine.tar.xz" https://github.com/kristoff-it/zine/releases/download/v0.13.0/x86_64-linux-musl.tar.xz
+          printf '%s  %s\n' c250e029d978901b0c9a38eab0a860ef9db875bf686fe0f0abf61f180c280dba "$RUNNER_TEMP/zine.tar.xz" | sha256sum --check --strict
+          mkdir -p "$RUNNER_TEMP/zine"
+          tar -xJf "$RUNNER_TEMP/zine.tar.xz" -C "$RUNNER_TEMP/zine"
+          printf '%s\n' "$RUNNER_TEMP/zine" >> "$GITHUB_PATH"
 
       - name: Build
         run: zine release --force

@@ -20,7 +20,7 @@
   <meta name="twitter:title" :content="Contacts - sccl.cc">
   <meta name="twitter:description" :content="Contact information for sccl — Discord, Telegram, GitHub, Steam, YouTube, Email, and crypto addresses">
   <link rel="preload" href="/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-  
+
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--nord0:#2e3440;--nord1:#3b4252;--nord3:#4c566a;--nord4:#d8dee9;--nord8:#88c0d0;--nord11:#bf616a;--nord14:#a3be8c;--nord15:#b48ead;--bg:var(--nord0);--fg:var(--nord4);--fg-dim:var(--nord3)}
@@ -82,8 +82,8 @@
     @font-face{font-family:'Space Mono';font-style:normal;font-weight:400;src:url(/fonts/space-mono-400.woff2)format('woff2');font-display:swap}
   </style>
   <style>:root{--page-accent:var(--nord15)}</style>
-  
-  
+
+
 </head>
 <body>
   <div id="encoding-errors"></div>
@@ -94,7 +94,7 @@
           <a href="/contacts/" class="active">contacts</a>
           <a href="/projects/" class="">projects</a>
           <a href="/peripherals/" class="">peripherals</a>
-          <a href="https://shiza.sccl.cc" target="_blank">blog</a>
+          <a href="https://bred.sccl.cc" target="_blank">blog</a>
         </div>
       </nav>
       <div class="card-header">

@@ -189,7 +189,7 @@ function genLlmsBody(llms) {
       `- Projects: ${host}/projects/`,
       `- Peripherals: ${host}/peripherals/`,
       `- DNS: ${host}/dns/`,
-      "- Blog: https://shiza.sccl.cc",
+      "- Blog: https://bred.sccl.cc",
     ]],
   ];
   return sections.map(([title, lines]) => [title, ...lines].join("\n")).join("\n\n");

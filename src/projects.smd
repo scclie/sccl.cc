@@ -10,14 +10,18 @@
 ---
 
 ```=data
-scclNix | https://git.sccl.cc/scclie/sccl_nix/ | modular host-profile NixOS architecture
-notizine | https://notizine.sccl.cc/ | minimal modular Zine-based toolkit for multilingual static sites
-gif.sccl.cc | https://gif.sccl.cc/ | minimal client-side no tracking fast gif/webp maker with hosting
+sccl_nix | https://git.sccl.cc/scclie/sccl_nix/ | modular host-profile NixOS architecture
+notizine | https://git.sccl.cc/scclie/notizine | a small modular site starter on zine
+gif.sccl | https://gif.sccl.cc/ | minimal client-side no tracking fast gif/webp maker with hosting
 otp-migrate.sccl.cc | https://otp-migrate.sccl.cc/ | client-side google authenticator otp migration decoder
-xkb.sccl.cc | https://xkb.sccl.cc | linux X keyboard layout generator
-heatkeys.sccl.cc | https://heatkeys.sccl.cc | keyboard layout heatmap
+xkb.sccl | https://xkb.sccl.cc | linux X keyboard layout generator
+heatkeys.sccl | https://heatkeys.sccl.cc | keyboard layout heatmap
 bip39_vanity_rs | https://git.sccl.cc/scclie/bip39_vanity_rs | bip39 vanity address generator on rust (BTC, LTC, ETH/EVM, TON...)
-rulemak-CAWS | http://shiza.sccl.cc/en/Peripheral/Keyboards/Rulemak-CAWS | russian phonetically equivalent variant of Colemak CAWS layout
-sakuli60lp | http://shiza.sccl.cc/en/Peripheral/Keyboards/Sakuli60lp | handwired wireless hotswap split choc low profile open source keyboard
+rulemak-CAWS | http://bred.sccl.cc/posts/Peripheral/Keyboards/Rulemak-CAWS | russian phonetically equivalent variant of Colemak CAWS layout
+sakuli60lp | http://bred.sccl.cc/posts/Peripheral/Keyboards/Sakuli60lp | handwired wireless hotswap split choc low profile open source keyboard
 valheim.pierdol.ing | https://valheim.pierdol.ing/ | valheim modded server
+macc | https://git.sccl.cc/scclie/macc |  self-service matrix account portal for continuwuity + kanidm
+inkwatchy-nix | https://git.sccl.cc/scclie/inkwatchy-nix | nix wrapper for inkwatchy
+pxl3wallpapers | https://git.sccl.cc/scclie/pxl3wallpapers |  live wallpapers from google pixel 3 for android 13+
+papyrux | https://git.sccl.cc/scclie/Papyrux | minecraf resource pack (1.21(mb i'll update this))
 ```

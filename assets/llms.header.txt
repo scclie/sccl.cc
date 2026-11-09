@@ -6,4 +6,4 @@
 
 ## About site
 The website is written in zig zine, a static website generator.
-The website is optimized to 12kb in a single html, which allows it to load in 1 RTT (for more information, see https://shiza.sccl.cc/en/it/14kb-cap or https://shiza.sccl.cc/ru/it/14kb-cap)
+The website is optimized to 12kb in a single html, which allows it to load in 1 RTT (for more information, see https://bred.sccl.cc/posts/it/14kb-cap or https://bred.sccl.cc/ru/posts/it/14kb-cap)

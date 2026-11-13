@@ -11,17 +11,17 @@
 
 ```=data
 [server]
-OS | NixOS 26.05 (linux 7.1.0)
-CPU | ryzen 5600x @ 4.7ghz
-RAM | 32gb ddr4-3000 cl16
+os | nixos 26.05 (linux 6.18.57)
+cpu | ryzen 5600x @ 4.7ghz
+ram | 16gb ddr4-3000 cl16
 storage | 1tb ssd
 
 [desktop]
-OS | NixOS 26.05 (linux 7.1.0), niri 26.04 (wayland)
-CPU | ryzen 5500x3d @ 4.0ghz
-GPU | radeon rx6750xt (12gb)
-RAM | 16gb ddr4-3400 cl16
-storage | 512gb nvme + 256gb sata3 ssd
+os | nixos 26.05 (linux 7.2.11), niri 26.04 (wayland)
+cpu | ryzen 5500x3d @ 4.0ghz
+gpu | radeon rx6750xt (12gb)
+ram | 16gb ddr4-3400 cl16
+str | 512gb nvme + 256gb sata3 ssd
 
 [peripherals]
 display0 | msi 26.5" mag 272qp x50 (qd-oled, 1440p, 500hz)
@@ -31,15 +31,16 @@ pad0 | asus moonstone l (glasspad)
 pad1 | artisan raiden mid dai dai (clothpad)
 arm sleeve | cisa v2 navy
 keyboard | soffle split 64 key (gazzew boba u4t)
+layout | colemak-dh, rulemak-dh
 audio | arturia minifuse 2, philips shp9500, maono pd100 xlr
-phone | google pixel 7 (grapheneOS) & google pixel 3
+phone | google pixel 7 (grapheneos) & google pixel 3
 
 [laptop]
-model | giga Aero15X
-OS | NixOS 26.05 (linux 7.1.0), niri 26.04 (wayland)
-CPU | i7 8750H
-GPU | gtx1070 (8gb)
-RAM | 16gb ddr4
-storage | 512gb nvme
+model | giga aero15x
+os | nixos 26.05 (linux 7.2.11), niri 26.04 (wayland)
+cpu | i7 8750H
+gpu | gtx1070 (8gb)
+ram | 16gb ddr4
+str | 512gb nvme
 display0 | 15.6" ips 1080p 144hz
 ```

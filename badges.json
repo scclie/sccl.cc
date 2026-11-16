@@ -3,9 +3,9 @@
     "note": " // my badge",
     "badges": [
       {
-        "href": "http://sccl.cc/img/scclie.gif",
+        "href": "http://sccl.cc/img/88x31_scclie_v2.gif",
         "alt": "sccl.cc",
-        "local": "../img/scclie.gif",
+        "local": "../img/88x31_scclie_v2.gif",
         "file": "0.gif"
       }
     ]
@@ -20,9 +20,9 @@
         "file": "1.png"
       },
       {
-        "href": "https://143aim.club",
-        "alt": "143aim.club",
-        "local": "../img/143aim2.png",
+        "href": "https://mine.pierdol.ing",
+        "alt": "mine.pierdol.ing",
+        "local": "../img/88x31_minepierdoling.png",
         "file": "2.png"
       },
       {

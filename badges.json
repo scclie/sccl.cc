@@ -20,6 +20,12 @@
         "file": "1.png"
       },
       {
+        "url": "https://edwardcode.net/www/button.gif",
+        "href": "https://edwardcode.net/",
+        "alt": "edwardcode.net",
+        "file": "8.gif"
+      },
+      {
         "href": "https://mine.pierdol.ing",
         "alt": "mine.pierdol.ing",
         "local": "../img/88x31_minepierdoling.png",

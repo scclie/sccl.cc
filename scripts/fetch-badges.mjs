@@ -15,10 +15,17 @@ for (const group of ["my", "friends"]) {
   const badges = config[group]?.badges || [];
   for (const b of badges) {
     let ext, filename, dest;
+    if ((b.local || b.url) && !b.file) {
+      throw new Error(`name badges.json ${b.local || b.url}`);
+    }
 
     if (b.local) {
       ext = extname(b.local);
-      filename = `${idx}${ext}`;
+
+      // autonumbering useless shit
+      // filename = `${idx}${ext}`;
+      filename = b.file;
+
       dest = join(BADGES_DIR, filename);
       const src = resolve(ROOT, "assets", b.local.replace(/^\.\.\//, ""));
       process.stdout.write(`local ${b.local} → ${filename} ... `);
@@ -33,7 +40,8 @@ for (const group of ["my", "friends"]) {
       }
     } else if (b.url) {
       ext = extname(new URL(b.url).pathname) || ".png";
-      filename = `${idx}${ext}`;
+      // filename = `${idx}${ext}`;
+      filename = b.file;
       dest = join(BADGES_DIR, filename);
       if (!FORCE && existsSync(dest)) {
         console.log(`cached ${b.url} → ${filename} (${(readFileSync(dest).length / 1024).toFixed(1)}kb)`);
